@@ -7,6 +7,7 @@ from constants import tick_time
 from google_ads import GoogleAds
 from market import Market
 from twitter import Twitter
+import logging
 
 
 class Seller(object):
@@ -15,6 +16,8 @@ class Seller(object):
         self.name = name
         self.product = product
         self.wallet = wallet
+        self.count = 0
+        logging.info("[Seller]:Seller %s Created", self.name)
 
         # register the seller in market
         Market.register_seller(self, product)
@@ -38,9 +41,9 @@ class Seller(object):
 
     def loop(self):
         while not self.STOP:
+            self.count += 1
             self.tick()
             time.sleep(tick_time)
-
     # if an item is sold, add it to the database
     def sold(self):
         self.lock.acquire()
@@ -75,6 +78,10 @@ class Seller(object):
         print('Expenses in previous quarter:', self.my_expenses(True))
         print('Profit in previous quarter:', self.my_profit(True))
         print('\nStrategy for next quarter \nAdvert Type: {}, scale: {}\n\n'.format(advert_type, scale))
+
+        logging.info('[Seller]: (%s,%d) Revenue in previous quarter:%d', self.name, self.count, self.my_revenue(True))
+        logging.info('[Seller]: (%s,%d) Expenses in previous quarter:%d', self.name, self.count, self.my_expenses(True))
+        logging.info('[Seller]: (%s,%d) Profit in previous quarter:%d', self.name, self.count, self.my_profit(True))
 
         # perform the actions and view the expense
         self.expense_history.append(GoogleAds.post_advertisement(self, self.product, advert_type, scale))

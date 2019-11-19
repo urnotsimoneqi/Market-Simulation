@@ -6,11 +6,22 @@ from customer import Customer
 from product import Product
 from seller import Seller
 from utils import plot
+import os
+import logging
+from datetime import datetime
+
+now = datetime.now()
+dt_string = now.strftime("%H%M%S_%d_%m_%Y")
+
+if not os.path.exists("log"):
+    os.mkdir("log")
+
+logging.basicConfig(filename=os.path.join("log", dt_string+'.log'), level=logging.INFO)
 
 random.seed(seed)
 
 # Create some Consumers
-customers = [Customer(name='consumer_' + str(i), wallet=500, tolerance=0.5 + 0.4 * random.random()) for i in range(500)]
+customers = [Customer(name='consumer_' + str(i), wallet=500, tolerance=0.5 + 0.4 * random.random()) for i in range(10)]
 
 # Create a product
 iphone = Product(name='iphone', price=300, quality=0.9)

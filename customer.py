@@ -8,6 +8,7 @@ from constants import tick_time, seed
 from google_ads import GoogleAds
 from market import Market
 from twitter import Twitter
+import logging
 
 random.seed(seed)
 
@@ -15,6 +16,7 @@ random.seed(seed)
 class Customer(object):
     def __init__(self, name, wallet, tolerance=0.5):
         self.name, self.wallet, self.tolerance = name, wallet, tolerance
+        logging.info("[Buyer]:Buyer %s Created", self.name)
 
         # Register the user with google ads
         GoogleAds.register_user(self)
@@ -94,6 +96,8 @@ class Customer(object):
 
             # tweet sent
             self.tweet(product, sentiment)
+            # print("with some chance, the user may tweet about the product")
+            # print(self.name+product.name+sentiment)
 
         self.lock.release()
 
