@@ -12,15 +12,15 @@ import logging
 
 class Seller(object):
 
-    def __init__(self, name, product, wallet):
+    def __init__(self, name, products, wallet):
         self.name = name
-        self.product = product
+        self.products = products  # enable seller to sell more than one products
         self.wallet = wallet
         self.count = 0
         logging.info("[Seller]:Seller %s Created", self.name)
 
         # register the seller in market
-        Market.register_seller(self, product)
+        Market.register_seller(self, products)
 
         # metrics tracker
         self.sales_history = []
@@ -44,6 +44,7 @@ class Seller(object):
             self.count += 1
             self.tick()
             time.sleep(tick_time)
+
     # if an item is sold, add it to the database
     def sold(self):
         self.lock.acquire()
@@ -63,9 +64,10 @@ class Seller(object):
         self.lock.release()
 
         # Calculate the metrics for previous tick and add to tracker
-        self.revenue_history.append(self.sales_history[-1] * self.product.price)
-        self.profit_history.append(self.revenue_history[-1] - self.expense_history[-1])
-        self.sentiment_history.append(self.user_sentiment())
+        for product in self.products:
+            self.revenue_history.append(self.sales_history[-1] * product.price)
+            self.profit_history.append(self.revenue_history[-1] - self.expense_history[-1])
+            self.sentiment_history.append(self.user_sentiment())
 
         # add the profit to seller's wallet
         self.wallet += self.my_profit(True)
@@ -84,7 +86,8 @@ class Seller(object):
         logging.info('[Seller]: (%s,%d) Profit in previous quarter:%d', self.name, self.count, self.my_profit(True))
 
         # perform the actions and view the expense
-        self.expense_history.append(GoogleAds.post_advertisement(self, self.product, advert_type, scale))
+        for product in self.products:
+            self.expense_history.append(GoogleAds.post_advertisement(self, product, advert_type, scale))
 
     # calculates the total revenue. Gives the revenue in last tick if latest_only = True
     def my_revenue(self, latest_only=False):
@@ -103,7 +106,8 @@ class Seller(object):
 
     # calculates the user sentiment from tweets.
     def user_sentiment(self):
-        tweets = numpy.asarray(Twitter.get_latest_tweets(self.product, 100))
+        for product in self.products:
+            tweets = numpy.asarray(Twitter.get_latest_tweets(product, 100))
         return 1 if len(tweets) == 0 else (tweets == 'POSITIVE').mean()
 
     # to stop the seller thread
@@ -125,7 +129,8 @@ class Seller(object):
         #
         # You need to return the type of advert you want to publish and at what scale
         # GoogleAds.advert_price[advert_type] gives you the rate of an advert
-
-        advert_type = GoogleAds.ADVERT_BASIC if GoogleAds.user_coverage(self.product) < 0.5 else GoogleAds.ADVERT_TARGETED
-        scale = self.wallet // GoogleAds.advert_price[advert_type] // 2 #not spending everything
+        for product in self.products:
+            advert_type = GoogleAds.ADVERT_BASIC if GoogleAds.user_coverage(
+                product) < 0.5 else GoogleAds.ADVERT_TARGETED
+        scale = self.wallet // GoogleAds.advert_price[advert_type] // 2  # not spending everything
         return advert_type, scale
