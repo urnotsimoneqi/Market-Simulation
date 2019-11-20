@@ -9,6 +9,7 @@ from utils import plot
 import os
 import logging
 from datetime import datetime
+from mysql import register_customer
 
 now = datetime.now()
 dt_string = now.strftime("%H%M%S_%d_%m_%Y")
@@ -21,7 +22,8 @@ logging.basicConfig(filename=os.path.join("log", dt_string+'.log'), level=loggin
 random.seed(seed)
 
 # Create some Consumers
-customers = [Customer(name='consumer_' + str(i), wallet=500, tolerance=0.5 + 0.4 * random.random()) for i in range(10)]
+# customers = [Customer(name='consumer_' + str(i), wallet=500, tolerance=0.5 + 0.4 * random.random()) for i in range(10)]
+customers = register_customer() # create users from database
 
 # Create a product
 iphone = Product(name='iphone', price=300, quality=0.9)
