@@ -19,7 +19,7 @@ class Customer(object):
     RELATED_PRODUCT = 1
     CUSTOMER_TYPE = [SENSITIVE_PRICE, RELATED_PRODUCT]
 
-    def __init__(self, name, wallet, tolerance=0.5):
+    def __init__(self, name, wallet, tolerance):
         self.name, self.wallet, self.tolerance = name, wallet, tolerance
         logging.info("[Buyer]:Buyer %s Created", self.name)
 
