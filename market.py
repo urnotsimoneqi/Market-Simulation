@@ -9,22 +9,24 @@ class Market(object):
 
     # initialise the seller catalogue
     @staticmethod
-    def register_seller(seller, product):
+    def register_seller(seller, products):
         Market.lock.acquire()
-        Market.catalogue[product] = seller
+        for product in products:
+            Market.catalogue[product] = seller  # enable seller to sell more than one products
         Market.lock.release()
 
     # when a user buys a product, increment the seller's sales
     @staticmethod
-    def buy(buyer, product):
+    def buy(buyer, products):
         # get the seller for product from catalogue
-        seller = Market.catalogue[product]
+        for product in products:
+            seller = Market.catalogue[product]
 
-        # call seller's sold function
-        seller.sold()
+            # call seller's sold function
+            seller.sold()
 
-        # deduct price from user's balance
-        buyer.deduct(product.price)
+            # deduct price from user's balance
+            buyer.deduct(product.price)
 
-        # track user
-        GoogleAds.track_user_purchase(buyer, product)
+            # track user
+            GoogleAds.track_user_purchase(buyer, product)
