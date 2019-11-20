@@ -28,8 +28,8 @@ iphone = Product(name='iphone', price=300, quality=0.9)
 galaxy = Product(name='galaxy', price=200, quality=0.8)
 
 # Create a Seller with some budget
-seller_apple = Seller(name='apple', product=iphone, wallet=1000)
-seller_samsung = Seller(name='samsung', product=galaxy, wallet=500)
+seller_apple = Seller(name='apple', products=[iphone], wallet=1000)
+seller_samsung = Seller(name='samsung', products=[galaxy], wallet=500)
 
 # Wait till the simulation ends
 try:
