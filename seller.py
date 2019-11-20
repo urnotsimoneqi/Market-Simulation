@@ -3,6 +3,7 @@ from threading import Lock, Thread
 
 import numpy
 
+from CEO import CEO
 from constants import tick_time
 from google_ads import GoogleAds
 from market import Market
@@ -73,7 +74,7 @@ class Seller(object):
         self.wallet += self.my_profit(True)
 
         # choose what to do for next timestep
-        advert_type, scale = self.CEO()
+        advert_type, scale = CEO(self).analyze()
 
         # ANSWER a. print data to show progress
         print('Revenue in previous quarter:', self.my_revenue(True))
@@ -118,19 +119,3 @@ class Seller(object):
     def __str__(self):
         return self.name
 
-    # Cognition system that decides what to do next.
-    def CEO(self):
-        # WRITE YOUR INTELLIGENT CODE HERE
-        # You can use following functions to make decision
-        #   my_revenue
-        #   my_expenses
-        #   my_profit
-        #   user_sentiment
-        #
-        # You need to return the type of advert you want to publish and at what scale
-        # GoogleAds.advert_price[advert_type] gives you the rate of an advert
-        for product in self.products:
-            advert_type = GoogleAds.ADVERT_BASIC if GoogleAds.user_coverage(
-                product) < 0.5 else GoogleAds.ADVERT_TARGETED
-        scale = self.wallet // GoogleAds.advert_price[advert_type] // 2  # not spending everything
-        return advert_type, scale
