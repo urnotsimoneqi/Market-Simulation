@@ -14,6 +14,11 @@ random.seed(seed)
 
 
 class Customer(object):
+    # Define customer type
+    SENSITIVE_PRICE = 0
+    RELATED_PRODUCT = 1
+    CUSTOMER_TYPE = [SENSITIVE_PRICE, RELATED_PRODUCT]
+
     def __init__(self, name, wallet, tolerance=0.5):
         self.name, self.wallet, self.tolerance = name, wallet, tolerance
         logging.info("[Buyer]:Buyer %s Created", self.name)
