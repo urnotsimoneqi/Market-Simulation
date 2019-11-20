@@ -43,16 +43,20 @@ class Customer(object):
         self.lock.release()
 
     # Consumer decided to buy a 'product'.
-    def buy(self, product):
+    def buy(self, products):
         # if not enough money in wallet, don't proceed
-        if self.wallet < product.price:
+        amount = 0
+        for product in products:
+            amount += product.price
+        if self.wallet < amount:  # enable buyer to buy more than one products
             return
 
         # purchase the product from market
-        Market.buy(self, product)
+        Market.buy(self, products)
 
         # add product to the owned products list
-        self.owned_products.add(product)
+        for product in products:
+            self.owned_products.add(product)
 
     # money is deducted from user's wallet when purchase is completed
     def deduct(self, money):
@@ -81,7 +85,7 @@ class Customer(object):
             # ANSWER d.
             # if sentiment is more than user's tolerance and user does not have the product, then he/she may buy it with 20% chance. If it already has the product, then chance of buying again is 1%
             if user_sentiment >= self.tolerance and ((product not in self.owned_products and random.random() < 0.1) or (product in self.owned_products and random.random() < 0.01)):
-                self.buy(product)
+                self.buy([product])
 
         # remove the adverts from ad_space
         self.ad_space = set()
