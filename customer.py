@@ -20,8 +20,8 @@ class Customer(object):
     RELATED_PRODUCT = 1
     CUSTOMER_TYPE = [SENSITIVE_PRICE, RELATED_PRODUCT]
 
-    def __init__(self, name, wallet, tolerance):
-        self.name, self.wallet, self.tolerance = name, wallet, tolerance
+    def __init__(self, id, name, wallet, tolerance):
+        self.id, self.name, self.wallet, self.tolerance = id, name, wallet, tolerance
         logging.info("[Buyer]:Buyer %s Initialized", self.name)
 
         # Register the user with google ads
@@ -125,7 +125,7 @@ class Customer(object):
                     self.buy([product])
 
             else:
-                logging.info("[Customer]:###(%s,%d)doesn't buy any products ",self.name,self.tick_count)
+                logging.info("[Customer]:###(%s,%d)doesn't buy any products ", self.name, self.tick_count)
 
             # ANSWER d.
             # if sentiment is more than user's tolerance and user does not have the product, then he/she may buy it with 20% chance. If it already has the product, then chance of buying again is 1%

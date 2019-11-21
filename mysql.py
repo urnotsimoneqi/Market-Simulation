@@ -31,7 +31,7 @@ def initialize_customer():
             customer_wallet = row[4]
             customer_tolerance = row[5]
             customer_status = row[6]
-            customer = Customer(name=customer_name, wallet=customer_wallet, tolerance=customer_tolerance)
+            customer = Customer(id=customer_id, name=customer_name, wallet=customer_wallet, tolerance=customer_tolerance)
             customers.append(customer)
     except:
         print("Error: unable to fetch customer")
@@ -112,7 +112,7 @@ def initialize_seller():
             seller_status = row[3]
             # seller_products = initialize_product(seller_id)
             seller_products = initialize_stock(seller_id)
-            seller = Seller(name=seller_name, products=seller_products, wallet=seller_wallet)
+            seller = Seller(id=seller_id, name=seller_name, products=seller_products, wallet=seller_wallet)
             sellers.append(seller)
     except:
         print("Error: unable to fetch seller")
@@ -125,3 +125,20 @@ def reporting(revenue, expenses, profit):
     # db = pymysql.connect("localhost", "root", "Simon19980908", "TESTDB")
 
     db.close()
+
+
+# insert every transaction into database
+def save_txn():
+    # db = connect_db()
+    # cursor = db.cursor()
+    print("Save transaction")
+    # sql = """INSERT INTO trans_record(transaction_datetime, transaction_year, transaction_quarter, seller_id,
+    # customer_id, product_id, transaction_related, transaction_quantity, transaction_amount, transaction_promotion_id,
+    # transaction_status) VALUES (txn.timestamp, 'Mohan', 20, 'M', 2000)"""
+    # try:
+    #     cursor.execute(sql)
+    #     db.commit()
+    # except:
+    #     # Rollback in case there is any error
+    #     db.rollback()
+    # db.close()

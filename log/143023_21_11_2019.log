@@ -1,0 +1,337 @@
+INFO:root:[Buyer]:Buyer Simone Initialized
+INFO:root:[Customer]:Customer Simone entered Trading
+INFO:root:[Buyer]:Buyer Betsy Initialized
+INFO:root:[Customer]:(Simone,1): Next Quarter Begins 
+INFO:root:[Customer]:(Simone,1) currently seeing ads for the Products:[]
+INFO:root:[Customer]:Customer Betsy entered Trading
+INFO:root:[Buyer]:Buyer Matthew Initialized
+INFO:root:[Customer]:(Betsy,1): Next Quarter Begins 
+INFO:root:[Customer]:(Betsy,1) currently seeing ads for the Products:[]
+INFO:root:[Customer]:Customer Matthew entered Trading
+INFO:root:[Buyer]:Buyer Dan Initialized
+INFO:root:[Customer]:(Matthew,1): Next Quarter Begins 
+INFO:root:[Customer]:(Matthew,1) currently seeing ads for the Products:[]
+INFO:root:[Customer]:Customer Dan entered Trading
+INFO:root:[Buyer]:Buyer Ewa Initialized
+INFO:root:[Customer]:(Dan,1): Next Quarter Begins 
+INFO:root:[Customer]:(Dan,1) currently seeing ads for the Products:[]
+INFO:root:[Customer]:Customer Ewa entered Trading
+INFO:root:[Customer]:(Ewa,1): Next Quarter Begins 
+INFO:root:[Customer]:(Ewa,1) currently seeing ads for the Products:[]
+INFO:root:[Seller]:Seller Alice Created
+INFO:root:[Seller]:Seller Alice Owned products iPhone XR, iPhone XS case, iPhone XR case
+INFO:root:{}
+INFO:root:[Market]:Seller Alice is registered in the market with the product iPhone XR 
+INFO:root:[Market]:Seller Alice is registered in the market with the product iPhone XS case 
+INFO:root:[Market]:Seller Alice is registered in the market with the product iPhone XR case 
+INFO:root:[Seller]:Seller Alice started Trading
+INFO:root:[Seller]: (Alice,1) sold  0 units of iPhone XR
+INFO:root:[Seller]: (Alice,1) sold  0 units of iPhone XS case
+INFO:root:[Seller]: (Alice,1) sold  0 units of iPhone XR case
+INFO:root:[Seller]: (Alice,1) Revenue in previous quarter:0
+INFO:root:[Seller]: (Alice,1) Expenses in previous quarter:0
+INFO:root:[Seller]: (Alice,1) Profit in previous quarter:0
+INFO:root:[Seller]: (Alice,1) Sales in previous quarter:[0]
+INFO:root:[Seller]:Seller Bob Created
+INFO:root:[Seller]:Seller Bob Owned products iPhone XS, iPhone XR, iPhone XS case, iPhone XR case
+INFO:root:{'iPhone XR': [<seller.Seller object at 0x0000028749884B38>], 'iPhone XS case': [<seller.Seller object at 0x0000028749884B38>], 'iPhone XR case': [<seller.Seller object at 0x0000028749884B38>]}
+INFO:root:[Market]:Seller Bob is registered in the market with the product iPhone XS 
+INFO:root:[Market]:Seller Bob is registered in the market with the product iPhone XR 
+INFO:root:[Market]:Seller Bob is registered in the market with the product iPhone XS case 
+INFO:root:[Market]:Seller Bob is registered in the market with the product iPhone XR case 
+INFO:root:[Seller]:Seller Bob started Trading
+INFO:root:[Seller]: (Bob,1) sold  0 units of iPhone XS
+INFO:root:[Seller]: (Bob,1) sold  0 units of iPhone XR
+INFO:root:[Seller]: (Bob,1) sold  0 units of iPhone XS case
+INFO:root:[Seller]: (Bob,1) sold  0 units of iPhone XR case
+INFO:root:[Seller]: (Bob,1) Revenue in previous quarter:0
+INFO:root:[Seller]: (Bob,1) Expenses in previous quarter:0
+INFO:root:[Seller]: (Bob,1) Profit in previous quarter:0
+INFO:root:[Seller]: (Bob,1) Sales in previous quarter:[0]
+INFO:root:[Seller]:Seller Carol Created
+INFO:root:[Seller]:Seller Carol Owned products iPhone XS, iPhone XR, iPhone XS case, iPhone XR case
+INFO:root:{'iPhone XR': [<seller.Seller object at 0x0000028749884B38>, <seller.Seller object at 0x00000287496A5EB8>], 'iPhone XS case': [<seller.Seller object at 0x0000028749884B38>, <seller.Seller object at 0x00000287496A5EB8>], 'iPhone XR case': [<seller.Seller object at 0x0000028749884B38>, <seller.Seller object at 0x00000287496A5EB8>], 'iPhone XS': [<seller.Seller object at 0x00000287496A5EB8>]}
+INFO:root:[Market]:Seller Carol is registered in the market with the product iPhone XS 
+INFO:root:[Market]:Seller Carol is registered in the market with the product iPhone XR 
+INFO:root:[Market]:Seller Carol is registered in the market with the product iPhone XS case 
+INFO:root:[Market]:Seller Carol is registered in the market with the product iPhone XR case 
+INFO:root:[Seller]:Seller Carol started Trading
+INFO:root:[Seller]: (Carol,1) sold  0 units of iPhone XS
+INFO:root:[Seller]: (Carol,1) sold  0 units of iPhone XR
+INFO:root:[Seller]: (Carol,1) sold  0 units of iPhone XS case
+INFO:root:[Seller]: (Carol,1) sold  0 units of iPhone XR case
+INFO:root:[Seller]: (Carol,1) Revenue in previous quarter:0
+INFO:root:[Seller]: (Carol,1) Expenses in previous quarter:0
+INFO:root:[Seller]: (Carol,1) Profit in previous quarter:0
+INFO:root:[Seller]: (Carol,1) Sales in previous quarter:[0]
+INFO:root:[Seller]:Seller Dave Created
+INFO:root:[Seller]:Seller Dave Owned products Google pixel, Google pixel case
+INFO:root:{'iPhone XR': [<seller.Seller object at 0x0000028749884B38>, <seller.Seller object at 0x00000287496A5EB8>, <seller.Seller object at 0x00000287498C7710>], 'iPhone XS case': [<seller.Seller object at 0x0000028749884B38>, <seller.Seller object at 0x00000287496A5EB8>, <seller.Seller object at 0x00000287498C7710>], 'iPhone XR case': [<seller.Seller object at 0x0000028749884B38>, <seller.Seller object at 0x00000287496A5EB8>, <seller.Seller object at 0x00000287498C7710>], 'iPhone XS': [<seller.Seller object at 0x00000287496A5EB8>, <seller.Seller object at 0x00000287498C7710>]}
+INFO:root:[Market]:Seller Dave is registered in the market with the product Google pixel 
+INFO:root:[Market]:Seller Dave is registered in the market with the product Google pixel case 
+INFO:root:[Seller]:Seller Dave started Trading
+INFO:root:[Seller]: (Dave,1) sold  0 units of Google pixel
+INFO:root:[Seller]: (Dave,1) sold  0 units of Google pixel case
+INFO:root:[Seller]: (Dave,1) Revenue in previous quarter:0
+INFO:root:[Seller]: (Dave,1) Expenses in previous quarter:0
+INFO:root:[Seller]: (Dave,1) Profit in previous quarter:0
+INFO:root:[Seller]: (Dave,1) Sales in previous quarter:[0]
+INFO:root:[Seller]:Seller Eve Created
+INFO:root:[Seller]:Seller Eve Owned products Huawei P30 pro, Huawei P30 pro case
+INFO:root:{'iPhone XR': [<seller.Seller object at 0x0000028749884B38>, <seller.Seller object at 0x00000287496A5EB8>, <seller.Seller object at 0x00000287498C7710>], 'iPhone XS case': [<seller.Seller object at 0x0000028749884B38>, <seller.Seller object at 0x00000287496A5EB8>, <seller.Seller object at 0x00000287498C7710>], 'iPhone XR case': [<seller.Seller object at 0x0000028749884B38>, <seller.Seller object at 0x00000287496A5EB8>, <seller.Seller object at 0x00000287498C7710>], 'iPhone XS': [<seller.Seller object at 0x00000287496A5EB8>, <seller.Seller object at 0x00000287498C7710>], 'Google pixel': [<seller.Seller object at 0x00000287498C7898>], 'Google pixel case': [<seller.Seller object at 0x00000287498C7898>]}
+INFO:root:[Market]:Seller Eve is registered in the market with the product Huawei P30 pro 
+INFO:root:[Market]:Seller Eve is registered in the market with the product Huawei P30 pro case 
+INFO:root:[Seller]:Seller Eve started Trading
+INFO:root:[Seller]: (Eve,1) sold  0 units of Huawei P30 pro
+INFO:root:[Seller]: (Eve,1) sold  0 units of Huawei P30 pro case
+INFO:root:[Seller]: (Eve,1) Revenue in previous quarter:0
+INFO:root:[Seller]: (Eve,1) Expenses in previous quarter:0
+INFO:root:[Seller]: (Eve,1) Profit in previous quarter:0
+INFO:root:[Seller]: (Eve,1) Sales in previous quarter:[0]
+INFO:root:[Customer]: (Simone,1) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(Simone,2): Next Quarter Begins 
+INFO:root:[Customer]:(Simone,2) currently seeing ads for the Products:[Huawei P30 pro case, iPhone XR case, Google pixel, iPhone XS, iPhone XS, iPhone XR case, iPhone XS case, iPhone XR, iPhone XS case, iPhone XS case, Huawei P30 pro, iPhone XR]
+INFO:root:[Customer]:***(Simone,2)bought 2 new product:[iPhone XS case]
+INFO:root:[Customer]: (Simone,2) buy the Products:[iPhone XS case] from seller3
+INFO:root:[Customer]: (Simone,2) buy the Products:[iPhone XS case] from seller3
+INFO:root:[Customer]: (Simone,2) buy the Products:[iPhone XS case, iPhone XS case] from seller3 with price180
+INFO:root:[Seller]: Seller (Alice,1) sold product iPhone XS case
+INFO:root:[Customer]: (Betsy,1) own the Products:[] with balance of $ 800
+INFO:root:[Seller]: Seller (Alice,1) sold product iPhone XS case
+INFO:root:[Customer]: (Matthew,1) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(Betsy,2): Next Quarter Begins 
+INFO:root:[Market]:Transaction between Seller Alice and Customer Simone with the product iPhone XS case 
+INFO:root:[Customer]:(Matthew,2): Next Quarter Begins 
+INFO:root:[Customer]:(Betsy,2) currently seeing ads for the Products:[Huawei P30 pro case, iPhone XR case, iPhone XR case, Google pixel case, iPhone XR, iPhone XR case, iPhone XS case, Huawei P30 pro]
+INFO:root:[Customer]: (Ewa,1) own the Products:[] with balance of $ 800
+INFO:root:[Customer]: (Dan,1) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:***(Simone,2)bought 2 new product:[iPhone XR]
+INFO:root:[Customer]:(Matthew,2) currently seeing ads for the Products:[iPhone XR case, iPhone XS, Google pixel case, iPhone XS, iPhone XR, iPhone XS case, iPhone XR, iPhone XS case, Huawei P30 pro, iPhone XR]
+INFO:root:[Customer]:***(Betsy,2)bought 2 new product:[iPhone XR case]
+INFO:root:[Customer]:(Ewa,2): Next Quarter Begins 
+INFO:root:[Customer]:(Dan,2): Next Quarter Begins 
+INFO:root:[Customer]: (Simone,2) buy the Products:[iPhone XR] from seller1
+INFO:root:[Customer]:***(Matthew,2)bought 2 new product:[iPhone XR case]
+INFO:root:[Customer]: (Betsy,2) buy the Products:[iPhone XR case] from seller1
+INFO:root:[Customer]:(Ewa,2) currently seeing ads for the Products:[Huawei P30 pro case, iPhone XR case, Google pixel, Google pixel case, iPhone XS, iPhone XR, iPhone XR case, iPhone XS case, iPhone XS case, iPhone XR case, Huawei P30 pro, iPhone XR]
+INFO:root:[Customer]:(Dan,2) currently seeing ads for the Products:[Huawei P30 pro case, iPhone XR case, Google pixel, iPhone XS, iPhone XS case, iPhone XS case, iPhone XS case]
+INFO:root:[Customer]: (Simone,2) buy the Products:[iPhone XR] from seller1
+INFO:root:[Customer]: (Matthew,2) buy the Products:[iPhone XR case] from seller1
+INFO:root:[Customer]: (Betsy,2) buy the Products:[iPhone XR case] from seller1
+INFO:root:[Customer]:***(Ewa,2)bought 2 new product:[iPhone XR]
+INFO:root:[Customer]:***(Dan,2)bought 2 new product:[Huawei P30 pro case]
+INFO:root:[Customer]: (Matthew,2) buy the Products:[iPhone XR case] from seller1
+INFO:root:[Customer]: (Betsy,2) buy the Products:[iPhone XR case, iPhone XR case] from seller1 with price190
+INFO:root:[Customer]: (Ewa,2) buy the Products:[iPhone XR] from seller3
+INFO:root:[Customer]: (Dan,2) buy the Products:[Huawei P30 pro case] from seller5
+INFO:root:[Customer]: (Matthew,2) buy the Products:[iPhone XR case, iPhone XR case] from seller1 with price190
+INFO:root:[Seller]: Seller (Alice,1) sold product iPhone XR case
+INFO:root:[Customer]: (Ewa,2) buy the Products:[iPhone XR] from seller3
+INFO:root:[Customer]: (Dan,2) buy the Products:[Huawei P30 pro case] from seller5
+INFO:root:[Seller]: Seller (Alice,1) sold product iPhone XR case
+INFO:root:[Seller]: Seller (Alice,1) sold product iPhone XR case
+INFO:root:[Customer]:***(Ewa,2)bought 2 new product:[iPhone XS case]
+INFO:root:[Seller]: (Alice,2) sold  0 units of iPhone XR
+INFO:root:[Customer]: (Dan,2) buy the Products:[Huawei P30 pro case, Huawei P30 pro case] from seller5 with price120
+INFO:root:[Seller]: Seller (Alice,2) sold product iPhone XR case
+INFO:root:[Market]:Transaction between Seller Alice and Customer Betsy with the product iPhone XR case 
+INFO:root:[Customer]: (Ewa,2) buy the Products:[iPhone XS case] from seller2
+INFO:root:[Seller]: (Alice,2) sold  2 units of iPhone XS case
+INFO:root:[Seller]: Seller (Eve,1) sold product Huawei P30 pro case
+INFO:root:[Market]:Transaction between Seller Alice and Customer Matthew with the product iPhone XR case 
+INFO:root:[Customer]: (Ewa,2) buy the Products:[iPhone XS case] from seller2
+INFO:root:[Seller]: (Alice,2) sold  3 units of iPhone XR case
+INFO:root:[Seller]: Seller (Eve,1) sold product Huawei P30 pro case
+INFO:root:[Customer]:***(Matthew,2)bought 2 new product:[iPhone XR]
+INFO:root:[Customer]: (Ewa,2) buy the Products:[iPhone XS case, iPhone XS case] from seller2 with price200
+INFO:root:[Market]:Transaction between Seller Eve and Customer Dan with the product Huawei P30 pro case 
+INFO:root:[Customer]: (Matthew,2) buy the Products:[iPhone XR] from seller1
+INFO:root:[Seller]: (Alice,2) Revenue in previous quarter:285
+INFO:root:[Seller]: Seller (Alice,2) sold product iPhone XS case
+INFO:root:[Seller]: (Bob,2) sold  0 units of iPhone XS
+INFO:root:[Customer]:***(Dan,2)bought 2 new product:[iPhone XS case]
+INFO:root:[Customer]: (Matthew,2) buy the Products:[iPhone XR] from seller1
+INFO:root:[Seller]: (Alice,2) Expenses in previous quarter:25
+INFO:root:[Seller]: Seller (Alice,2) sold product iPhone XS case
+INFO:root:[Seller]: (Bob,2) sold  0 units of iPhone XR
+INFO:root:[Customer]: (Dan,2) buy the Products:[iPhone XS case] from seller1
+INFO:root:[Seller]: (Alice,2) Profit in previous quarter:260
+INFO:root:[Market]:Transaction between Seller Alice and Customer Ewa with the product iPhone XS case 
+INFO:root:[Seller]: (Bob,2) sold  0 units of iPhone XS case
+INFO:root:[Seller]: (Carol,2) sold  0 units of iPhone XS
+INFO:root:[Customer]: (Dan,2) buy the Products:[iPhone XS case] from seller1
+INFO:root:[Seller]: (Alice,2) Sales in previous quarter:[0, 3]
+INFO:root:[Customer]:***(Ewa,2)bought 2 new product:[iPhone XR case]
+INFO:root:[Seller]: (Bob,2) sold  0 units of iPhone XR case
+INFO:root:[Seller]: (Carol,2) sold  0 units of iPhone XR
+INFO:root:[Customer]: (Dan,2) buy the Products:[iPhone XS case, iPhone XS case] from seller1 with price190
+INFO:root:[Customer]: (Ewa,2) buy the Products:[iPhone XR case] from seller2
+INFO:root:[Seller]: (Carol,2) sold  0 units of iPhone XS case
+INFO:root:[Seller]: (Bob,2) Revenue in previous quarter:0
+INFO:root:[Seller]: Seller (Alice,2) sold product iPhone XS case
+INFO:root:[Customer]: (Ewa,2) buy the Products:[iPhone XR case] from seller2
+INFO:root:[Seller]: (Carol,2) sold  0 units of iPhone XR case
+INFO:root:[Seller]: (Bob,2) Expenses in previous quarter:25
+INFO:root:[Seller]: (Dave,2) sold  0 units of Google pixel
+INFO:root:[Customer]: (Ewa,2) buy the Products:[iPhone XR case, iPhone XR case] from seller2 with price190
+INFO:root:[Seller]: (Bob,2) Profit in previous quarter:-25
+INFO:root:[Seller]: (Carol,2) Revenue in previous quarter:0
+INFO:root:[Seller]: (Dave,2) sold  0 units of Google pixel case
+INFO:root:[Seller]: Seller (Alice,2) sold product iPhone XR case
+INFO:root:[Seller]: (Bob,2) Sales in previous quarter:[0, 0]
+INFO:root:[Seller]: (Carol,2) Expenses in previous quarter:25
+INFO:root:[Seller]: (Carol,2) Profit in previous quarter:-25
+INFO:root:[Seller]: (Carol,2) Sales in previous quarter:[0, 0]
+INFO:root:[Seller]: (Dave,2) Revenue in previous quarter:0
+INFO:root:[Seller]: (Dave,2) Expenses in previous quarter:25
+INFO:root:[Seller]: (Dave,2) Profit in previous quarter:-25
+INFO:root:[Seller]: (Dave,2) Sales in previous quarter:[0, 0]
+INFO:root:[Seller]: (Eve,2) sold  0 units of Huawei P30 pro
+INFO:root:[Seller]: (Eve,2) sold  0 units of Huawei P30 pro case
+INFO:root:[Seller]: (Eve,2) Revenue in previous quarter:120
+INFO:root:[Seller]: (Eve,2) Expenses in previous quarter:25
+INFO:root:[Seller]: (Eve,2) Profit in previous quarter:95
+INFO:root:[Seller]: (Eve,2) Sales in previous quarter:[0, 2]
+INFO:root:[Customer]: (Simone,2) own the Products:[iPhone XS case] with balance of $ 620
+INFO:root:[Customer]:(Simone,3): Next Quarter Begins 
+INFO:root:[Customer]:(Simone,3) currently seeing ads for the Products:[iPhone XR]
+INFO:root:[Customer]:(Simone,3) Posted POSITIVE tweet for the product iPhone XS case
+INFO:root:[Customer]: (Betsy,2) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(Betsy,3): Next Quarter Begins 
+INFO:root:[Customer]:(Betsy,3) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(Betsy,3) Posted POSITIVE tweet for the product iPhone XR case
+INFO:root:[Customer]: (Matthew,2) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(Matthew,3): Next Quarter Begins 
+INFO:root:[Customer]:(Matthew,3) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(Matthew,3) Posted POSITIVE tweet for the product iPhone XR case
+INFO:root:[Customer]: (Simone,3) own the Products:[iPhone XS case] with balance of $ 620
+INFO:root:[Customer]:(Simone,4): Next Quarter Begins 
+INFO:root:[Customer]:(Simone,4) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(Simone,4) Posted POSITIVE tweet for the product iPhone XS case
+INFO:root:[Customer]: (Betsy,3) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(Betsy,4): Next Quarter Begins 
+INFO:root:[Customer]:(Betsy,4) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(Betsy,4) Posted POSITIVE tweet for the product iPhone XR case
+INFO:root:[Customer]: (Matthew,3) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(Matthew,4): Next Quarter Begins 
+INFO:root:[Customer]:(Matthew,4) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(Matthew,4) Posted POSITIVE tweet for the product iPhone XR case
+INFO:root:[Customer]: (Simone,4) own the Products:[iPhone XS case] with balance of $ 620
+INFO:root:[Customer]:(Simone,5): Next Quarter Begins 
+INFO:root:[Customer]:(Simone,5) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (Betsy,4) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(Betsy,5): Next Quarter Begins 
+INFO:root:[Customer]:(Betsy,5) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (Matthew,4) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(Matthew,5): Next Quarter Begins 
+INFO:root:[Customer]:(Matthew,5) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(Matthew,5) Posted POSITIVE tweet for the product iPhone XR case
+INFO:root:[Customer]: (Simone,5) own the Products:[iPhone XS case] with balance of $ 620
+INFO:root:[Customer]:(Simone,6): Next Quarter Begins 
+INFO:root:[Customer]:(Simone,6) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (Betsy,5) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(Betsy,6): Next Quarter Begins 
+INFO:root:[Customer]:(Betsy,6) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (Matthew,5) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(Matthew,6): Next Quarter Begins 
+INFO:root:[Customer]:(Matthew,6) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(Matthew,6) Posted POSITIVE tweet for the product iPhone XR case
+INFO:root:[Customer]: (Simone,6) own the Products:[iPhone XS case] with balance of $ 620
+INFO:root:[Customer]:(Simone,7): Next Quarter Begins 
+INFO:root:[Customer]:(Simone,7) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (Betsy,6) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(Betsy,7): Next Quarter Begins 
+INFO:root:[Customer]:(Betsy,7) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (Matthew,6) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(Matthew,7): Next Quarter Begins 
+INFO:root:[Customer]:(Matthew,7) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (Simone,7) own the Products:[iPhone XS case] with balance of $ 620
+INFO:root:[Customer]:(Simone,8): Next Quarter Begins 
+INFO:root:[Customer]:(Simone,8) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (Betsy,7) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(Betsy,8): Next Quarter Begins 
+INFO:root:[Customer]:(Betsy,8) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(Betsy,8) Posted POSITIVE tweet for the product iPhone XR case
+INFO:root:[Customer]: (Matthew,7) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(Matthew,8): Next Quarter Begins 
+INFO:root:[Customer]:(Matthew,8) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(Matthew,8) Posted POSITIVE tweet for the product iPhone XR case
+INFO:root:[Customer]: (Simone,8) own the Products:[iPhone XS case] with balance of $ 620
+INFO:root:[Customer]:(Simone,9): Next Quarter Begins 
+INFO:root:[Customer]:(Simone,9) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (Betsy,8) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(Betsy,9): Next Quarter Begins 
+INFO:root:[Customer]:(Betsy,9) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(Betsy,9) Posted POSITIVE tweet for the product iPhone XR case
+INFO:root:[Customer]: (Matthew,8) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(Matthew,9): Next Quarter Begins 
+INFO:root:[Customer]:(Matthew,9) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(Matthew,9) Posted POSITIVE tweet for the product iPhone XR case
+INFO:root:[Customer]: (Simone,9) own the Products:[iPhone XS case] with balance of $ 620
+INFO:root:[Customer]:(Simone,10): Next Quarter Begins 
+INFO:root:[Customer]:(Simone,10) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (Betsy,9) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(Betsy,10): Next Quarter Begins 
+INFO:root:[Customer]:(Betsy,10) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (Matthew,9) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(Matthew,10): Next Quarter Begins 
+INFO:root:[Customer]:(Matthew,10) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (Simone,10) own the Products:[iPhone XS case] with balance of $ 620
+INFO:root:[Customer]:(Simone,11): Next Quarter Begins 
+INFO:root:[Customer]:(Simone,11) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(Simone,11) Posted POSITIVE tweet for the product iPhone XS case
+INFO:root:[Customer]: (Betsy,10) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(Betsy,11): Next Quarter Begins 
+INFO:root:[Customer]:(Betsy,11) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (Matthew,10) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(Matthew,11): Next Quarter Begins 
+INFO:root:[Customer]:(Matthew,11) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (Simone,11) own the Products:[iPhone XS case] with balance of $ 620
+INFO:root:[Customer]:(Simone,12): Next Quarter Begins 
+INFO:root:[Customer]:(Simone,12) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (Betsy,11) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(Betsy,12): Next Quarter Begins 
+INFO:root:[Customer]:(Betsy,12) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (Matthew,11) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(Matthew,12): Next Quarter Begins 
+INFO:root:[Customer]:(Matthew,12) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (Simone,12) own the Products:[iPhone XS case] with balance of $ 620
+INFO:root:[Customer]:(Simone,13): Next Quarter Begins 
+INFO:root:[Customer]:(Simone,13) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (Betsy,12) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(Betsy,13): Next Quarter Begins 
+INFO:root:[Customer]:(Betsy,13) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (Matthew,12) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(Matthew,13): Next Quarter Begins 
+INFO:root:[Customer]:(Matthew,13) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(Matthew,13) Posted POSITIVE tweet for the product iPhone XR case
+INFO:root:[Customer]: (Simone,13) own the Products:[iPhone XS case] with balance of $ 620
+INFO:root:[Customer]:(Simone,14): Next Quarter Begins 
+INFO:root:[Customer]:(Simone,14) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(Simone,14) Posted POSITIVE tweet for the product iPhone XS case
+INFO:root:[Customer]: (Betsy,13) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(Betsy,14): Next Quarter Begins 
+INFO:root:[Customer]:(Betsy,14) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (Matthew,13) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(Matthew,14): Next Quarter Begins 
+INFO:root:[Customer]:(Matthew,14) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (Simone,14) own the Products:[iPhone XS case] with balance of $ 620
+INFO:root:[Customer]:(Simone,15): Next Quarter Begins 
+INFO:root:[Customer]:(Simone,15) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (Betsy,14) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(Betsy,15): Next Quarter Begins 
+INFO:root:[Customer]:(Betsy,15) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (Matthew,14) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(Matthew,15): Next Quarter Begins 
+INFO:root:[Customer]:(Matthew,15) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (Simone,15) own the Products:[iPhone XS case] with balance of $ 620
+INFO:root:[Customer]:(Simone,16): Next Quarter Begins 
+INFO:root:[Customer]:(Simone,16) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (Betsy,15) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(Betsy,16): Next Quarter Begins 
+INFO:root:[Customer]:(Betsy,16) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(Betsy,16) Posted POSITIVE tweet for the product iPhone XR case
+INFO:root:[Customer]: (Matthew,15) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(Matthew,16): Next Quarter Begins 
+INFO:root:[Customer]:(Matthew,16) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(Matthew,16) Posted POSITIVE tweet for the product iPhone XR case

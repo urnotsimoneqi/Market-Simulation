@@ -13,7 +13,8 @@ import logging
 
 class Seller(object):
 
-    def __init__(self, name, products, wallet):
+    def __init__(self, id, name, products, wallet):
+        self.id = id
         self.name = name
         self.products = products  # enable seller to sell more than one products
         self.wallet = wallet
@@ -33,7 +34,7 @@ class Seller(object):
         self.expense_history = [0]
         self.sentiment_history = []
         self.item_sold = 0
-        self.total_item_sold = 0
+
 
         # Flag for thread
         self.STOP = False
@@ -54,6 +55,7 @@ class Seller(object):
 
     # if an item is sold, add it to the database
     def sold(self, product):
+        logging.info("[Seller]: Seller (%s,%d) sold product %s", self.name, self.tick_count, product.product_name)
         self.lock.acquire()
         self.item_sold += 1
         self.lock.release()
@@ -72,7 +74,7 @@ class Seller(object):
 
         # Calculate the metrics for previous tick and add to tracker
         for product in self.products:
-            logging.info("[Seller]: (%s,%d) sold  %d units of %s",self.name,self.tick_count,self.total_item_sold, product.product_name)
+            logging.info("[Seller]: (%s,%d) sold  %d units of %s",self.name,self.tick_count,self.item_sold, product.product_name)
             self.revenue_history.append(self.sales_history[-1] * product.stock_price)
             self.profit_history.append(self.revenue_history[-1] - self.expense_history[-1])
             self.sentiment_history.append(self.user_sentiment())

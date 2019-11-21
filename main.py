@@ -1,15 +1,12 @@
+import logging
+import os
 import random
 import time
+from datetime import datetime
 
 from constants import seed
-from customer import Customer
-from product import Product
-from seller import Seller
+from mysql import initialize_customer, initialize_seller
 from utils import plot
-import os
-import logging
-from datetime import datetime
-from mysql import initialize_customer, initialize_seller, initialize_product
 
 now = datetime.now()
 dt_string = now.strftime("%H%M%S_%d_%m_%Y")

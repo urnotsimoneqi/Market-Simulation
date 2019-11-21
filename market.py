@@ -3,6 +3,10 @@ from threading import Lock
 from google_ads import GoogleAds
 import logging
 
+# from mysql import save_txn
+from transaction import Transaction
+import time
+
 class Market(object):
     catalogue = {}
     lock = Lock()
@@ -28,6 +32,10 @@ class Market(object):
     # when a user buys a product, increment the seller's sales
     @staticmethod
     def buy(buyer, products):
+        # products: list of product of the same type
+        product_id = products[0].product_id
+        product_name = products[0].product_name
+        product_price = products[0].stock_price
         # get the seller for product from catalogue
         for product in products:
             seller = Market.catalogue[product.product_name][0]  # need to revise, choose the first seller by default
@@ -40,3 +48,14 @@ class Market(object):
 
             # track user
             GoogleAds.track_user_purchase(buyer, product)
+
+        # write to database
+        # format YYYY-MM-DD HH:MM:SS
+        timestamp = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        transaction = Transaction(timestamp=timestamp, seller_id=seller.id, customer_id=buyer.id,
+                                  product_id=product_id, quantity=len(products),
+                                  total_amount=product_price*len(products))
+        logging.info("[Market]:Transaction between Seller %s and Customer %s with the product %s ",
+                     seller.name, buyer.name, product_name)
+        # save_txn()
+
