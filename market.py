@@ -6,6 +6,7 @@ import logging
 # from mysql import save_txn
 from transaction import Transaction
 import time
+from random import choice
 
 class Market(object):
     catalogue = {}
@@ -38,7 +39,11 @@ class Market(object):
         product_price = products[0].stock_price
         # get the seller for product from catalogue
         for product in products:
-            seller = Market.catalogue[product.product_name][0]  # need to revise, choose the first seller by default
+
+            # random choose seller
+            seller_index = choice(Market.catalogue[product.product_name])
+            index = Market.catalogue[product.product_name].index(seller_index)
+            seller = Market.catalogue[product.product_name][index]
 
             # call seller's sold function
             seller.sold(product)
@@ -55,7 +60,7 @@ class Market(object):
         transaction = Transaction(timestamp=timestamp, seller_id=seller.id, customer_id=buyer.id,
                                   product_id=product_id, quantity=len(products),
                                   total_amount=product_price*len(products))
-        logging.info("[Market]:Transaction between Seller %s and Customer %s with the product %s ",
-                     seller.name, buyer.name, product_name)
+        logging.info("[Market]:Transaction between Seller %s and Customer %s with the product %s at %s",
+                     seller.name, buyer.name, product_name, transaction.timestamp)
         # save_txn()
 
