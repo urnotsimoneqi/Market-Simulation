@@ -16,7 +16,6 @@ def connect_db():
 
 def initialize_customer():
     customers = []
-    # db = pymysql.connect("localhost", "root", "Simon19980908", "TESTDB")
     db = connect_db()
     cursor = db.cursor()
     sql = "SELECT * FROM customer"
@@ -70,36 +69,34 @@ def initialize_stock(seller_id):
     return stock_list
 
 # initialize certain seller's products
-def initialize_product(seller_id):
-    products = []
-    # db = pymysql.connect("localhost", "root", "Simon19980908", "TESTDB")
-    db = connect_db()
-    cursor = db.cursor()
-    sql = "SELECT a.product_id, a.product_name, a.product_quality, a.product_status, b.stock_price, b.stock_quantity FROM " \
-          "product AS a,stock AS b where a.product_id=b.product_id and b.seller_id= " + str(seller_id)
-    try:
-        cursor.execute(sql)
-        results = cursor.fetchall()
-        for row in results:
-            product_id = row[0]
-            product_name = row[1]
-            product_quality = row[2]
-            product_status = row[3]
-            product_price = row[4]
-            product_quantity = row[5]
-            product = Product(product_id=product_id, name=product_name, price=product_price,
-                              quality=product_quality, quantity=product_quantity)
-            products.append(product)
-    except:
-        print("Error: unable to fetch product")
-    db.close()
-    return products
+# def initialize_product(seller_id):
+#     products = []
+#     db = connect_db()
+#     cursor = db.cursor()
+#     sql = "SELECT a.product_id, a.product_name, a.product_quality, a.product_status, b.stock_price, b.stock_quantity FROM " \
+#           "product AS a,stock AS b where a.product_id=b.product_id and b.seller_id= " + str(seller_id)
+#     try:
+#         cursor.execute(sql)
+#         results = cursor.fetchall()
+#         for row in results:
+#             product_id = row[0]
+#             product_name = row[1]
+#             product_quality = row[2]
+#             product_status = row[3]
+#             product_price = row[4]
+#             product_quantity = row[5]
+#             product = Product(product_id=product_id, name=product_name, price=product_price,
+#                               quality=product_quality, quantity=product_quantity)
+#             products.append(product)
+#     except:
+#         print("Error: unable to fetch product")
+#     db.close()
+#     return products
 
 
 # initialize sellers
 def initialize_seller():
     sellers = []
-    # db = pymysql.connect("localhost", "root", "Simon19980908", "TESTDB")
     db = connect_db()
     cursor = db.cursor()
     sql = "SELECT * FROM seller"
@@ -143,3 +140,22 @@ def save_txn():
     #     # Rollback in case there is any error
     #     db.rollback()
     # db.close()
+
+
+# related product
+def if_related_product(product_id1, product_id2):
+    db = connect_db()
+    cursor = db.cursor()
+    sql = "SELECT * FROM related_product where related_product_id1=" + product_id1 \
+          + "and related_product_id2=" + product_id2
+
+    try:
+        cursor.execute(sql)
+        results = cursor.fetchall()
+        if results is None:
+            return False
+        else:
+            return True
+    except:
+        print("Error: unable to fetch related_product")
+    db.close()

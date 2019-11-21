@@ -9,6 +9,8 @@ from google_ads import GoogleAds
 from market import Market
 from twitter import Twitter
 import logging
+from mysql import *
+
 import math
 
 random.seed(seed)
@@ -56,7 +58,8 @@ class Customer(object):
         if self.wallet < amount:  # enable buyer to buy more than one products
             return
         test = ', '.join(x.product_name for x in products)
-        logging.info("[Customer]: (%s,%d) buy the Products:[%s] from seller%s with price%d", self.name, self.tick_count, test, product.seller_id, amount)
+        logging.info("[Customer]: (%s,%d) buy the Products:[%s] from seller%s with price%d", self.name, self.tick_count,
+                     test, product.seller_id, amount)
         # purchase the product from market
         # add amount as parameter
         Market.buy(self, products)
@@ -69,27 +72,27 @@ class Customer(object):
     def deduct(self, money):
         self.wallet -= money
 
-
     # User expresses his sentiment about the product on twitter
     def tweet(self, product, sentiment):
         Twitter.post(self, product, sentiment)
 
     # Loop function to keep the simulation going
     def loop(self):
-        logging.info ("[Customer]:Customer %s entered Trading", self.name)
+        logging.info("[Customer]:Customer %s entered Trading", self.name)
         while not self.STOP:
             self.tick_count += 1
-            logging.info ("[Customer]:(%s,%d): Next Quarter Begins ",self.name,self.tick_count)
+            logging.info("[Customer]:(%s,%d): Next Quarter Begins ", self.name, self.tick_count)
             self.tick()
             time.sleep(tick_time)
             test = ', '.join(x.product_name for x in self.owned_products)
-            logging.info("[Customer]: (%s,%d) own the Products:[%s] with balance of $ %d", self.name, self.tick_count, test, self.wallet)
-        logging.info("[Customer]: (%s,%d) Exit", self.name,self.tick_count)
+            logging.info("[Customer]: (%s,%d) own the Products:[%s] with balance of $ %d", self.name, self.tick_count,
+                         test, self.wallet)
+        logging.info("[Customer]: (%s,%d) Exit", self.name, self.tick_count)
 
     # one timestep in the simulation world
     def tick(self):
-        test = ', '.join(x.product_name+" from Seller "+str(x.seller_id) for x in self.ad_space)
-        logging.info("[Customer]:(%s,%d) currently seeing ads for the Products:[%s]",self.name,self.tick_count,test)
+        test = ', '.join(x.product_name + " from Seller " + str(x.seller_id) for x in self.ad_space)
+        logging.info("[Customer]:(%s,%d) currently seeing ads for the Products:[%s]", self.name, self.tick_count, test)
         self.lock.acquire()
 
         # user looks at all the adverts in his ad_space
@@ -106,9 +109,14 @@ class Customer(object):
                     logging.info("[Customer]: (%s,%d) prefer high quality, so she doesn't buy any products ",
                                  self.name, self.tick_count)
                 else:
-                    # if sentiment is more than user's tolerance and user does not have the product, then he/she may buy it with 20% chance. If it already has the product, then chance of buying again is 1%
-                    if user_sentiment >= self.tolerance and ((product not in self.owned_products and random.random() < 0.2) or (product in self.owned_products and random.random() < 0.01)):
-                        logging.info("[Customer]:(%s,%d)bought the product:[%s]", self.name, self.tick_count, product.product_name)
+                    # if sentiment is more than user's tolerance and user does not have the product,
+                    # then he/she may buy it with 20% chance.
+                    # If it already has the product, then chance of buying again is 1%
+                    if user_sentiment >= self.tolerance and (
+                            (product not in self.owned_products and random.random() < 0.2) or (
+                            product in self.owned_products and random.random() < 0.01)):
+                        logging.info("[Customer]:(%s,%d)bought the product:[%s]", self.name, self.tick_count,
+                                     product.product_name)
                         products = [product, product]
                         self.buy(products)
                     else:
@@ -116,10 +124,23 @@ class Customer(object):
             #  Buyers are interested in buying related products like a phone and its case in separate transaction.
             #  I.e. if a buyer bought the phone, they are more likely to purchase the case
             elif self.type == related_product:
-                pass
+                self.buy([product])
+                # tick_count == 0 represent the customer didn't buy anything
+                # if self.tick_count == 0 or self.tick_count == 1:
+                #     self.buy([product])
+                # else:
+                #     for product_bought in self.owned_products:
+                #         if if_related_product(product.product_id, product_bought.product_id):
+                #             logging.info("[Customer]: (%s,%d) bought product %s, "
+                #                          "so he is likely to buy related product %s ",
+                #                          self.name, self.tick_count, product_bought.product_name, product.product_name)
+                #             self.buy([product])
+                #         else:
+                #             logging.info("[Customer]: (%s,%d) is interested in buying related products, "
+                #                          "so he doesn't buy any products ",
+                #                          self.name, self.tick_count)
             else:
                 print('Not a valid Customer type')
-
 
             # ANSWER d.
             # if sentiment is more than user's tolerance and user does not have the product, then he/she may buy it with 20% chance. If it already has the product, then chance of buying again is 1%

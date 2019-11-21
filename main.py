@@ -5,8 +5,9 @@ import time
 from datetime import datetime
 
 from constants import seed
+from fuzzy_logic import fuzzy_logic
 from mysql import initialize_customer, initialize_seller
-from utils import plot
+# from utils import plot
 
 now = datetime.now()
 dt_string = now.strftime("%H%M%S_%d_%m_%Y")
@@ -54,7 +55,11 @@ for seller in sellers:
 # print('Total Profit Samsung:', seller_samsung.my_profit())
 for seller in sellers:
     # print('Total Profit:', seller.my_profit())
+    grade = fuzzy_logic(seller.my_revenue(), seller.my_profit())
+    print(grade)
     print("Seller %s's Total Profit:%d"%(seller.name, seller.my_profit()))
+    print("Seller %s's Total Revenue:%d"%(seller.name, seller.my_revenue()))
+    print("Seller %s's Total Expense:%d"%(seller.name, seller.my_expenses()))
 
 # Kill consumer threads
 for consumer in customers:
