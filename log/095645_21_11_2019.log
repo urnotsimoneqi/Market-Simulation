@@ -1,0 +1,251 @@
+INFO:root:[Buyer]:Buyer simone Initialized
+INFO:root:[Customer]:Customer simone entered Trading
+INFO:root:[Buyer]:Buyer betsy Initialized
+INFO:root:[Customer]:(simone,1): Next Quarter Begins 
+INFO:root:[Customer]:(simone,1) currently seeing ads for the Products:[]
+INFO:root:[Customer]:Customer betsy entered Trading
+INFO:root:[Buyer]:Buyer Matthew Initialized
+INFO:root:[Customer]:(betsy,1): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,1) currently seeing ads for the Products:[]
+INFO:root:[Customer]:Customer Matthew entered Trading
+INFO:root:[Buyer]:Buyer Dan Initialized
+INFO:root:[Customer]:(Matthew,1): Next Quarter Begins 
+INFO:root:[Customer]:(Matthew,1) currently seeing ads for the Products:[]
+INFO:root:[Customer]:Customer Dan entered Trading
+INFO:root:[Buyer]:Buyer Ewa Initialized
+INFO:root:[Customer]:(Dan,1): Next Quarter Begins 
+INFO:root:[Customer]:(Dan,1) currently seeing ads for the Products:[]
+INFO:root:[Customer]:Customer Ewa entered Trading
+INFO:root:[Customer]:(Ewa,1): Next Quarter Begins 
+INFO:root:[Customer]:(Ewa,1) currently seeing ads for the Products:[]
+INFO:root:[Seller]:Seller Alice Created
+INFO:root:[Seller]: (Alice,1) Revenue in previous quarter:0
+INFO:root:[Seller]: (Alice,1) Expenses in previous quarter:0
+INFO:root:[Seller]: (Alice,1) Profit in previous quarter:0
+INFO:root:[Seller]:Seller Bob Created
+INFO:root:[Seller]: (Bob,1) Revenue in previous quarter:0
+INFO:root:[Seller]: (Bob,1) Expenses in previous quarter:0
+INFO:root:[Seller]: (Bob,1) Profit in previous quarter:0
+INFO:root:[Seller]:Seller Carol Created
+INFO:root:[Seller]: (Carol,1) Revenue in previous quarter:0
+INFO:root:[Seller]: (Carol,1) Expenses in previous quarter:0
+INFO:root:[Seller]: (Carol,1) Profit in previous quarter:0
+INFO:root:[Seller]:Seller Dave Created
+INFO:root:[Seller]: (Dave,1) Revenue in previous quarter:0
+INFO:root:[Seller]: (Dave,1) Expenses in previous quarter:0
+INFO:root:[Seller]: (Dave,1) Profit in previous quarter:0
+INFO:root:[Seller]:Seller Eve Created
+INFO:root:[Seller]: (Eve,1) Revenue in previous quarter:0
+INFO:root:[Seller]: (Eve,1) Expenses in previous quarter:0
+INFO:root:[Seller]: (Eve,1) Profit in previous quarter:0
+INFO:root:[Customer]: (simone,1) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(simone,2): Next Quarter Begins 
+INFO:root:[Customer]:(simone,2) currently seeing ads for the Products:[iPhone XS, iPhone XS, iPhone XS case, iPhone XR, iPhone XS case, iPhone XS case, iPhone XR case, iPhone XR, iPhone XR case, Huawei P30 pro, Huawei P30 pro case, Google pixel]
+INFO:root:[Customer]:***(simone,2)bought 2 new product:[iPhone XR case]
+INFO:root:[Customer]: (betsy,1) own the Products:[] with balance of $ 800
+INFO:root:[Customer]: (Matthew,1) own the Products:[] with balance of $ 800
+INFO:root:[Customer]: (Ewa,1) own the Products:[] with balance of $ 800
+INFO:root:[Customer]: (Dan,1) own the Products:[] with balance of $ 800
+INFO:root:[Seller]: (Alice,2) Revenue in previous quarter:0
+INFO:root:[Seller]: (Bob,2) Revenue in previous quarter:0
+INFO:root:[Customer]:(betsy,2): Next Quarter Begins 
+INFO:root:[Customer]:(Matthew,2): Next Quarter Begins 
+INFO:root:[Customer]:(Ewa,2): Next Quarter Begins 
+INFO:root:[Customer]:(Dan,2): Next Quarter Begins 
+INFO:root:[Seller]: (Alice,2) Expenses in previous quarter:25
+INFO:root:[Seller]: (Bob,2) Expenses in previous quarter:25
+INFO:root:[Customer]:***(simone,2)bought 2 new product:[Google pixel]
+INFO:root:[Customer]:(betsy,2) currently seeing ads for the Products:[Google pixel case, iPhone XR, iPhone XR case, iPhone XS case, iPhone XR case, Huawei P30 pro, iPhone XR case, Huawei P30 pro case]
+INFO:root:[Customer]:(Matthew,2) currently seeing ads for the Products:[iPhone XS, Google pixel case, iPhone XS, iPhone XR, iPhone XS case, iPhone XR, iPhone XS case, iPhone XR, Huawei P30 pro, iPhone XR case]
+INFO:root:[Customer]:(Ewa,2) currently seeing ads for the Products:[Google pixel case, iPhone XS, iPhone XR, iPhone XS case, iPhone XS case, iPhone XR case, iPhone XR, iPhone XR case, Huawei P30 pro, iPhone XR case, Huawei P30 pro case, Google pixel]
+INFO:root:[Customer]:(Dan,2) currently seeing ads for the Products:[iPhone XS, iPhone XS case, iPhone XS case, iPhone XS case, iPhone XR case, Huawei P30 pro case, Google pixel]
+INFO:root:[Seller]: (Alice,2) Profit in previous quarter:-25
+INFO:root:[Seller]: (Bob,2) Profit in previous quarter:-25
+INFO:root:[Customer]:***(betsy,2)bought 2 new product:[iPhone XR]
+INFO:root:[Customer]:***(Matthew,2)bought 2 new product:[iPhone XS]
+INFO:root:[Customer]:***(Ewa,2)bought 2 new product:[iPhone XR case]
+INFO:root:[Customer]:***(Dan,2)bought 2 new product:[iPhone XS]
+INFO:root:[Customer]:(simone,2) Posted POSITIVE tweet for the product iPhone XR case
+INFO:root:[Seller]: (Carol,2) Revenue in previous quarter:190
+INFO:root:[Seller]: (Carol,2) Expenses in previous quarter:25
+INFO:root:[Customer]:***(Matthew,2)bought 2 new product:[iPhone XR]
+INFO:root:[Customer]:***(Dan,2)bought 2 new product:[Google pixel]
+INFO:root:[Seller]: (Carol,2) Profit in previous quarter:165
+INFO:root:[Customer]:***(Matthew,2)bought 2 new product:[iPhone XR]
+INFO:root:[Customer]:***(Matthew,2)bought 2 new product:[Huawei P30 pro]
+INFO:root:[Seller]: (Dave,2) Revenue in previous quarter:80
+INFO:root:[Seller]: (Dave,2) Expenses in previous quarter:25
+INFO:root:[Seller]: (Dave,2) Profit in previous quarter:55
+INFO:root:[Seller]: (Eve,2) Revenue in previous quarter:60
+INFO:root:[Seller]: (Eve,2) Expenses in previous quarter:25
+INFO:root:[Seller]: (Eve,2) Profit in previous quarter:35
+INFO:root:[Customer]: (simone,2) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(simone,3): Next Quarter Begins 
+INFO:root:[Customer]:(simone,3) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (betsy,2) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(betsy,3): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,3) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (simone,3) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(simone,4): Next Quarter Begins 
+INFO:root:[Customer]:(simone,4) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (betsy,3) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(betsy,4): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,4) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (simone,4) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(simone,5): Next Quarter Begins 
+INFO:root:[Customer]:(simone,5) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (betsy,4) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(betsy,5): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,5) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (betsy,5) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(betsy,6): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,6) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (simone,5) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(simone,6): Next Quarter Begins 
+INFO:root:[Customer]:(simone,6) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(simone,6) Posted POSITIVE tweet for the product iPhone XR case
+INFO:root:[Customer]: (betsy,6) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(betsy,7): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,7) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (simone,6) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(simone,7): Next Quarter Begins 
+INFO:root:[Customer]:(simone,7) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (betsy,7) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(betsy,8): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,8) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (simone,7) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(simone,8): Next Quarter Begins 
+INFO:root:[Customer]:(simone,8) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (simone,8) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(simone,9): Next Quarter Begins 
+INFO:root:[Customer]:(simone,9) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(simone,9) Posted POSITIVE tweet for the product iPhone XR case
+INFO:root:[Customer]: (betsy,8) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(betsy,9): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,9) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (simone,9) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]: (betsy,9) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(simone,10): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,10): Next Quarter Begins 
+INFO:root:[Customer]:(simone,10) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(betsy,10) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (simone,10) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(simone,11): Next Quarter Begins 
+INFO:root:[Customer]:(simone,11) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (betsy,10) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(betsy,11): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,11) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (simone,11) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(simone,12): Next Quarter Begins 
+INFO:root:[Customer]:(simone,12) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(simone,12) Posted POSITIVE tweet for the product iPhone XR case
+INFO:root:[Customer]: (betsy,11) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(betsy,12): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,12) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (simone,12) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(simone,13): Next Quarter Begins 
+INFO:root:[Customer]:(simone,13) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (betsy,12) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(betsy,13): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,13) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (betsy,13) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(betsy,14): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,14) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (simone,13) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(simone,14): Next Quarter Begins 
+INFO:root:[Customer]:(simone,14) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (simone,14) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(simone,15): Next Quarter Begins 
+INFO:root:[Customer]:(simone,15) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (betsy,14) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(betsy,15): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,15) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (simone,15) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(simone,16): Next Quarter Begins 
+INFO:root:[Customer]:(simone,16) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (betsy,15) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(betsy,16): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,16) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (simone,16) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(simone,17): Next Quarter Begins 
+INFO:root:[Customer]:(simone,17) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(simone,17) Posted POSITIVE tweet for the product iPhone XR case
+INFO:root:[Customer]: (betsy,16) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(betsy,17): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,17) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (simone,17) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(simone,18): Next Quarter Begins 
+INFO:root:[Customer]:(simone,18) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(simone,18) Posted POSITIVE tweet for the product iPhone XR case
+INFO:root:[Customer]: (betsy,17) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(betsy,18): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,18) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (simone,18) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(simone,19): Next Quarter Begins 
+INFO:root:[Customer]:(simone,19) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(simone,19) Posted POSITIVE tweet for the product iPhone XR case
+INFO:root:[Customer]: (betsy,18) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(betsy,19): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,19) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (simone,19) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(simone,20): Next Quarter Begins 
+INFO:root:[Customer]:(simone,20) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (betsy,19) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(betsy,20): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,20) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (simone,20) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(simone,21): Next Quarter Begins 
+INFO:root:[Customer]:(simone,21) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (betsy,20) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(betsy,21): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,21) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (simone,21) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(simone,22): Next Quarter Begins 
+INFO:root:[Customer]:(simone,22) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (betsy,21) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(betsy,22): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,22) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (simone,22) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(simone,23): Next Quarter Begins 
+INFO:root:[Customer]:(simone,23) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (betsy,22) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(betsy,23): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,23) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (simone,23) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(simone,24): Next Quarter Begins 
+INFO:root:[Customer]:(simone,24) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(simone,24) Posted POSITIVE tweet for the product iPhone XR case
+INFO:root:[Customer]: (betsy,23) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(betsy,24): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,24) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (simone,24) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(simone,25): Next Quarter Begins 
+INFO:root:[Customer]:(simone,25) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (betsy,24) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(betsy,25): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,25) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (simone,25) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(simone,26): Next Quarter Begins 
+INFO:root:[Customer]:(simone,26) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (betsy,25) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(betsy,26): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,26) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (simone,26) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(simone,27): Next Quarter Begins 
+INFO:root:[Customer]:(simone,27) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (betsy,26) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(betsy,27): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,27) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (simone,27) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(simone,28): Next Quarter Begins 
+INFO:root:[Customer]:(simone,28) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (betsy,27) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(betsy,28): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,28) currently seeing ads for the Products:[]
+INFO:root:[Customer]: (simone,28) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(simone,29): Next Quarter Begins 
+INFO:root:[Customer]:(simone,29) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(simone,29) Posted POSITIVE tweet for the product iPhone XR case
+INFO:root:[Customer]: (betsy,28) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(betsy,29): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,29) currently seeing ads for the Products:[]

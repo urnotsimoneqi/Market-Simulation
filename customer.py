@@ -51,14 +51,18 @@ class Customer(object):
 
     # Consumer decided to buy a 'product'.
     def buy(self, products):
-        # if not enough money in wallet, don't proceed
+        # enable buyer to buy more than one products
         amount = 0
         for product in products:
             amount += product.stock_price
+            logging.info("[Customer]: (%s,%d) buy the Products:[%s] from seller%s", self.name, self.tick_count, product.product_name, product.seller_id)
+        # if not enough money in wallet, don't proceed
         if self.wallet < amount:  # enable buyer to buy more than one products
             return
-
+        test = ', '.join(x.product_name for x in products)
+        logging.info("[Customer]: (%s,%d) buy the Products:[%s] from seller%s with price%d", self.name, self.tick_count, test, product.seller_id, amount)
         # purchase the product from market
+        # add amount as parameter
         Market.buy(self, products)
 
         # add product to the owned products list
@@ -68,6 +72,7 @@ class Customer(object):
     # money is deducted from user's wallet when purchase is completed
     def deduct(self, money):
         self.wallet -= money
+
 
     # User expresses his sentiment about the product on twitter
     def tweet(self, product, sentiment):
@@ -81,8 +86,8 @@ class Customer(object):
             logging.info ("[Customer]:(%s,%d): Next Quarter Begins ",self.name,self.tick_count)
             self.tick()
             time.sleep(tick_time)
-        test = ', '.join(x.product_name for x in self.owned_products)
-        logging.info("[Customer]: (%s,%d) own the Products:[%s] with balance of $ %d", self.name, self.tick_count, test, self.wallet)
+            test = ', '.join(x.product_name for x in self.owned_products)
+            logging.info("[Customer]: (%s,%d) own the Products:[%s] with balance of $ %d", self.name, self.tick_count, test, self.wallet)
         logging.info("[Customer]: (%s,%d) Exit", self.name,self.tick_count)
 
     # one timestep in the simulation world
@@ -104,13 +109,14 @@ class Customer(object):
             # if a buyer bought the phone, they are more likely to purchase the case
             if user_sentiment >= self.tolerance:
                 if product not in self.owned_products and random.random() < 0.2:
-                    products = []
-                    # user is able buy multiple products of the same type at a time.
-                    amount = random.randint(1, math.ceil(product.stock_quantity/5))
-                    i = 0
-                    while i < amount:
-                        products.append(product)
-                        i += 1
+                    # products = []
+                    # # user is able buy multiple products of the same type at a time.
+                    # amount = random.randint(1, math.ceil(product.stock_quantity/5))
+                    # i = 0
+                    # while i < amount:
+                    #     products.append(product)
+                    #     i += 1
+                    products = [product, product]
                     logging.info("[Customer]:***(%s,%d)bought %d new product:[%s]", self.name, self.tick_count, len(products), product.product_name)
                     self.buy(products)
                 elif product in self.owned_products and random.random() < 0.01:
