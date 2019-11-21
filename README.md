@@ -7,12 +7,12 @@ Write the CEO function for the program.
 Consider ideas like: using past purchase behavior to guide the automated CEO. Improve the logic of Selling Agent, 
 Buyer Agent, CEO Agent and reporting Agent. At a minimum provide the following changes as a checklist: 
 ### Selling Agent
-- ~~Enable more than one seller and ability to sell more than one product per seller.~~
+- [x] Enable more than one seller and ability to sell more than one product per seller.
 - Provide ability to increase or reduce price based on past history 
 - Establish relationships between products, such as if a phone has an accessory like a case, the Seller should offer together. 
 ### Buyer Agent
-- ~~Enable ability to own more than one product~~ 
-- Add a buyer “type” or demographics, for example
+- [x] Enable ability to own more than one product
+- [x] Add a buyer “type” or demographics, for example
     - Certain buyers prefer items of higher quality or are more sensitive to price 
     - Buyers are interested in buying related products like a phone and its case in separate transaction. I.e. if a buyer bought the phone, they are more likely to purchase the case.
 ### CEO Agent
@@ -28,7 +28,7 @@ Use basic data visualization to insure humans understand whats happening. Visual
 - Present promotion effectiveness 
 - Write these details to a file 
 - Bonus
-    - Write to a database (mysql, bigquery, etc) to store information
+    - [x] Write to a database (mysql, bigquery, etc) to store information
     - Present in PowerBI or Google Data Studio
     
 ### Environment: (refer to auction MAS provided in class)

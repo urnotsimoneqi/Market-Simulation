@@ -1,4 +1,4 @@
-class Related_Products:
+class RelatedProducts:
     def __init__(self, name, related_products, discount=1):
         self.name = name
         self.related_products = related_products
