@@ -211,9 +211,35 @@ CREATE TABLE sales_summary
 -- Records of sales_summary
 -- ----------------------------
 INSERT INTO sales_summary(seller_id, sales_year, sales_quarter, sales_expense_amount, sales_revenue, sales_profit)
-VALUES (1, 2019, 1, 1000, 2000, 1000);
+VALUES (1, 2019, 1, 0, 0, 0);
 INSERT INTO sales_summary(seller_id, sales_year, sales_quarter, sales_expense_amount, sales_revenue, sales_profit)
-VALUES (2, 2019, 2, 500, 1500, 1000);
+VALUES (2, 2019, 1, 0, 0, 0);
+INSERT INTO sales_summary(seller_id, sales_year, sales_quarter, sales_expense_amount, sales_revenue, sales_profit)
+VALUES (3, 2019, 1, 0, 480, 200);
+INSERT INTO sales_summary(seller_id, sales_year, sales_quarter, sales_expense_amount, sales_revenue, sales_profit)
+VALUES (4, 2019, 1, 0, 0, 0);
+INSERT INTO sales_summary(seller_id, sales_year, sales_quarter, sales_expense_amount, sales_revenue, sales_profit)
+VALUES (5, 2019, 1, 0, 0, 0);
+INSERT INTO sales_summary(seller_id, sales_year, sales_quarter, sales_expense_amount, sales_revenue, sales_profit)
+VALUES (1, 2019, 2, 200, 0, 0);
+INSERT INTO sales_summary(seller_id, sales_year, sales_quarter, sales_expense_amount, sales_revenue, sales_profit)
+VALUES (2, 2019, 2, 200, 200, 160);
+INSERT INTO sales_summary(seller_id, sales_year, sales_quarter, sales_expense_amount, sales_revenue, sales_profit)
+VALUES (3, 2019, 2, 0, 0, 0);
+INSERT INTO sales_summary(seller_id, sales_year, sales_quarter, sales_expense_amount, sales_revenue, sales_profit)
+VALUES (4, 2019, 2, 0, 480, 265);
+INSERT INTO sales_summary(seller_id, sales_year, sales_quarter, sales_expense_amount, sales_revenue, sales_profit)
+VALUES (5, 2019, 2, 0, 0, 0);
+INSERT INTO sales_summary(seller_id, sales_year, sales_quarter, sales_expense_amount, sales_revenue, sales_profit)
+VALUES (1, 2019, 3, 0, 95, 75);
+INSERT INTO sales_summary(seller_id, sales_year, sales_quarter, sales_expense_amount, sales_revenue, sales_profit)
+VALUES (2, 2019, 3, 0, 0, 0);
+INSERT INTO sales_summary(seller_id, sales_year, sales_quarter, sales_expense_amount, sales_revenue, sales_profit)
+VALUES (3, 2019, 3, 0, 0, 0);
+INSERT INTO sales_summary(seller_id, sales_year, sales_quarter, sales_expense_amount, sales_revenue, sales_profit)
+VALUES (4, 2019, 3, 0, 0, 0);
+INSERT INTO sales_summary(seller_id, sales_year, sales_quarter, sales_expense_amount, sales_revenue, sales_profit)
+VALUES (5, 2019, 3, 0, 480, 240);
 
 -- ----------------------------
 -- Table structure for stock
