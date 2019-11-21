@@ -1,115 +1,133 @@
-/*
-Navicat MySQL Data Transfer
-
-Source Server         : test
-Source Server Version : 80015
-Source Host           : localhost:3306
-Source Database       : testdb
-
-Target Server Type    : MYSQL
-Target Server Version : 80015
-File Encoding         : 65001
-
-Date: 2019-11-21 14:31:57
-*/
-
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
 -- Table structure for ads
 -- ----------------------------
-DROP TABLE IF EXISTS `ads`;
-CREATE TABLE `ads` (
-  `ad_id` int(11) NOT NULL,
-  `ad_type` varchar(255) NOT NULL,
-  `seller_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `ad_expense` int(11) NOT NULL,
-  `ad_year` int(11) NOT NULL,
-  `ad_quarter` int(11) NOT NULL,
-  PRIMARY KEY (`ad_id`)
+DROP TABLE IF EXISTS ads;
+CREATE TABLE Ads
+(
+    ad_id       int AUTO_INCREMENT PRIMARY KEY,
+    ad_type     varchar(255),
+    description text,
+    seller_id   int,
+    product_id  int,
+    ad_expense  double,
+    ad_year     int(4),
+    ad_quarter  TINYINT,
+    status      TINYINT NOT NULL,
+    created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ads
 -- ----------------------------
-INSERT INTO `ads` VALUES ('1', 'Basic', '1', '2', '100', '2019', '2');
-INSERT INTO `ads` VALUES ('2', 'Target', '5', '4', '100', '2019', '2');
+INSERT INTO Ads (ad_type, description, seller_id, product_id, ad_expense, ad_year, ad_quarter, status)
+VALUES ('Basic', '', 1, 2, 100, 2019, 2, 1);
+INSERT INTO Ads (ad_type, description, seller_id, product_id, ad_expense, ad_year, ad_quarter, status)
+VALUES ('Target', '', 5, 4, 100, 2019, 2, 1);
 
 -- ----------------------------
 -- Table structure for customer
 -- ----------------------------
-DROP TABLE IF EXISTS `customer`;
-CREATE TABLE `customer` (
-  `customer_id` int(11) NOT NULL AUTO_INCREMENT,
-  `customer_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `customer_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `customer_email` varchar(255) DEFAULT NULL,
-  `customer_wallet` double(11,0) NOT NULL,
-  `customer_tolerance` double(11,2) NOT NULL,
-  `customer_status` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`customer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS customer;
+CREATE TABLE `customer`
+(
+    `customer_id`        int                                                     NOT NULL AUTO_INCREMENT,
+    `customer_type`      varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+    `customer_name`      varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+    `customer_email`     varchar(255)                                            DEFAULT NULL,
+    `customer_wallet`    double(11, 0)                                           NOT NULL,
+    `customer_tolerance` double(11, 2)                                           NOT NULL,
+    `customer_status`    varchar(255)                                            DEFAULT NULL,
+    PRIMARY KEY (`customer_id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
 
 -- ----------------------------
 -- Records of customer
 -- ----------------------------
-INSERT INTO `customer` VALUES ('1', '', 'Simone', 'A0198890Hrobot@gmail.com', '800', '0.50', null);
-INSERT INTO `customer` VALUES ('2', '', 'Betsy', 'A0198890Hrobot@gmail.com', '800', '0.50', null);
-INSERT INTO `customer` VALUES ('3', '', 'Matthew', 'A0198890Hrobot@gmail.com', '800', '0.50', null);
-INSERT INTO `customer` VALUES ('4', null, 'Dan', 'A0198890Hrobot@gmail.com', '800', '0.50', null);
-INSERT INTO `customer` VALUES ('5', null, 'Ewa', 'A0198890Hrobot@gmail.com', '800', '0.50', null);
+INSERT INTO customer (customer_type, customer_name, customer_email, customer_wallet, customer_tolerance,
+                      customer_status)
+VALUES ('', 'Simone', 'A0198890Hrobot@gmail.com', '800', '0.50', 'SENSITIVE_PRICE');
+INSERT INTO customer (customer_type, customer_name, customer_email, customer_wallet, customer_tolerance,
+                      customer_status)
+VALUES ('', 'Betsy', 'A0198890Hrobot@gmail.com', '1000', '0.60', 'SENSITIVE_PRICE');
+INSERT INTO customer (customer_type, customer_name, customer_email, customer_wallet, customer_tolerance,
+                      customer_status)
+VALUES ('', 'Matthew', 'A0198890Hrobot@gmail.com', '900', '0.70', 'SENSITIVE_PRICE');
+INSERT INTO customer (customer_type, customer_name, customer_email, customer_wallet, customer_tolerance,
+                      customer_status)
+VALUES ('', 'Lisa', 'A0198890Hrobot@gmail.com', '800', '0.80', 'RELATED_PRODUCT');
+INSERT INTO customer (customer_type, customer_name, customer_email, customer_wallet, customer_tolerance,
+                      customer_status)
+VALUES ('', 'Jimmy', 'A0198890Hrobot@gmail.com', '800', '0.50', 'RELATED_PRODUCT');
 
 -- ----------------------------
 -- Table structure for customer_ads
 -- ----------------------------
-DROP TABLE IF EXISTS `customer_ads`;
-CREATE TABLE `customer_ads` (
-  `ad_id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL,
-  PRIMARY KEY (`ad_id`)
+DROP TABLE IF EXISTS customer_ads;
+CREATE TABLE customer_ads
+(
+    id          INT AUTO_INCREMENT PRIMARY KEY,
+    ad_id       int NOT NULL,
+    customer_id int not null,
+    FOREIGN KEY (ad_id) REFERENCES Ads (ad_id),
+    FOREIGN KEY (customer_id) REFERENCES customer (customer_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of customer_ads
 -- ----------------------------
-INSERT INTO `customer_ads` VALUES ('1', '2');
+INSERT INTO customer_ads (ad_id, customer_id)
+VALUES (1, 1);
+INSERT INTO customer_ads (ad_id, customer_id)
+VALUES (1, 2);
+INSERT INTO customer_ads (ad_id, customer_id)
+VALUES (2, 2);
 
 -- ----------------------------
 -- Table structure for product
 -- ----------------------------
 DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
-  `product_id` int(11) NOT NULL,
-  `product_name` varchar(255) NOT NULL,
-  `product_quality` double(11,2) NOT NULL,
-  `product_status` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`product_id`)
+                           `product_id`      int auto_increment NOT NULL,
+                           `product_name`    varchar(255),
+                           `product_quality` double(11, 2),
+                           `product_status`  varchar(255) DEFAULT NULL,
+                           PRIMARY KEY (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of product
 -- ----------------------------
-INSERT INTO `product` VALUES ('1', 'iPhone XS', '0.90', null);
-INSERT INTO `product` VALUES ('2', 'iPhone XR', '0.80', null);
-INSERT INTO `product` VALUES ('3', 'Google pixel', '0.70', null);
-INSERT INTO `product` VALUES ('4', 'Huawei P30 pro', '0.90', null);
-INSERT INTO `product` VALUES ('5', 'iPhone XS case', '0.80', null);
-INSERT INTO `product` VALUES ('6', 'iPhone XR case', '0.70', null);
-INSERT INTO `product` VALUES ('7', 'Google pixel case', '0.60', null);
-INSERT INTO `product` VALUES ('8', 'Huawei P30 pro case', '0.50', null);
+INSERT INTO product (product_name, product_quality, product_status)
+VALUES ('iPhone XS', 0.90, null);
+INSERT INTO product (product_name, product_quality, product_status)
+VALUES ('iPhone XR', '0.80', null);
+INSERT INTO product (product_name, product_quality, product_status)
+VALUES ('Google pixel', '0.70', null);
+INSERT INTO product (product_name, product_quality, product_status)
+VALUES ('Huawei P30 pro', '0.90', null);
+INSERT INTO product (product_name, product_quality, product_status)
+VALUES ('iPhone XS case', '0.80', null);
+INSERT INTO product (product_name, product_quality, product_status)
+VALUES ('iPhone XR case', '0.70', null);
+INSERT INTO product (product_name, product_quality, product_status)
+VALUES ('Google pixel case', '0.60', null);
+INSERT INTO product (product_name, product_quality, product_status)
+VALUES ('Huawei P30 pro case', '0.50', null);
 
 -- ----------------------------
 -- Table structure for promotion
 -- ----------------------------
 DROP TABLE IF EXISTS `promotion`;
 CREATE TABLE `promotion` (
-  `promotion_id` int(11) NOT NULL,
-  `promotion_discount` varchar(255) NOT NULL,
-  `promotion_status` varchar(255) NOT NULL,
-  `promotion_from` datetime NOT NULL,
-  `promotion_to` datetime NOT NULL,
-  PRIMARY KEY (`promotion_id`)
+                             `promotion_id`       int auto_increment NOT NULL,
+                             `promotion_discount` double default 1.0,
+                             `promotion_status`   varchar(255),
+                             `promotion_from`     datetime,
+                             `promotion_to`       datetime,
+                             PRIMARY KEY (`promotion_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -119,118 +137,144 @@ CREATE TABLE `promotion` (
 -- ----------------------------
 -- Table structure for related_product
 -- ----------------------------
-DROP TABLE IF EXISTS `related_product`;
-CREATE TABLE `related_product` (
-  `related_product_id1` int(11) NOT NULL,
-  `related_product_id2` int(11) NOT NULL,
-  `status` varchar(255) DEFAULT NULL
+DROP TABLE IF EXISTS related_product;
+CREATE TABLE related_product
+(
+    id                  int auto_increment not null primary key,
+    related_product_id1 int                NOT NULL,
+    related_product_id2 int                NOT NULL,
+    status              varchar(255) DEFAULT NULL,
+    FOREIGN KEY (related_product_id1) REFERENCES product (product_id),
+    FOREIGN KEY (related_product_id2) REFERENCES product (product_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of related_product
 -- ----------------------------
-INSERT INTO `related_product` VALUES ('1', '5', null);
-INSERT INTO `related_product` VALUES ('2', '6', null);
-INSERT INTO `related_product` VALUES ('3', '7', null);
-INSERT INTO `related_product` VALUES ('4', '8', null);
+INSERT INTO related_product (related_product_id1, related_product_id2)
+VALUES (1, 5);
+INSERT INTO related_product (related_product_id1, related_product_id2)
+VALUES (2, 6);
+INSERT INTO related_product (related_product_id1, related_product_id2)
+VALUES (5, 1);
 
 -- ----------------------------
 -- Table structure for sales_summary
 -- ----------------------------
-DROP TABLE IF EXISTS `sales_summary`;
-CREATE TABLE `sales_summary` (
-  `seller_id` int(11) NOT NULL,
-  `sales_year` int(4) NOT NULL,
-  `sales_quarter` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `sales_expense_amount` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `sales_revenue` int(11) DEFAULT NULL,
-  `sales_profit` int(11) DEFAULT NULL,
-  PRIMARY KEY (`seller_id`)
+DROP TABLE IF EXISTS sales_summary;
+CREATE TABLE sales_summary
+(
+    id                   int auto_increment primary key not null,
+    seller_id            int                            NOT NULL,
+    sales_year           int(4)                         NOT NULL,
+    sales_quarter        tinyint                        NOT NULL,
+    sales_expense_amount double default 0,
+    sales_revenue        double DEFAULT 0,
+    sales_profit         double DEFAULT 0,
+    FOREIGN KEY (seller_id) REFERENCES seller (seller_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sales_summary
 -- ----------------------------
+INSERT INTO sales_summary(seller_id, sales_year, sales_quarter, sales_expense_amount, sales_revenue, sales_profit)
+VALUES (1, 2019, 1, 1000, 2000, 1000);
+INSERT INTO sales_summary(seller_id, sales_year, sales_quarter, sales_expense_amount, sales_revenue, sales_profit)
+VALUES (2, 2019, 2, 500, 1500, 1000);
 
 -- ----------------------------
 -- Table structure for seller
 -- ----------------------------
-DROP TABLE IF EXISTS `seller`;
-CREATE TABLE `seller` (
-  `seller_id` int(11) NOT NULL,
-  `seller_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `seller_wallet` double(11,2) NOT NULL,
-  `seller_status` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`seller_id`)
+DROP TABLE IF EXISTS seller;
+CREATE TABLE seller
+(
+    seller_id     int auto_increment primary key NOT NULL,
+    seller_name   varchar(255),
+    seller_wallet double(11, 2) default 0,
+    seller_status varchar(255)  DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of seller
 -- ----------------------------
-INSERT INTO `seller` VALUES ('1', 'Alice', '1000.00', null);
-INSERT INTO `seller` VALUES ('2', 'Bob', '1000.00', null);
-INSERT INTO `seller` VALUES ('3', 'Carol', '1000.00', null);
-INSERT INTO `seller` VALUES ('4', 'Dave', '500.00', null);
-INSERT INTO `seller` VALUES ('5', 'Eve', '500.00', null);
+INSERT INTO seller (seller_name, seller_wallet)
+VALUES ('Alice', 1000.00);
+INSERT INTO seller (seller_name, seller_wallet)
+VALUES ('Bob', 1000.00);
+INSERT INTO seller (seller_name, seller_wallet)
+VALUES ('Carol', 1000.00);
+INSERT INTO seller (seller_name, seller_wallet)
+VALUES ('Dave', 500.00);
+INSERT INTO seller (seller_name, seller_wallet)
+VALUES ('Eve', 500.00);
 
 -- ----------------------------
 -- Table structure for stock
 -- ----------------------------
-DROP TABLE IF EXISTS `stock`;
-CREATE TABLE `stock` (
-  `product_id` int(11) NOT NULL,
-  `seller_id` int(11) NOT NULL,
-  `stock_quantity` int(11) DEFAULT NULL,
-  `stock_cost` int(6) DEFAULT NULL,
-  `stock_price` int(6) DEFAULT NULL
+DROP TABLE IF EXISTS stock;
+CREATE TABLE stock
+(
+    id             int auto_increment primary key not null,
+    product_id     int                            NOT NULL,
+    seller_id      int                            NOT NULL,
+    stock_quantity int    DEFAULT 0,
+    stock_cost     double DEFAULT 0,
+    stock_price    double DEFAULT 0,
+    FOREIGN KEY (product_id) REFERENCES product (product_id),
+    FOREIGN KEY (seller_id) REFERENCES seller (seller_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of stock
 -- ----------------------------
-INSERT INTO `stock` VALUES ('1', '2', '20', '300', '500');
-INSERT INTO `stock` VALUES ('1', '3', '20', '300', '490');
-INSERT INTO `stock` VALUES ('2', '1', '30', '280', '480');
-INSERT INTO `stock` VALUES ('2', '2', '20', '280', '480');
-INSERT INTO `stock` VALUES ('2', '3', '20', '280', '480');
-INSERT INTO `stock` VALUES ('3', '4', '50', '200', '400');
-INSERT INTO `stock` VALUES ('4', '5', '50', '150', '300');
-INSERT INTO `stock` VALUES ('5', '2', '50', '20', '100');
-INSERT INTO `stock` VALUES ('5', '3', '50', '20', '90');
-INSERT INTO `stock` VALUES ('5', '1', '50', '20', '95');
-INSERT INTO `stock` VALUES ('6', '1', '50', '20', '95');
-INSERT INTO `stock` VALUES ('6', '2', '50', '20', '95');
-INSERT INTO `stock` VALUES ('6', '3', '50', '20', '95');
-INSERT INTO `stock` VALUES ('7', '4', '25', '15', '80');
-INSERT INTO `stock` VALUES ('8', '5', '70', '15', '60');
-
+INSERT INTO stock (product_id, seller_id, stock_quantity, stock_cost, stock_price)
+VALUES (1, 1, 20, 300, 500);
+INSERT INTO stock (product_id, seller_id, stock_quantity, stock_cost, stock_price)
+VALUES (1, 2, 10, 200, 300);
+INSERT INTO stock (product_id, seller_id, stock_quantity, stock_cost, stock_price)
+VALUES (2, 4, 50, 600, 1000);
 -- ----------------------------
 -- Table structure for trans_record
 -- ----------------------------
-DROP TABLE IF EXISTS `trans_record`;
-CREATE TABLE `trans_record` (
-  `transaction_id` int(11) NOT NULL AUTO_INCREMENT,
-  `transaction_datetime` datetime NOT NULL,
-  `transaction_year` int(11) NOT NULL,
-  `transaction_quarter` int(11) NOT NULL,
-  `seller_id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `transaction_related` tinyint(1) NOT NULL,
-  `transaction_quantity` int(11) NOT NULL,
-  `transaction_amount` int(11) NOT NULL,
-  `transaction_promotion_id` int(11) DEFAULT NULL,
-  `transaction_status` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`transaction_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS transaction;
+CREATE TABLE transaction
+(
+    transaction_id       int auto_increment primary key not null,
+    transaction_datetime datetime                       NOT NULL default current_timestamp,
+    transaction_year     int(4)                         NOT NULL,
+    transaction_quarter  tinyint                        NOT NULL,
+    seller_id            int                            NOT NULL,
+    customer_id          int                            NOT NULL,
+    product_id           int                            NOT NULL,
+    related_product_id   int                                     default null,
+    transaction_quantity int                                     default 0,
+    transaction_amount   double                                  default 0,
+    promotion_id         int                                     DEFAULT NULL,
+    transaction_status   varchar(255)                            DEFAULT NULL,
+    FOREIGN KEY (seller_id) REFERENCES seller (seller_id),
+    FOREIGN KEY (customer_id) REFERENCES customer (customer_id),
+    FOREIGN KEY (product_id) REFERENCES product (product_id),
+    FOREIGN KEY (related_product_id) REFERENCES related_product (id),
+    FOREIGN KEY (promotion_id) REFERENCES promotion (promotion_id)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
 
 -- ----------------------------
 -- Records of trans_record
--- ----------------------------
-INSERT INTO `trans_record` VALUES ('1', '2019-03-08 20:16:00', '2019', '1', '3', '2', '2', '1', '1', '480', null, '');
-INSERT INTO `trans_record` VALUES ('2', '2019-04-11 12:48:57', '2019', '2', '4', '1', '3', '1', '1', '400', null, null);
-INSERT INTO `trans_record` VALUES ('3', '2019-04-11 12:48:57', '2019', '2', '4', '1', '7', '1', '1', '80', null, null);
-INSERT INTO `trans_record` VALUES ('4', '2019-05-16 22:57:07', '2019', '2', '2', '1', '5', '1', '2', '200', null, null);
-INSERT INTO `trans_record` VALUES ('5', '2019-07-17 16:23:27', '2019', '3', '5', '3', '4', '1', '1', '300', null, null);
-INSERT INTO `trans_record` VALUES ('6', '2019-07-18 08:59:37', '2019', '3', '5', '3', '8', '1', '2', '160', null, null);
-INSERT INTO `trans_record` VALUES ('7', '2019-10-01 21:00:52', '2019', '4', '1', '2', '6', '1', '1', '95', null, null);
+INSERT INTO transaction (transaction_datetime, transaction_year, transaction_quarter, seller_id, customer_id,
+                         product_id, related_product_id,
+                         transaction_quantity, transaction_amount, promotion_id)
+VALUES ('2019-03-08 20:16:00', 2019, 1, 1, 1, 1, null, 1, '480', null);
+INSERT INTO transaction (transaction_datetime, transaction_year, transaction_quarter, seller_id, customer_id,
+                         product_id, related_product_id,
+                         transaction_quantity, transaction_amount, promotion_id)
+VALUES ('2019-04-11 12:48:57', 2019, 2, 1, 1, 2, null, 1, '400', null);
+INSERT INTO transaction (transaction_datetime, transaction_year, transaction_quarter, seller_id, customer_id,
+                         product_id, related_product_id,
+                         transaction_quantity, transaction_amount, promotion_id)
+VALUES ('2019-07-18 08:59:37', 2019, 3, 2, 1, 2, null, 2, '300', null);
+INSERT INTO transaction (transaction_datetime, transaction_year, transaction_quarter, seller_id, customer_id,
+                         product_id, related_product_id,
+                         transaction_quantity, transaction_amount, promotion_id)
+VALUES ('2019-09-01 21:00:52', 2019, 4, 2, 2, 2, null, 2, '95', null);
+
