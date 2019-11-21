@@ -55,7 +55,7 @@ class Customer(object):
         amount = 0
         for product in products:
             amount += product.stock_price
-            logging.info("[Customer]: (%s,%d) buy the Products:[%s] from seller%s", self.name, self.tick_count, product.product_name, product.seller_id)
+            # logging.info("[Customer]: (%s,%d) buy the Products:[%s] from seller%s", self.name, self.tick_count, product.product_name, product.seller_id)
         # if not enough money in wallet, don't proceed
         if self.wallet < amount:  # enable buyer to buy more than one products
             return
@@ -92,7 +92,7 @@ class Customer(object):
 
     # one timestep in the simulation world
     def tick(self):
-        test=', '.join(x.product_name for x in self.ad_space)
+        test = ', '.join(x.product_name+" from Seller "+str(x.seller_id) for x in self.ad_space)
         logging.info("[Customer]:(%s,%d) currently seeing ads for the Products:[%s]",self.name,self.tick_count,test)
         self.lock.acquire()
 
@@ -117,7 +117,7 @@ class Customer(object):
                     #     products.append(product)
                     #     i += 1
                     products = [product, product]
-                    logging.info("[Customer]:***(%s,%d)bought %d new product:[%s]", self.name, self.tick_count, len(products), product.product_name)
+                    logging.info("[Customer]:***(%s,%d)bought %d new product:[%s] from Seller %d", self.name, self.tick_count, len(products), product.product_name, product.seller_id)
                     self.buy(products)
                 elif product in self.owned_products and random.random() < 0.01:
                     logging.info("[Customer]:$$$(%s,%d)bought same product again:[%s]", self.name, self.tick_count, product.product_name)

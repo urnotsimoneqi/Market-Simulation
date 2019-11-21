@@ -37,13 +37,19 @@ class Market(object):
         product_id = products[0].product_id
         product_name = products[0].product_name
         product_price = products[0].stock_price
+        seller_id = products[0].seller_id
+
         # get the seller for product from catalogue
         for product in products:
+            # # random choose seller
+            # seller_index = choice(Market.catalogue[product.product_name])
+            # index = Market.catalogue[product.product_name].index(seller_index)
+            # seller = Market.catalogue[product.product_name][index]
 
-            # random choose seller
-            seller_index = choice(Market.catalogue[product.product_name])
-            index = Market.catalogue[product.product_name].index(seller_index)
-            seller = Market.catalogue[product.product_name][index]
+            # find seller in the market catalogue
+            for x in Market.catalogue.get(product.product_name):
+                if x.id == seller_id:
+                    seller = x
 
             # call seller's sold function
             seller.sold(product)

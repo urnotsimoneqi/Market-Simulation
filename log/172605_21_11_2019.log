@@ -1,0 +1,370 @@
+INFO:root:[Buyer]:Buyer Simone Initialized
+INFO:root:[GoogleAds]:Customer Simone added to Google list of user with Tolerance:0.5
+INFO:root:[Customer]:Customer Simone entered Trading
+INFO:root:[Buyer]:Buyer Betsy Initialized
+INFO:root:[Customer]:(Simone,1): Next Quarter Begins 
+INFO:root:[GoogleAds]:Customer Betsy added to Google list of user with Tolerance:0.5
+INFO:root:[Customer]:(Simone,1) currently seeing ads for the Products:[]
+INFO:root:[Customer]:Customer Betsy entered Trading
+INFO:root:[Customer]:(Betsy,1): Next Quarter Begins 
+INFO:root:[Customer]:(Betsy,1) currently seeing ads for the Products:[]
+INFO:root:[Buyer]:Buyer Matthew Initialized
+INFO:root:[GoogleAds]:Customer Matthew added to Google list of user with Tolerance:0.5
+INFO:root:[Customer]:Customer Matthew entered Trading
+INFO:root:[Customer]:(Matthew,1): Next Quarter Begins 
+INFO:root:[Customer]:(Matthew,1) currently seeing ads for the Products:[]
+INFO:root:[Buyer]:Buyer Dan Initialized
+INFO:root:[GoogleAds]:Customer Dan added to Google list of user with Tolerance:0.5
+INFO:root:[Customer]:Customer Dan entered Trading
+INFO:root:[Customer]:(Dan,1): Next Quarter Begins 
+INFO:root:[Customer]:(Dan,1) currently seeing ads for the Products:[]
+INFO:root:[Buyer]:Buyer Ewa Initialized
+INFO:root:[GoogleAds]:Customer Ewa added to Google list of user with Tolerance:0.5
+INFO:root:[Customer]:Customer Ewa entered Trading
+INFO:root:[Customer]:(Ewa,1): Next Quarter Begins 
+INFO:root:[Customer]:(Ewa,1) currently seeing ads for the Products:[]
+INFO:root:[Seller]:Seller Alice Created
+INFO:root:[Seller]:Seller Alice Owned products iPhone XR, iPhone XS case, iPhone XR case
+INFO:root:{}
+INFO:root:[Market]:Seller Alice is registered in the market with the product iPhone XR 
+INFO:root:[Market]:Seller Alice is registered in the market with the product iPhone XS case 
+INFO:root:[Market]:Seller Alice is registered in the market with the product iPhone XR case 
+INFO:root:[Seller]:Seller Alice started Trading
+INFO:root:[Seller]: (Alice,1) sold  0 units of iPhone XR
+INFO:root:[Seller]: (Alice,1) sold  0 units of iPhone XS case
+INFO:root:[Seller]: (Alice,1) sold  0 units of iPhone XR case
+INFO:root:[Seller]: (Alice,1) Revenue in previous quarter:0
+INFO:root:[Seller]: (Alice,1) Expenses in previous quarter:0
+INFO:root:[Seller]: (Alice,1) Profit in previous quarter:0
+INFO:root:[Seller]: (Alice,1) Sales in previous quarter:[0]
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XR to users Ewa, Matthew, Matthew, Simone, Matthew 
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XS case to users Simone, Dan, Dan, Betsy, Dan 
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XR case to users Betsy, Betsy, Matthew, Ewa, Matthew 
+INFO:root:[Seller]:Seller Bob Created
+INFO:root:[Seller]:Seller Bob Owned products iPhone XS, iPhone XR, iPhone XS case, iPhone XR case
+INFO:root:{'iPhone XR': [<seller.Seller object at 0x000001F1EFAC8780>], 'iPhone XS case': [<seller.Seller object at 0x000001F1EFAC8780>], 'iPhone XR case': [<seller.Seller object at 0x000001F1EFAC8780>]}
+INFO:root:[Market]:Seller Bob is registered in the market with the product iPhone XS 
+INFO:root:[Market]:Seller Bob is registered in the market with the product iPhone XR 
+INFO:root:[Market]:Seller Bob is registered in the market with the product iPhone XS case 
+INFO:root:[Market]:Seller Bob is registered in the market with the product iPhone XR case 
+INFO:root:[Seller]:Seller Bob started Trading
+INFO:root:[Seller]: (Bob,1) sold  0 units of iPhone XS
+INFO:root:[Seller]: (Bob,1) sold  0 units of iPhone XR
+INFO:root:[Seller]: (Bob,1) sold  0 units of iPhone XS case
+INFO:root:[Seller]: (Bob,1) sold  0 units of iPhone XR case
+INFO:root:[Seller]: (Bob,1) Revenue in previous quarter:0
+INFO:root:[Seller]: (Bob,1) Expenses in previous quarter:0
+INFO:root:[Seller]: (Bob,1) Profit in previous quarter:0
+INFO:root:[Seller]: (Bob,1) Sales in previous quarter:[0]
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XS to users Dan, Simone, Ewa, Dan, Matthew 
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XR to users Matthew, Matthew, Betsy, Matthew, Simone 
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XS case to users Ewa, Simone, Ewa, Matthew, Dan 
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XR case to users Ewa, Dan, Betsy, Simone, Simone 
+INFO:root:[Seller]:Seller Carol Created
+INFO:root:[Seller]:Seller Carol Owned products iPhone XS, iPhone XR, iPhone XS case, iPhone XR case
+INFO:root:{'iPhone XR': [<seller.Seller object at 0x000001F1EFAC8780>, <seller.Seller object at 0x000001F1EEAD3470>], 'iPhone XS case': [<seller.Seller object at 0x000001F1EFAC8780>, <seller.Seller object at 0x000001F1EEAD3470>], 'iPhone XR case': [<seller.Seller object at 0x000001F1EFAC8780>, <seller.Seller object at 0x000001F1EEAD3470>], 'iPhone XS': [<seller.Seller object at 0x000001F1EEAD3470>]}
+INFO:root:[Market]:Seller Carol is registered in the market with the product iPhone XS 
+INFO:root:[Market]:Seller Carol is registered in the market with the product iPhone XR 
+INFO:root:[Market]:Seller Carol is registered in the market with the product iPhone XS case 
+INFO:root:[Market]:Seller Carol is registered in the market with the product iPhone XR case 
+INFO:root:[Seller]:Seller Carol started Trading
+INFO:root:[Seller]: (Carol,1) sold  0 units of iPhone XS
+INFO:root:[Seller]: (Carol,1) sold  0 units of iPhone XR
+INFO:root:[Seller]: (Carol,1) sold  0 units of iPhone XS case
+INFO:root:[Seller]: (Carol,1) sold  0 units of iPhone XR case
+INFO:root:[Seller]: (Carol,1) Revenue in previous quarter:0
+INFO:root:[Seller]: (Carol,1) Expenses in previous quarter:0
+INFO:root:[Seller]: (Carol,1) Profit in previous quarter:0
+INFO:root:[Seller]: (Carol,1) Sales in previous quarter:[0]
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XS to users Matthew, Simone, Matthew, Simone, Matthew 
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XR to users Ewa, Matthew, Matthew, Ewa, Ewa 
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XS case to users Matthew, Matthew, Dan, Simone, Ewa 
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XR case to users Simone, Ewa, Betsy, Simone, Simone 
+INFO:root:[Seller]:Seller Dave Created
+INFO:root:[Seller]:Seller Dave Owned products Google pixel, Google pixel case
+INFO:root:{'iPhone XR': [<seller.Seller object at 0x000001F1EFAC8780>, <seller.Seller object at 0x000001F1EEAD3470>, <seller.Seller object at 0x000001F1EFAC8B38>], 'iPhone XS case': [<seller.Seller object at 0x000001F1EFAC8780>, <seller.Seller object at 0x000001F1EEAD3470>, <seller.Seller object at 0x000001F1EFAC8B38>], 'iPhone XR case': [<seller.Seller object at 0x000001F1EFAC8780>, <seller.Seller object at 0x000001F1EEAD3470>, <seller.Seller object at 0x000001F1EFAC8B38>], 'iPhone XS': [<seller.Seller object at 0x000001F1EEAD3470>, <seller.Seller object at 0x000001F1EFAC8B38>]}
+INFO:root:[Market]:Seller Dave is registered in the market with the product Google pixel 
+INFO:root:[Market]:Seller Dave is registered in the market with the product Google pixel case 
+INFO:root:[Seller]:Seller Dave started Trading
+INFO:root:[Seller]: (Dave,1) sold  0 units of Google pixel
+INFO:root:[Seller]: (Dave,1) sold  0 units of Google pixel case
+INFO:root:[Seller]: (Dave,1) Revenue in previous quarter:0
+INFO:root:[Seller]: (Dave,1) Expenses in previous quarter:0
+INFO:root:[Seller]: (Dave,1) Profit in previous quarter:0
+INFO:root:[Seller]: (Dave,1) Sales in previous quarter:[0]
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product Google pixel to users Dan, Ewa, Simone, Simone, Simone 
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product Google pixel case to users Ewa, Betsy, Ewa, Matthew, Matthew 
+INFO:root:[Seller]:Seller Eve Created
+INFO:root:[Seller]:Seller Eve Owned products Huawei P30 pro, Huawei P30 pro case
+INFO:root:{'iPhone XR': [<seller.Seller object at 0x000001F1EFAC8780>, <seller.Seller object at 0x000001F1EEAD3470>, <seller.Seller object at 0x000001F1EFAC8B38>], 'iPhone XS case': [<seller.Seller object at 0x000001F1EFAC8780>, <seller.Seller object at 0x000001F1EEAD3470>, <seller.Seller object at 0x000001F1EFAC8B38>], 'iPhone XR case': [<seller.Seller object at 0x000001F1EFAC8780>, <seller.Seller object at 0x000001F1EEAD3470>, <seller.Seller object at 0x000001F1EFAC8B38>], 'iPhone XS': [<seller.Seller object at 0x000001F1EEAD3470>, <seller.Seller object at 0x000001F1EFAC8B38>], 'Google pixel': [<seller.Seller object at 0x000001F1EFAC8668>], 'Google pixel case': [<seller.Seller object at 0x000001F1EFAC8668>]}
+INFO:root:[Market]:Seller Eve is registered in the market with the product Huawei P30 pro 
+INFO:root:[Market]:Seller Eve is registered in the market with the product Huawei P30 pro case 
+INFO:root:[Seller]:Seller Eve started Trading
+INFO:root:[Seller]: (Eve,1) sold  0 units of Huawei P30 pro
+INFO:root:[Seller]: (Eve,1) sold  0 units of Huawei P30 pro case
+INFO:root:[Seller]: (Eve,1) Revenue in previous quarter:0
+INFO:root:[Seller]: (Eve,1) Expenses in previous quarter:0
+INFO:root:[Seller]: (Eve,1) Profit in previous quarter:0
+INFO:root:[Seller]: (Eve,1) Sales in previous quarter:[0]
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product Huawei P30 pro to users Simone, Simone, Betsy, Ewa, Matthew 
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product Huawei P30 pro case to users Dan, Simone, Betsy, Ewa, Simone 
+INFO:root:[Customer]: (Simone,1) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(Simone,2): Next Quarter Begins 
+INFO:root:[Customer]:(Simone,2) currently seeing ads for the Products:[iPhone XS from Seller 3, iPhone XS from Seller 2, iPhone XS case from Seller 3, iPhone XR from Seller 2, iPhone XS case from Seller 2, iPhone XR case from Seller 3, iPhone XS case from Seller 1, iPhone XR case from Seller 2, Huawei P30 pro from Seller 5, iPhone XR from Seller 1, Huawei P30 pro case from Seller 5, Google pixel from Seller 4]
+INFO:root:[Customer]:***(Simone,2)bought 2 new product:[iPhone XS case] from Seller 1
+INFO:root:[Customer]: (Betsy,1) own the Products:[] with balance of $ 800
+INFO:root:[Customer]: (Simone,2) buy the Products:[iPhone XS case, iPhone XS case] from seller1 with price190
+INFO:root:[Customer]:(Betsy,2): Next Quarter Begins 
+INFO:root:[Seller]: Seller (Alice,1) sold product iPhone XS case
+INFO:root:[Customer]: (Matthew,1) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:(Betsy,2) currently seeing ads for the Products:[Google pixel case from Seller 4, iPhone XR from Seller 2, iPhone XR case from Seller 3, iPhone XS case from Seller 1, iPhone XR case from Seller 2, Huawei P30 pro from Seller 5, Huawei P30 pro case from Seller 5, iPhone XR case from Seller 1]
+INFO:root:[Seller]: Seller (Alice,1) sold product iPhone XS case
+INFO:root:[Customer]:(Matthew,2): Next Quarter Begins 
+INFO:root:[Customer]: (Ewa,1) own the Products:[] with balance of $ 800
+INFO:root:[Customer]: (Dan,1) own the Products:[] with balance of $ 800
+INFO:root:[Customer]:***(Betsy,2)bought 2 new product:[iPhone XR case] from Seller 2
+INFO:root:[Market]:Transaction between Seller Alice and Customer Simone with the product iPhone XS case at 2019-11-21 17:26:06
+INFO:root:[Customer]:(Matthew,2) currently seeing ads for the Products:[iPhone XS from Seller 3, Google pixel case from Seller 4, iPhone XS from Seller 2, iPhone XR from Seller 3, iPhone XS case from Seller 3, iPhone XR from Seller 2, iPhone XS case from Seller 2, Huawei P30 pro from Seller 5, iPhone XR from Seller 1, iPhone XR case from Seller 1]
+INFO:root:[Customer]:(Ewa,2): Next Quarter Begins 
+INFO:root:[Customer]:(Dan,2): Next Quarter Begins 
+INFO:root:[Customer]: (Betsy,2) buy the Products:[iPhone XR case, iPhone XR case] from seller2 with price190
+INFO:root:[Customer]:***(Simone,2)bought 2 new product:[Huawei P30 pro] from Seller 5
+INFO:root:[Customer]:***(Matthew,2)bought 2 new product:[iPhone XS] from Seller 3
+INFO:root:[Customer]:(Ewa,2) currently seeing ads for the Products:[Google pixel case from Seller 4, iPhone XS from Seller 2, iPhone XR from Seller 3, iPhone XS case from Seller 3, iPhone XS case from Seller 2, iPhone XR case from Seller 3, iPhone XR case from Seller 2, Huawei P30 pro from Seller 5, iPhone XR from Seller 1, Huawei P30 pro case from Seller 5, iPhone XR case from Seller 1, Google pixel from Seller 4]
+INFO:root:[Customer]:(Dan,2) currently seeing ads for the Products:[iPhone XS from Seller 2, iPhone XS case from Seller 3, iPhone XS case from Seller 2, iPhone XS case from Seller 1, iPhone XR case from Seller 2, Huawei P30 pro case from Seller 5, Google pixel from Seller 4]
+INFO:root:[Seller]: Seller (Bob,1) sold product iPhone XR case
+INFO:root:[Customer]: (Simone,2) buy the Products:[Huawei P30 pro, Huawei P30 pro] from seller5 with price600
+INFO:root:[Customer]:***(Matthew,2)bought 2 new product:[iPhone XS case] from Seller 2
+INFO:root:[Customer]:***(Ewa,2)bought 2 new product:[Google pixel case] from Seller 4
+INFO:root:[Customer]:***(Dan,2)bought 2 new product:[iPhone XS case] from Seller 1
+INFO:root:[Seller]: Seller (Bob,1) sold product iPhone XR case
+INFO:root:[Seller]: Seller (Eve,1) sold product Huawei P30 pro
+INFO:root:[Customer]: (Matthew,2) buy the Products:[iPhone XS case, iPhone XS case] from seller2 with price200
+INFO:root:[Customer]: (Ewa,2) buy the Products:[Google pixel case, Google pixel case] from seller4 with price160
+INFO:root:[Customer]: (Dan,2) buy the Products:[iPhone XS case, iPhone XS case] from seller1 with price190
+INFO:root:[Market]:Transaction between Seller Bob and Customer Betsy with the product iPhone XR case at 2019-11-21 17:26:06
+INFO:root:[Seller]: Seller (Eve,1) sold product Huawei P30 pro
+INFO:root:[Seller]: Seller (Bob,1) sold product iPhone XS case
+INFO:root:[Seller]: Seller (Dave,1) sold product Google pixel case
+INFO:root:[Seller]: Seller (Alice,1) sold product iPhone XS case
+INFO:root:[Market]:Transaction between Seller Eve and Customer Simone with the product Huawei P30 pro at 2019-11-21 17:26:06
+INFO:root:[Seller]: Seller (Bob,1) sold product iPhone XS case
+INFO:root:[Seller]: Seller (Dave,1) sold product Google pixel case
+INFO:root:[Seller]: Seller (Alice,1) sold product iPhone XS case
+INFO:root:[Market]:Transaction between Seller Bob and Customer Matthew with the product iPhone XS case at 2019-11-21 17:26:06
+INFO:root:[Market]:Transaction between Seller Dave and Customer Ewa with the product Google pixel case at 2019-11-21 17:26:06
+INFO:root:[Market]:Transaction between Seller Alice and Customer Dan with the product iPhone XS case at 2019-11-21 17:26:06
+INFO:root:[Customer]:***(Ewa,2)bought 2 new product:[iPhone XS case] from Seller 2
+INFO:root:[Customer]: (Ewa,2) buy the Products:[iPhone XS case, iPhone XS case] from seller2 with price200
+INFO:root:[Seller]: Seller (Bob,1) sold product iPhone XS case
+INFO:root:[Seller]: Seller (Bob,1) sold product iPhone XS case
+INFO:root:[Market]:Transaction between Seller Bob and Customer Ewa with the product iPhone XS case at 2019-11-21 17:26:06
+INFO:root:[Customer]:***(Ewa,2)bought 2 new product:[iPhone XR case] from Seller 2
+INFO:root:[Customer]: (Ewa,2) buy the Products:[iPhone XR case, iPhone XR case] from seller2 with price190
+INFO:root:[Seller]: Seller (Bob,1) sold product iPhone XR case
+INFO:root:[Seller]: Seller (Bob,1) sold product iPhone XR case
+INFO:root:[Market]:Transaction between Seller Bob and Customer Ewa with the product iPhone XR case at 2019-11-21 17:26:06
+INFO:root:[Customer]:***(Ewa,2)bought 2 new product:[iPhone XR] from Seller 1
+INFO:root:[Customer]:***(Ewa,2)bought 2 new product:[Huawei P30 pro case] from Seller 5
+INFO:root:[Customer]: (Ewa,2) buy the Products:[Huawei P30 pro case, Huawei P30 pro case] from seller5 with price120
+INFO:root:[Seller]: Seller (Eve,1) sold product Huawei P30 pro case
+INFO:root:[Seller]: Seller (Eve,1) sold product Huawei P30 pro case
+INFO:root:[Market]:Transaction between Seller Eve and Customer Ewa with the product Huawei P30 pro case at 2019-11-21 17:26:06
+INFO:root:[Seller]: (Alice,2) sold  0 units of iPhone XR
+INFO:root:[Seller]: (Alice,2) sold  0 units of iPhone XS case
+INFO:root:[Seller]: (Alice,2) sold  0 units of iPhone XR case
+INFO:root:[Seller]: (Alice,2) Revenue in previous quarter:380
+INFO:root:[Seller]: (Alice,2) Expenses in previous quarter:25
+INFO:root:[Seller]: (Alice,2) Profit in previous quarter:355
+INFO:root:[Seller]: (Alice,2) Sales in previous quarter:[0, 4]
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XR to users Dan, Ewa, Simone, Ewa, Simone 
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XS case to users Simone, Simone, Betsy, Matthew, Betsy 
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XR case to users Betsy, Simone, Betsy, Simone, Simone 
+INFO:root:[Seller]: (Bob,2) sold  0 units of iPhone XS
+INFO:root:[Seller]: (Bob,2) sold  0 units of iPhone XR
+INFO:root:[Seller]: (Bob,2) sold  0 units of iPhone XS case
+INFO:root:[Seller]: (Bob,2) sold  0 units of iPhone XR case
+INFO:root:[Seller]: (Bob,2) Revenue in previous quarter:760
+INFO:root:[Seller]: (Bob,2) Expenses in previous quarter:25
+INFO:root:[Seller]: (Bob,2) Profit in previous quarter:735
+INFO:root:[Seller]: (Bob,2) Sales in previous quarter:[0, 8]
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XS to users Matthew, Matthew, Matthew, Ewa, Betsy 
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XR to users Ewa, Betsy, Ewa, Ewa, Ewa 
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XS case to users Matthew, Ewa, Betsy, Simone, Simone 
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XR case to users Simone, Ewa, Matthew, Simone, Dan 
+INFO:root:[Seller]: (Carol,2) sold  0 units of iPhone XS
+INFO:root:[Seller]: (Carol,2) sold  0 units of iPhone XR
+INFO:root:[Seller]: (Carol,2) sold  0 units of iPhone XS case
+INFO:root:[Seller]: (Carol,2) sold  0 units of iPhone XR case
+INFO:root:[Seller]: (Carol,2) Revenue in previous quarter:0
+INFO:root:[Seller]: (Carol,2) Expenses in previous quarter:25
+INFO:root:[Seller]: (Carol,2) Profit in previous quarter:-25
+INFO:root:[Seller]: (Carol,2) Sales in previous quarter:[0, 0]
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XS to users Dan, Matthew, Dan, Matthew, Dan 
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XR to users Matthew, Dan, Dan, Matthew, Matthew 
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XS case to users Simone, Betsy, Matthew, Matthew, Betsy 
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XR case to users Matthew, Dan, Simone, Betsy, Ewa 
+INFO:root:[Seller]: (Dave,2) sold  0 units of Google pixel
+INFO:root:[Seller]: (Dave,2) sold  0 units of Google pixel case
+INFO:root:[Seller]: (Dave,2) Revenue in previous quarter:160
+INFO:root:[Seller]: (Dave,2) Expenses in previous quarter:25
+INFO:root:[Seller]: (Dave,2) Profit in previous quarter:135
+INFO:root:[Seller]: (Dave,2) Sales in previous quarter:[0, 2]
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product Google pixel to users Matthew, Dan, Betsy, Ewa, Simone 
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product Google pixel case to users Simone, Simone, Matthew, Ewa, Simone 
+INFO:root:[Seller]: (Eve,2) sold  0 units of Huawei P30 pro
+INFO:root:[Seller]: (Eve,2) sold  0 units of Huawei P30 pro case
+INFO:root:[Seller]: (Eve,2) Revenue in previous quarter:240
+INFO:root:[Seller]: (Eve,2) Expenses in previous quarter:25
+INFO:root:[Seller]: (Eve,2) Profit in previous quarter:215
+INFO:root:[Seller]: (Eve,2) Sales in previous quarter:[0, 4]
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product Huawei P30 pro to users Dan, Simone, Simone, Matthew, Dan 
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product Huawei P30 pro case to users Matthew, Matthew, Dan, Matthew, Simone 
+INFO:root:[Customer]: (Betsy,2) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(Betsy,3): Next Quarter Begins 
+INFO:root:[Customer]:(Betsy,3) currently seeing ads for the Products:[iPhone XS from Seller 2, iPhone XS case from Seller 3, iPhone XR from Seller 2, iPhone XS case from Seller 2, iPhone XR case from Seller 3, iPhone XS case from Seller 1, iPhone XR case from Seller 1, Google pixel from Seller 4]
+INFO:root:[Customer]: (Simone,2) own the Products:[iPhone XS case, Huawei P30 pro] with balance of $ 10
+INFO:root:[Customer]:(Simone,3): Next Quarter Begins 
+INFO:root:[Customer]:(Simone,3) currently seeing ads for the Products:[Google pixel case from Seller 4, iPhone XS case from Seller 3, iPhone XS case from Seller 2, iPhone XR case from Seller 3, iPhone XS case from Seller 1, iPhone XR case from Seller 2, Huawei P30 pro from Seller 5, iPhone XR from Seller 1, Huawei P30 pro case from Seller 5, iPhone XR case from Seller 1, Google pixel from Seller 4]
+INFO:root:[Customer]:***(Simone,3)bought 2 new product:[Google pixel case] from Seller 4
+INFO:root:[Customer]:***(Simone,3)bought 2 new product:[Huawei P30 pro case] from Seller 5
+INFO:root:[Customer]: (Dan,2) own the Products:[iPhone XS case] with balance of $ 610
+INFO:root:[Customer]:(Dan,3): Next Quarter Begins 
+INFO:root:[Customer]:(Dan,3) currently seeing ads for the Products:[iPhone XS from Seller 3, iPhone XR from Seller 3, iPhone XR case from Seller 3, iPhone XR case from Seller 2, Huawei P30 pro from Seller 5, iPhone XR from Seller 1, Huawei P30 pro case from Seller 5, Google pixel from Seller 4]
+INFO:root:[Customer]:***(Dan,3)bought 2 new product:[iPhone XR] from Seller 3
+INFO:root:[Customer]:***(Dan,3)bought 2 new product:[iPhone XR] from Seller 1
+INFO:root:[Customer]:(Dan,3) Posted POSITIVE tweet for the product iPhone XS case
+INFO:root:[Customer]: (Matthew,2) own the Products:[iPhone XS case] with balance of $ 600
+INFO:root:[Customer]: (Ewa,2) own the Products:[iPhone XR case, Google pixel case, iPhone XS case, Huawei P30 pro case] with balance of $ 130
+INFO:root:[Customer]:(Matthew,3): Next Quarter Begins 
+INFO:root:[Customer]:(Ewa,3): Next Quarter Begins 
+INFO:root:[Customer]:(Matthew,3) currently seeing ads for the Products:[iPhone XS from Seller 3, Google pixel case from Seller 4, iPhone XS from Seller 2, iPhone XR from Seller 3, iPhone XS case from Seller 3, iPhone XS case from Seller 2, iPhone XR case from Seller 3, iPhone XS case from Seller 1, iPhone XR case from Seller 2, Huawei P30 pro from Seller 5, Huawei P30 pro case from Seller 5, Google pixel from Seller 4]
+INFO:root:[Customer]:(Ewa,3) currently seeing ads for the Products:[Google pixel case from Seller 4, iPhone XS from Seller 2, iPhone XR from Seller 2, iPhone XS case from Seller 2, iPhone XR case from Seller 3, iPhone XR case from Seller 2, iPhone XR from Seller 1, Google pixel from Seller 4]
+INFO:root:[Customer]:***(Matthew,3)bought 2 new product:[Google pixel case] from Seller 4
+INFO:root:[Customer]: (Matthew,3) buy the Products:[Google pixel case, Google pixel case] from seller4 with price160
+INFO:root:[Seller]: Seller (Dave,2) sold product Google pixel case
+INFO:root:[Seller]: Seller (Dave,2) sold product Google pixel case
+INFO:root:[Market]:Transaction between Seller Dave and Customer Matthew with the product Google pixel case at 2019-11-21 17:26:07
+INFO:root:[Customer]:***(Matthew,3)bought 2 new product:[iPhone XS] from Seller 2
+INFO:root:[Customer]:***(Matthew,3)bought 2 new product:[iPhone XS case] from Seller 3
+INFO:root:[Customer]: (Matthew,3) buy the Products:[iPhone XS case, iPhone XS case] from seller3 with price180
+INFO:root:[Seller]: Seller (Carol,2) sold product iPhone XS case
+INFO:root:[Seller]: Seller (Carol,2) sold product iPhone XS case
+INFO:root:[Market]:Transaction between Seller Carol and Customer Matthew with the product iPhone XS case at 2019-11-21 17:26:07
+INFO:root:[Customer]:***(Matthew,3)bought 2 new product:[iPhone XR case] from Seller 3
+INFO:root:[Customer]: (Matthew,3) buy the Products:[iPhone XR case, iPhone XR case] from seller3 with price190
+INFO:root:[Seller]: Seller (Carol,2) sold product iPhone XR case
+INFO:root:[Seller]: Seller (Carol,2) sold product iPhone XR case
+INFO:root:[Market]:Transaction between Seller Carol and Customer Matthew with the product iPhone XR case at 2019-11-21 17:26:07
+INFO:root:[Customer]:***(Matthew,3)bought 2 new product:[iPhone XS case] from Seller 1
+INFO:root:[Seller]: (Alice,3) sold  0 units of iPhone XR
+INFO:root:[Seller]: (Alice,3) sold  0 units of iPhone XS case
+INFO:root:[Seller]: (Alice,3) sold  0 units of iPhone XR case
+INFO:root:[Seller]: (Alice,3) Revenue in previous quarter:0
+INFO:root:[Seller]: (Alice,3) Expenses in previous quarter:25
+INFO:root:[Seller]: (Alice,3) Profit in previous quarter:-25
+INFO:root:[Seller]: (Alice,3) Sales in previous quarter:[0, 4, 0]
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XR to users Simone, Ewa, Simone, Dan, Ewa 
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XS case to users Matthew, Simone, Matthew, Ewa, Simone 
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XR case to users Dan, Matthew, Ewa, Dan, Betsy 
+INFO:root:[Seller]: (Bob,3) sold  0 units of iPhone XS
+INFO:root:[Seller]: (Bob,3) sold  0 units of iPhone XR
+INFO:root:[Seller]: (Bob,3) sold  0 units of iPhone XS case
+INFO:root:[Seller]: (Bob,3) sold  0 units of iPhone XR case
+INFO:root:[Seller]: (Bob,3) Revenue in previous quarter:0
+INFO:root:[Seller]: (Bob,3) Expenses in previous quarter:25
+INFO:root:[Seller]: (Bob,3) Profit in previous quarter:-25
+INFO:root:[Seller]: (Bob,3) Sales in previous quarter:[0, 8, 0]
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XS to users Betsy, Simone, Ewa, Ewa, Betsy 
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XR to users Betsy, Matthew, Dan, Ewa, Betsy 
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XS case to users Betsy, Matthew, Simone, Betsy, Ewa 
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XR case to users Simone, Simone, Matthew, Simone, Dan 
+INFO:root:[Seller]: (Carol,3) sold  0 units of iPhone XS
+INFO:root:[Seller]: (Carol,3) sold  0 units of iPhone XR
+INFO:root:[Seller]: (Carol,3) sold  0 units of iPhone XS case
+INFO:root:[Seller]: (Carol,3) sold  0 units of iPhone XR case
+INFO:root:[Seller]: (Carol,3) Revenue in previous quarter:380
+INFO:root:[Seller]: (Carol,3) Expenses in previous quarter:25
+INFO:root:[Seller]: (Carol,3) Profit in previous quarter:355
+INFO:root:[Seller]: (Carol,3) Sales in previous quarter:[0, 0, 4]
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XS to users Ewa, Betsy, Betsy, Dan, Betsy 
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XR to users Ewa, Dan, Simone, Simone, Dan 
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XS case to users Matthew, Ewa, Dan, Ewa, Betsy 
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product iPhone XR case to users Matthew, Simone, Dan, Simone, Ewa 
+INFO:root:[Seller]: (Dave,3) sold  0 units of Google pixel
+INFO:root:[Seller]: (Dave,3) sold  0 units of Google pixel case
+INFO:root:[Seller]: (Dave,3) Revenue in previous quarter:160
+INFO:root:[Seller]: (Dave,3) Expenses in previous quarter:25
+INFO:root:[Seller]: (Dave,3) Profit in previous quarter:135
+INFO:root:[Seller]: (Dave,3) Sales in previous quarter:[0, 2, 2]
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product Google pixel to users Betsy, Matthew, Betsy, Matthew, Ewa 
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product Google pixel case to users Betsy, Betsy, Matthew, Ewa, Simone 
+INFO:root:[Seller]: (Eve,3) sold  0 units of Huawei P30 pro
+INFO:root:[Seller]: (Eve,3) sold  0 units of Huawei P30 pro case
+INFO:root:[Seller]: (Eve,3) Revenue in previous quarter:0
+INFO:root:[Seller]: (Eve,3) Expenses in previous quarter:25
+INFO:root:[Seller]: (Eve,3) Profit in previous quarter:-25
+INFO:root:[Seller]: (Eve,3) Sales in previous quarter:[0, 4, 0]
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product Huawei P30 pro to users Dan, Simone, Ewa, Dan, Simone 
+INFO:root:[GoogleAds]: Google pushed the BASIC Ad for product Huawei P30 pro case to users Ewa, Dan, Simone, Simone, Dan 
+INFO:root:[Customer]: (Betsy,3) own the Products:[iPhone XR case] with balance of $ 610
+INFO:root:[Customer]:(Betsy,4): Next Quarter Begins 
+INFO:root:[Customer]:(Betsy,4) currently seeing ads for the Products:[iPhone XS from Seller 3, Google pixel case from Seller 4, iPhone XS from Seller 2, iPhone XS case from Seller 3, iPhone XR from Seller 2, iPhone XS case from Seller 2, iPhone XR case from Seller 1, Google pixel from Seller 4]
+INFO:root:[Customer]:***(Betsy,4)bought 2 new product:[iPhone XS] from Seller 3
+INFO:root:[Customer]:***(Betsy,4)bought 2 new product:[iPhone XS] from Seller 2
+INFO:root:[Customer]:***(Betsy,4)bought 2 new product:[iPhone XS case] from Seller 2
+INFO:root:[Customer]: (Betsy,4) buy the Products:[iPhone XS case, iPhone XS case] from seller2 with price200
+INFO:root:[Seller]: Seller (Bob,3) sold product iPhone XS case
+INFO:root:[Seller]: Seller (Bob,3) sold product iPhone XS case
+INFO:root:[Market]:Transaction between Seller Bob and Customer Betsy with the product iPhone XS case at 2019-11-21 17:26:08
+INFO:root:[Customer]:***(Betsy,4)bought 2 new product:[Google pixel] from Seller 4
+INFO:root:[Customer]:(Betsy,4) Posted POSITIVE tweet for the product iPhone XR case
+INFO:root:[Customer]: (Simone,3) own the Products:[iPhone XS case, Huawei P30 pro] with balance of $ 10
+INFO:root:[Customer]:(Simone,4): Next Quarter Begins 
+INFO:root:[Customer]:(Simone,4) currently seeing ads for the Products:[Google pixel case from Seller 4, iPhone XS from Seller 2, iPhone XR from Seller 3, iPhone XS case from Seller 2, iPhone XR case from Seller 3, iPhone XS case from Seller 1, iPhone XR case from Seller 2, Huawei P30 pro from Seller 5, iPhone XR from Seller 1, Huawei P30 pro case from Seller 5]
+INFO:root:[Customer]:***(Simone,4)bought 2 new product:[Google pixel case] from Seller 4
+INFO:root:[Customer]: (Dan,3) own the Products:[iPhone XS case] with balance of $ 610
+INFO:root:[Customer]:***(Simone,4)bought 2 new product:[iPhone XR case] from Seller 2
+INFO:root:[Customer]:(Dan,4): Next Quarter Begins 
+INFO:root:[Customer]:(Dan,4) currently seeing ads for the Products:[iPhone XS from Seller 3, iPhone XR from Seller 3, iPhone XS case from Seller 3, iPhone XR from Seller 2, iPhone XR case from Seller 3, iPhone XR case from Seller 2, Huawei P30 pro from Seller 5, iPhone XR from Seller 1, Huawei P30 pro case from Seller 5, iPhone XR case from Seller 1]
+INFO:root:[Customer]:***(Dan,4)bought 2 new product:[iPhone XS] from Seller 3
+INFO:root:[Customer]:***(Dan,4)bought 2 new product:[iPhone XR] from Seller 3
+INFO:root:[Customer]:***(Dan,4)bought 2 new product:[iPhone XR] from Seller 2
+INFO:root:[Customer]:***(Dan,4)bought 2 new product:[iPhone XR case] from Seller 3
+INFO:root:[Customer]: (Dan,4) buy the Products:[iPhone XR case, iPhone XR case] from seller3 with price190
+INFO:root:[Seller]: Seller (Carol,3) sold product iPhone XR case
+INFO:root:[Seller]: Seller (Carol,3) sold product iPhone XR case
+INFO:root:[Market]:Transaction between Seller Carol and Customer Dan with the product iPhone XR case at 2019-11-21 17:26:08
+INFO:root:[Customer]:***(Dan,4)bought 2 new product:[iPhone XR case] from Seller 2
+INFO:root:[Customer]: (Dan,4) buy the Products:[iPhone XR case, iPhone XR case] from seller2 with price190
+INFO:root:[Seller]: Seller (Bob,3) sold product iPhone XR case
+INFO:root:[Customer]: (Ewa,3) own the Products:[iPhone XR case, Google pixel case, iPhone XS case, Huawei P30 pro case] with balance of $ 130
+INFO:root:[Seller]: Seller (Bob,3) sold product iPhone XR case
+INFO:root:[Customer]:(Ewa,4): Next Quarter Begins 
+INFO:root:[Market]:Transaction between Seller Bob and Customer Dan with the product iPhone XR case at 2019-11-21 17:26:08
+INFO:root:[Customer]:(Ewa,4) currently seeing ads for the Products:[iPhone XS from Seller 3, Google pixel case from Seller 4, iPhone XS from Seller 2, iPhone XR from Seller 3, iPhone XS case from Seller 3, iPhone XR from Seller 2, iPhone XS case from Seller 2, iPhone XR case from Seller 3, iPhone XS case from Seller 1, Huawei P30 pro from Seller 5, iPhone XR from Seller 1, Huawei P30 pro case from Seller 5, iPhone XR case from Seller 1, Google pixel from Seller 4]
+INFO:root:[Customer]:(Dan,4) Posted POSITIVE tweet for the product iPhone XR case
+INFO:root:[Customer]: (Matthew,3) own the Products:[iPhone XS case, Google pixel case, iPhone XR case, iPhone XS case] with balance of $ 70
+INFO:root:[Customer]:***(Ewa,4)bought 2 new product:[iPhone XS] from Seller 2
+INFO:root:[Customer]:(Matthew,4): Next Quarter Begins 
+INFO:root:[Customer]:***(Ewa,4)bought 2 new product:[iPhone XR] from Seller 3
+INFO:root:[Customer]:(Matthew,4) currently seeing ads for the Products:[Google pixel case from Seller 4, iPhone XS case from Seller 3, iPhone XR from Seller 2, iPhone XS case from Seller 2, iPhone XR case from Seller 3, iPhone XS case from Seller 1, iPhone XR case from Seller 2, iPhone XR case from Seller 1, Google pixel from Seller 4]
+INFO:root:[Customer]:***(Ewa,4)bought 2 new product:[iPhone XR] from Seller 1
+INFO:root:[Customer]:(Matthew,4) Posted POSITIVE tweet for the product iPhone XS case
+INFO:root:[Customer]:***(Ewa,4)bought 2 new product:[Google pixel] from Seller 4
+INFO:root:[Customer]:(Ewa,4) Posted POSITIVE tweet for the product iPhone XS case
+INFO:root:[Seller]: (Alice,3) Exit
+INFO:root:[Seller]: (Bob,3) Exit
+INFO:root:[Seller]: (Carol,3) Exit
+INFO:root:[Seller]: (Dave,3) Exit
+INFO:root:[Seller]: (Eve,3) Exit
+INFO:root:[Customer]: (Betsy,4) own the Products:[iPhone XR case, iPhone XS case] with balance of $ 410
+INFO:root:[Customer]: (Betsy,4) Exit
+INFO:root:[Customer]: (Simone,4) own the Products:[iPhone XS case, Huawei P30 pro] with balance of $ 10
+INFO:root:[Customer]: (Simone,4) Exit
+INFO:root:[Customer]: (Dan,4) own the Products:[iPhone XS case, iPhone XR case, iPhone XR case] with balance of $ 230
+INFO:root:[Customer]: (Dan,4) Exit
+INFO:root:[Customer]: (Matthew,4) own the Products:[iPhone XS case, Google pixel case, iPhone XR case, iPhone XS case] with balance of $ 70
+INFO:root:[Customer]: (Matthew,4) Exit
+INFO:root:[Customer]: (Ewa,4) own the Products:[iPhone XR case, Google pixel case, iPhone XS case, Huawei P30 pro case] with balance of $ 130
+INFO:root:[Customer]: (Ewa,4) Exit

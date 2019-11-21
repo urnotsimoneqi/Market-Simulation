@@ -47,8 +47,8 @@ for seller in sellers:
 # Plot the sales and expenditure trends
 # plot(seller_apple)
 # plot(seller_samsung)
-for seller in sellers:
-    plot(seller)
+# for seller in sellers:
+#     plot(seller)
 
 # print('Total Profit Apple:', seller_apple.my_profit())
 # print('Total Profit Samsung:', seller_samsung.my_profit())
