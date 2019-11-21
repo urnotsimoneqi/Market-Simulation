@@ -19,6 +19,9 @@ class Seller(object):
         self.wallet = wallet
         self.tick_count = 0
         logging.info("[Seller]:Seller %s Created", self.name)
+        products_str = ', '.join(x.product_name for x in self.products)
+        logging.info("[Seller]:Seller %s Owned products %s", self.name, products_str)
+        logging.info(Market.catalogue)
 
         # register the seller in market
         Market.register_seller(self, products)
@@ -30,6 +33,7 @@ class Seller(object):
         self.expense_history = [0]
         self.sentiment_history = []
         self.item_sold = 0
+        self.total_item_sold = 0
 
         # Flag for thread
         self.STOP = False
@@ -41,13 +45,15 @@ class Seller(object):
         self.thread.start()
 
     def loop(self):
+        logging.info("[Seller]:Seller %s started Trading", self.name)
         while not self.STOP:
             self.tick_count += 1
             self.tick()
             time.sleep(tick_time)
+        logging.info("[Seller]: (%s,%d) Exit", self.name, self.tick_count)
 
     # if an item is sold, add it to the database
-    def sold(self):
+    def sold(self, product):
         self.lock.acquire()
         self.item_sold += 1
         self.lock.release()
@@ -66,6 +72,7 @@ class Seller(object):
 
         # Calculate the metrics for previous tick and add to tracker
         for product in self.products:
+            logging.info("[Seller]: (%s,%d) sold  %d units of %s",self.name,self.tick_count,self.total_item_sold, product.product_name)
             self.revenue_history.append(self.sales_history[-1] * product.stock_price)
             self.profit_history.append(self.revenue_history[-1] - self.expense_history[-1])
             self.sentiment_history.append(self.user_sentiment())
@@ -85,6 +92,7 @@ class Seller(object):
         logging.info('[Seller]: (%s,%d) Revenue in previous quarter:%d', self.name, self.tick_count, self.my_revenue(True))
         logging.info('[Seller]: (%s,%d) Expenses in previous quarter:%d', self.name, self.tick_count, self.my_expenses(True))
         logging.info('[Seller]: (%s,%d) Profit in previous quarter:%d', self.name, self.tick_count, self.my_profit(True))
+        logging.info('[Seller]: (%s,%d) Sales in previous quarter:%s', self.name, self.tick_count, self.sales_history)
 
         # perform the actions and view the expense
         for product in self.products:
