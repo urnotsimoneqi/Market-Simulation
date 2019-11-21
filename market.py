@@ -26,7 +26,7 @@ class Market(object):
             seller.sold()
 
             # deduct price from user's balance
-            buyer.deduct(product.price)
+            buyer.deduct(product.stock_price)
 
             # track user
             GoogleAds.track_user_purchase(buyer, product)

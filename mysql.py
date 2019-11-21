@@ -38,6 +38,7 @@ def initialize_customer():
     db.close()
     return customers
 
+
 # initialize certain seller's stock
 def initialize_stock(seller_id):
     stock_list = []
@@ -109,7 +110,8 @@ def initialize_seller():
             seller_name = row[1]
             seller_wallet = row[2]
             seller_status = row[3]
-            seller_products = initialize_product(seller_id)
+            # seller_products = initialize_product(seller_id)
+            seller_products = initialize_stock(seller_id)
             seller = Seller(name=seller_name, products=seller_products, wallet=seller_wallet)
             sellers.append(seller)
     except:

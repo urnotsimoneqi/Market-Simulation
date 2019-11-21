@@ -1,0 +1,142 @@
+INFO:root:[Buyer]:Buyer simone Initialized
+INFO:root:[Customer]:Customer simone entered Trading
+INFO:root:[Buyer]:Buyer betsy Initialized
+INFO:root:[Customer]:(simone,1): Next Quarter Begins 
+INFO:root:[Customer]:(simone,1) currently seeing ads for the Products:[]
+INFO:root:[Customer]:Customer betsy entered Trading
+INFO:root:[Buyer]:Buyer Matthew Initialized
+INFO:root:[Customer]:(betsy,1): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,1) currently seeing ads for the Products:[]
+INFO:root:[Customer]:Customer Matthew entered Trading
+INFO:root:[Buyer]:Buyer Dan Initialized
+INFO:root:[Customer]:(Matthew,1): Next Quarter Begins 
+INFO:root:[Customer]:(Matthew,1) currently seeing ads for the Products:[]
+INFO:root:[Customer]:Customer Dan entered Trading
+INFO:root:[Buyer]:Buyer Ewa Initialized
+INFO:root:[Customer]:(Dan,1): Next Quarter Begins 
+INFO:root:[Customer]:(Dan,1) currently seeing ads for the Products:[]
+INFO:root:[Customer]:Customer Ewa entered Trading
+INFO:root:[Customer]:(Ewa,1): Next Quarter Begins 
+INFO:root:[Customer]:(Ewa,1) currently seeing ads for the Products:[]
+INFO:root:[Seller]:Seller Alice Created
+INFO:root:[Seller]: (Alice,1) Revenue in previous quarter:0
+INFO:root:[Seller]: (Alice,1) Expenses in previous quarter:0
+INFO:root:[Seller]: (Alice,1) Profit in previous quarter:0
+INFO:root:[Seller]:Seller Bob Created
+INFO:root:[Seller]: (Bob,1) Revenue in previous quarter:0
+INFO:root:[Seller]: (Bob,1) Expenses in previous quarter:0
+INFO:root:[Seller]: (Bob,1) Profit in previous quarter:0
+INFO:root:[Seller]:Seller Carol Created
+INFO:root:[Seller]: (Carol,1) Revenue in previous quarter:0
+INFO:root:[Seller]: (Carol,1) Expenses in previous quarter:0
+INFO:root:[Seller]: (Carol,1) Profit in previous quarter:0
+INFO:root:[Seller]:Seller Dave Created
+INFO:root:[Seller]: (Dave,1) Revenue in previous quarter:0
+INFO:root:[Seller]: (Dave,1) Expenses in previous quarter:0
+INFO:root:[Seller]: (Dave,1) Profit in previous quarter:0
+INFO:root:[Seller]:Seller Eve Created
+INFO:root:[Seller]: (Eve,1) Revenue in previous quarter:0
+INFO:root:[Seller]: (Eve,1) Expenses in previous quarter:0
+INFO:root:[Seller]: (Eve,1) Profit in previous quarter:0
+INFO:root:[Customer]:(simone,2): Next Quarter Begins 
+INFO:root:[Customer]:(simone,2) currently seeing ads for the Products:[iPhone XS, iPhone XS, iPhone XR, iPhone XS case, iPhone XR case, iPhone XS case, iPhone XS case, iPhone XR case, iPhone XR, Huawei P30 pro, Huawei P30 pro case, Google pixel]
+INFO:root:[Customer]:***(simone,2)bought 10 new product:[iPhone XS case]
+INFO:root:[Customer]:***(simone,2)bought 2 new product:[iPhone XR]
+INFO:root:[Customer]:***(simone,2)bought 5 new product:[Huawei P30 pro case]
+INFO:root:[Customer]:(simone,2) Posted NEGATIVE tweet for the product Huawei P30 pro case
+INFO:root:[Customer]:(betsy,2): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,2) currently seeing ads for the Products:[Google pixel case, iPhone XR, iPhone XR case, iPhone XS case, iPhone XR case, Huawei P30 pro, iPhone XR case, Huawei P30 pro case]
+INFO:root:[Customer]:***(betsy,2)bought 2 new product:[Huawei P30 pro]
+INFO:root:[Customer]:###(betsy,2)doesn't buy any products 
+INFO:root:[Customer]:(Ewa,2): Next Quarter Begins 
+INFO:root:[Customer]:(Ewa,2) currently seeing ads for the Products:[Google pixel case, iPhone XR, iPhone XS, iPhone XS case, iPhone XR case, iPhone XS case, iPhone XR case, iPhone XR, Huawei P30 pro, iPhone XR case, Huawei P30 pro case, Google pixel]
+INFO:root:[Customer]:***(Ewa,2)bought 9 new product:[iPhone XS case]
+INFO:root:[Customer]:###(Ewa,2)doesn't buy any products 
+INFO:root:[Customer]:(Dan,2): Next Quarter Begins 
+INFO:root:[Customer]:(Dan,2) currently seeing ads for the Products:[iPhone XS, iPhone XS case, iPhone XS case, iPhone XS case, iPhone XR case, Huawei P30 pro case, Google pixel]
+INFO:root:[Customer]:***(Dan,2)bought 8 new product:[iPhone XR case]
+INFO:root:[Customer]:###(Dan,2)doesn't buy any products 
+INFO:root:[Customer]:(Dan,2) Posted POSITIVE tweet for the product iPhone XR case
+INFO:root:[Customer]:(Matthew,2): Next Quarter Begins 
+INFO:root:[Customer]:(Matthew,2) currently seeing ads for the Products:[Google pixel case, iPhone XS, iPhone XR, iPhone XS, iPhone XR, iPhone XS case, iPhone XS case, iPhone XR, Huawei P30 pro, iPhone XR case]
+INFO:root:[Customer]:***(Matthew,2)bought 4 new product:[iPhone XS]
+INFO:root:[Customer]:***(Matthew,2)bought 1 new product:[iPhone XR]
+INFO:root:[Customer]:***(Matthew,2)bought 2 new product:[iPhone XR]
+INFO:root:[Customer]:***(Matthew,2)bought 5 new product:[iPhone XR]
+INFO:root:[Customer]:***(Matthew,2)bought 3 new product:[Huawei P30 pro]
+INFO:root:[Seller]: (Alice,2) Revenue in previous quarter:0
+INFO:root:[Seller]: (Alice,2) Expenses in previous quarter:25
+INFO:root:[Seller]: (Alice,2) Profit in previous quarter:-25
+INFO:root:[Seller]: (Bob,2) Revenue in previous quarter:760
+INFO:root:[Seller]: (Bob,2) Expenses in previous quarter:25
+INFO:root:[Seller]: (Bob,2) Profit in previous quarter:735
+INFO:root:[Seller]: (Carol,2) Revenue in previous quarter:95
+INFO:root:[Seller]: (Carol,2) Expenses in previous quarter:25
+INFO:root:[Seller]: (Carol,2) Profit in previous quarter:70
+INFO:root:[Seller]: (Dave,2) Revenue in previous quarter:0
+INFO:root:[Seller]: (Dave,2) Expenses in previous quarter:25
+INFO:root:[Seller]: (Dave,2) Profit in previous quarter:-25
+INFO:root:[Seller]: (Eve,2) Revenue in previous quarter:420
+INFO:root:[Seller]: (Eve,2) Expenses in previous quarter:25
+INFO:root:[Seller]: (Eve,2) Profit in previous quarter:395
+INFO:root:[Customer]:(simone,3): Next Quarter Begins 
+INFO:root:[Customer]:(simone,3) currently seeing ads for the Products:[iPhone XS, iPhone XS, iPhone XR, iPhone XS case, iPhone XR case, iPhone XS case, iPhone XR case, iPhone XR]
+INFO:root:[Customer]:(simone,3) Posted NEGATIVE tweet for the product Huawei P30 pro case
+INFO:root:[Customer]:(betsy,3): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,3) currently seeing ads for the Products:[Google pixel case, iPhone XS, iPhone XR case, iPhone XS case, iPhone XR case, iPhone XR, iPhone XR case, Huawei P30 pro case, Google pixel]
+INFO:root:[Customer]:***(betsy,3)bought 4 new product:[Google pixel case]
+INFO:root:[Customer]:***(betsy,3)bought 10 new product:[iPhone XR case]
+INFO:root:[Customer]:***(betsy,3)bought 6 new product:[iPhone XR]
+INFO:root:[Customer]:***(betsy,3)bought 7 new product:[iPhone XR case]
+INFO:root:[Customer]:###(betsy,3)doesn't buy any products 
+INFO:root:[Customer]:(betsy,3) Posted POSITIVE tweet for the product Huawei P30 pro
+INFO:root:[Customer]:(Ewa,3): Next Quarter Begins 
+INFO:root:[Customer]:(Ewa,3) currently seeing ads for the Products:[Google pixel case, iPhone XR, iPhone XS, iPhone XR, iPhone XS case, iPhone XS case, iPhone XS case, iPhone XR, Huawei P30 pro, iPhone XR case, Huawei P30 pro case, Google pixel]
+INFO:root:[Customer]:***(Ewa,3)bought 2 new product:[iPhone XR]
+INFO:root:[Customer]:###(Ewa,3)doesn't buy any products 
+INFO:root:[Customer]:***(Ewa,3)bought 9 new product:[Google pixel]
+INFO:root:[Customer]:(Dan,3): Next Quarter Begins 
+INFO:root:[Customer]:(Dan,3) currently seeing ads for the Products:[Google pixel case, iPhone XS, iPhone XR, iPhone XR, iPhone XS case, iPhone XR case, iPhone XS case, Huawei P30 pro, iPhone XR case, Huawei P30 pro case, Google pixel]
+INFO:root:[Customer]:***(Dan,3)bought 1 new product:[iPhone XS case]
+INFO:root:[Customer]:***(Dan,3)bought 1 new product:[iPhone XR case]
+INFO:root:[Customer]:###(Dan,3)doesn't buy any products 
+INFO:root:[Customer]:(Matthew,3): Next Quarter Begins 
+INFO:root:[Customer]:(Matthew,3) currently seeing ads for the Products:[Google pixel case, iPhone XS, iPhone XR, iPhone XS, iPhone XR, iPhone XR case, iPhone XS case, iPhone XS case, iPhone XR, Huawei P30 pro, iPhone XR case, Huawei P30 pro case]
+INFO:root:[Customer]:***(Matthew,3)bought 2 new product:[iPhone XS case]
+INFO:root:[Customer]:###(Matthew,3)doesn't buy any products 
+INFO:root:[Customer]:(Matthew,3) Posted POSITIVE tweet for the product iPhone XR
+INFO:root:[Customer]:(simone,4): Next Quarter Begins 
+INFO:root:[Customer]:(simone,4) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(betsy,4): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,4) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(betsy,4) Posted POSITIVE tweet for the product Huawei P30 pro
+INFO:root:[Customer]:(Ewa,4): Next Quarter Begins 
+INFO:root:[Customer]:(Ewa,4) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(Dan,4): Next Quarter Begins 
+INFO:root:[Customer]:(Dan,4) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(Dan,4) Posted POSITIVE tweet for the product iPhone XR case
+INFO:root:[Customer]:(Matthew,4): Next Quarter Begins 
+INFO:root:[Customer]:(Matthew,4) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(Matthew,4) Posted POSITIVE tweet for the product iPhone XR
+INFO:root:[Customer]:(Ewa,5): Next Quarter Begins 
+INFO:root:[Customer]:(Ewa,5) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(Dan,5): Next Quarter Begins 
+INFO:root:[Customer]:(Dan,5) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(Dan,5) Posted POSITIVE tweet for the product iPhone XR case
+INFO:root:[Customer]:(Matthew,5): Next Quarter Begins 
+INFO:root:[Customer]:(simone,5): Next Quarter Begins 
+INFO:root:[Customer]:(betsy,5): Next Quarter Begins 
+INFO:root:[Customer]:(Matthew,5) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(simone,5) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(betsy,5) currently seeing ads for the Products:[]
+INFO:root:[Customer]:(Matthew,5) Posted POSITIVE tweet for the product iPhone XS case
+INFO:root:[Customer]: (Ewa,5) own the Products:[] with balance of $ 800
+INFO:root:[Customer]: (Ewa,5) Exit
+INFO:root:[Customer]: (Dan,5) own the Products:[iPhone XR case] with balance of $ 40
+INFO:root:[Customer]: (Dan,5) Exit
+INFO:root:[Customer]: (simone,5) own the Products:[Huawei P30 pro case] with balance of $ 500
+INFO:root:[Customer]: (simone,5) Exit
+INFO:root:[Customer]: (betsy,5) own the Products:[Huawei P30 pro] with balance of $ 200
+INFO:root:[Customer]: (betsy,5) Exit
+INFO:root:[Customer]: (Matthew,5) own the Products:[iPhone XS case, iPhone XR] with balance of $ 130
+INFO:root:[Customer]: (Matthew,5) Exit

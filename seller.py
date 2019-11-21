@@ -17,7 +17,7 @@ class Seller(object):
         self.name = name
         self.products = products  # enable seller to sell more than one products
         self.wallet = wallet
-        self.count = 0
+        self.tick_count = 0
         logging.info("[Seller]:Seller %s Created", self.name)
 
         # register the seller in market
@@ -42,7 +42,7 @@ class Seller(object):
 
     def loop(self):
         while not self.STOP:
-            self.count += 1
+            self.tick_count += 1
             self.tick()
             time.sleep(tick_time)
 
@@ -66,7 +66,7 @@ class Seller(object):
 
         # Calculate the metrics for previous tick and add to tracker
         for product in self.products:
-            self.revenue_history.append(self.sales_history[-1] * product.price)
+            self.revenue_history.append(self.sales_history[-1] * product.stock_price)
             self.profit_history.append(self.revenue_history[-1] - self.expense_history[-1])
             self.sentiment_history.append(self.user_sentiment())
 
@@ -82,9 +82,9 @@ class Seller(object):
         print('Profit in previous quarter:', self.my_profit(True))
         print('\nStrategy for next quarter \nAdvert Type: {}, scale: {}\n\n'.format(advert_type, scale))
 
-        logging.info('[Seller]: (%s,%d) Revenue in previous quarter:%d', self.name, self.count, self.my_revenue(True))
-        logging.info('[Seller]: (%s,%d) Expenses in previous quarter:%d', self.name, self.count, self.my_expenses(True))
-        logging.info('[Seller]: (%s,%d) Profit in previous quarter:%d', self.name, self.count, self.my_profit(True))
+        logging.info('[Seller]: (%s,%d) Revenue in previous quarter:%d', self.name, self.tick_count, self.my_revenue(True))
+        logging.info('[Seller]: (%s,%d) Expenses in previous quarter:%d', self.name, self.tick_count, self.my_expenses(True))
+        logging.info('[Seller]: (%s,%d) Profit in previous quarter:%d', self.name, self.tick_count, self.my_profit(True))
 
         # perform the actions and view the expense
         for product in self.products:

@@ -37,7 +37,7 @@ class Customer(object):
 
         # regulate synchronisation
         self.lock = Lock()
-        self.tick_count=0
+        self.tick_count = 0
 
         # start this user in separate thread
         self.thread = Thread(name=name, target=self.loop)
@@ -54,7 +54,7 @@ class Customer(object):
         # if not enough money in wallet, don't proceed
         amount = 0
         for product in products:
-            amount += product.price
+            amount += product.stock_price
         if self.wallet < amount:  # enable buyer to buy more than one products
             return
 
@@ -77,16 +77,17 @@ class Customer(object):
     def loop(self):
         logging.info ("[Customer]:Customer %s entered Trading", self.name)
         while not self.STOP:
+            self.tick_count += 1
             logging.info ("[Customer]:(%s,%d): Next Quarter Begins ",self.name,self.tick_count)
             self.tick()
             time.sleep(tick_time)
-        test = ', '.join(x.name for x in self.owned_products)
+        test = ', '.join(x.product_name for x in self.owned_products)
         logging.info("[Customer]: (%s,%d) own the Products:[%s] with balance of $ %d", self.name, self.tick_count, test, self.wallet)
         logging.info("[Customer]: (%s,%d) Exit", self.name,self.tick_count)
 
     # one timestep in the simulation world
     def tick(self):
-        test=', '.join(x.name for x in self.ad_space)
+        test=', '.join(x.product_name for x in self.ad_space)
         logging.info("[Customer]:(%s,%d) currently seeing ads for the Products:[%s]",self.name,self.tick_count,test)
         self.lock.acquire()
 
@@ -105,15 +106,15 @@ class Customer(object):
                 if product not in self.owned_products and random.random() < 0.2:
                     products = []
                     # user is able buy multiple products of the same type at a time.
-                    amount = random.randint(1, math.ceil(product.quantity/5))
+                    amount = random.randint(1, math.ceil(product.stock_quantity/5))
                     i = 0
                     while i < amount:
                         products.append(product)
                         i += 1
-                    logging.info("[Customer]:***(%s,%d)bought %d new product:[%s]", self.name, self.tick_count, len(products), product.name)
+                    logging.info("[Customer]:***(%s,%d)bought %d new product:[%s]", self.name, self.tick_count, len(products), product.product_name)
                     self.buy(products)
                 elif product in self.owned_products and random.random() < 0.01:
-                    logging.info("[Customer]:$$$(%s,%d)bought same product again:[%s]", self.name, self.tick_count, product.name)
+                    logging.info("[Customer]:$$$(%s,%d)bought same product again:[%s]", self.name, self.tick_count, product.product_name)
                     # products = [product, product]
                     self.buy([product])
 
@@ -135,12 +136,12 @@ class Customer(object):
             product = random.choice(list(self.owned_products))
 
             # sentiment in positive if the quality is higher than the tolerance
-            sentiment = 'POSITIVE' if self.tolerance < product.quality else 'NEGATIVE'
+            sentiment = 'POSITIVE' if self.tolerance < product.product_quality else 'NEGATIVE'
 
             # tweet sent
             self.tweet(product, sentiment)
             logging.info("[Customer]:(%s,%d) Posted %s tweet for the product %s",
-                         self.name, self.tick_count, sentiment, product.name)
+                         self.name, self.tick_count, sentiment, product.product_name)
             # print("with some chance, the user may tweet about the product")
             # print(self.name+product.name+sentiment)
 
