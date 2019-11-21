@@ -31,7 +31,8 @@ def initialize_customer():
             customer_wallet = row[4]
             customer_tolerance = row[5]
             customer_status = row[6]
-            customer = Customer(id=customer_id, name=customer_name, wallet=customer_wallet, tolerance=customer_tolerance)
+            customer = Customer(id=customer_id, type=customer_type, name=customer_name, email=customer_email,
+                                wallet=customer_wallet, tolerance=customer_tolerance)
             customers.append(customer)
     except:
         print("Error: unable to fetch customer")

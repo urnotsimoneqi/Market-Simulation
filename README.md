@@ -13,7 +13,7 @@ Buyer Agent, CEO Agent and reporting Agent. At a minimum provide the following c
 ### Buyer Agent
 - [x] Enable ability to own more than one product
 - [x] Add a buyer “type” or demographics, for example
-    - Certain buyers prefer items of higher quality or are more sensitive to price 
+    - [x] Certain buyers prefer items of higher quality or are more sensitive to price 
     - Buyers are interested in buying related products like a phone and its case in separate transaction. I.e. if a buyer bought the phone, they are more likely to purchase the case.
 ### CEO Agent
 - Choose between ad types

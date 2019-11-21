@@ -4,7 +4,7 @@ from threading import Thread, Lock
 
 import numpy
 
-from constants import tick_time, seed
+from constants import tick_time, seed, high_quality, related_product
 from google_ads import GoogleAds
 from market import Market
 from twitter import Twitter
@@ -15,13 +15,9 @@ random.seed(seed)
 
 
 class Customer(object):
-    # Define customer type
-    SENSITIVE_PRICE = 0
-    RELATED_PRODUCT = 1
-    CUSTOMER_TYPE = [SENSITIVE_PRICE, RELATED_PRODUCT]
 
-    def __init__(self, id, name, wallet, tolerance):
-        self.id, self.name, self.wallet, self.tolerance = id, name, wallet, tolerance
+    def __init__(self, id, type, name, email, wallet, tolerance):
+        self.id, self.type, self.name, self.email, self.wallet, self.tolerance = id, type, name, email, wallet, tolerance
         logging.info("[Buyer]:Buyer %s Initialized", self.name)
 
         # Register the user with google ads
@@ -101,31 +97,29 @@ class Customer(object):
             # user checks the reviews about the product on twitter
             tweets = numpy.asarray(Twitter.get_latest_tweets(product, 100))
             user_sentiment = 1 if len(tweets) == 0 else (tweets == 'POSITIVE').mean()
+            logging.info("[Customer]:(%s,%d)'s sentiment is %d for product:[%s] from Seller %d", self.name,
+                         self.tick_count, user_sentiment, product.product_name, product.seller_id)
 
-            # ANSWER d.
-            # if sentiment is more than user's tolerance and user does not have the product,
-            # then he/she may buy it with 20% chance. If it already has the product, then chance of buying again is 1%
-            # Buyers are interested in buying related products like a phone and its case in separate transaction
-            # if a buyer bought the phone, they are more likely to purchase the case
-            if user_sentiment >= self.tolerance:
-                if product not in self.owned_products and random.random() < 0.2:
-                    # products = []
-                    # # user is able buy multiple products of the same type at a time.
-                    # amount = random.randint(1, math.ceil(product.stock_quantity/5))
-                    # i = 0
-                    # while i < amount:
-                    #     products.append(product)
-                    #     i += 1
-                    products = [product, product]
-                    logging.info("[Customer]:***(%s,%d)bought %d new product:[%s] from Seller %d", self.name, self.tick_count, len(products), product.product_name, product.seller_id)
-                    self.buy(products)
-                elif product in self.owned_products and random.random() < 0.01:
-                    logging.info("[Customer]:$$$(%s,%d)bought same product again:[%s]", self.name, self.tick_count, product.product_name)
-                    # products = [product, product]
-                    self.buy([product])
-
+            #  Certain buyers prefer items of higher quality
+            if self.type == high_quality:
+                if product.product_quality < self.tolerance:
+                    logging.info("[Customer]: (%s,%d) prefer high quality, so she doesn't buy any products ",
+                                 self.name, self.tick_count)
+                else:
+                    # if sentiment is more than user's tolerance and user does not have the product, then he/she may buy it with 20% chance. If it already has the product, then chance of buying again is 1%
+                    if user_sentiment >= self.tolerance and ((product not in self.owned_products and random.random() < 0.2) or (product in self.owned_products and random.random() < 0.01)):
+                        logging.info("[Customer]:(%s,%d)bought the product:[%s]", self.name, self.tick_count, product.product_name)
+                        products = [product, product]
+                        self.buy(products)
+                    else:
+                        logging.info("[Customer]:###(%s,%d)doesn't buy any products ", self.name, self.tick_count)
+            #  Buyers are interested in buying related products like a phone and its case in separate transaction.
+            #  I.e. if a buyer bought the phone, they are more likely to purchase the case
+            elif self.type == related_product:
+                pass
             else:
-                logging.info("[Customer]:###(%s,%d)doesn't buy any products ", self.name, self.tick_count)
+                print('Not a valid Customer type')
+
 
             # ANSWER d.
             # if sentiment is more than user's tolerance and user does not have the product, then he/she may buy it with 20% chance. If it already has the product, then chance of buying again is 1%
