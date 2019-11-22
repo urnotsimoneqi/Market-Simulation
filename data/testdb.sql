@@ -304,16 +304,16 @@ CREATE TABLE transaction
 INSERT INTO transaction (transaction_datetime, transaction_year, transaction_quarter, seller_id, customer_id,
                          product_id, related_product_id,
                          transaction_quantity, transaction_amount, promotion_id)
-VALUES ('2019-03-08 20:16:00', 2019, 1, 1, 1, 1, null, 1, '480', null);
+VALUES ('2019-03-08 20:16:00', 2019, 1, 1, 1, 1, null, 1, 480, null);
 INSERT INTO transaction (transaction_datetime, transaction_year, transaction_quarter, seller_id, customer_id,
                          product_id, related_product_id,
                          transaction_quantity, transaction_amount, promotion_id)
-VALUES ('2019-04-11 12:48:57', 2019, 2, 1, 1, 2, null, 1, '400', null);
+VALUES ('2019-04-11 12:48:57', 2019, 2, 1, 1, 2, null, 1, 400, null);
 INSERT INTO transaction (transaction_datetime, transaction_year, transaction_quarter, seller_id, customer_id,
                          product_id, related_product_id,
                          transaction_quantity, transaction_amount, promotion_id)
-VALUES ('2019-07-18 08:59:37', 2019, 3, 2, 1, 2, null, 2, '300', null);
+VALUES ('2019-07-18 08:59:37', 2019, 3, 2, 1, 2, null, 2, 300, null);
 INSERT INTO transaction (transaction_datetime, transaction_year, transaction_quarter, seller_id, customer_id,
                          product_id, related_product_id,
                          transaction_quantity, transaction_amount, promotion_id)
-VALUES ('2019-09-01 21:00:52', 2019, 4, 2, 2, 2, null, 2, '95', null);
+VALUES ('2019-09-01 21:00:52', 2019, 4, 2, 2, 2, null, 2, 95, null);
