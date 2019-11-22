@@ -80,15 +80,15 @@ CREATE TABLE `customer`
 -- Records of customer
 -- ----------------------------
 INSERT INTO customer (customer_type, customer_name, customer_email, customer_wallet, customer_tolerance)
-VALUES (0, 'Simone', 'A0198890Hrobot@gmail.com', '800', '0.80');
+VALUES (0, 'Simone', 'A0198890Hrobot@gmail.com', 800, 0.80);
 INSERT INTO customer (customer_type, customer_name, customer_email, customer_wallet, customer_tolerance)
-VALUES (1, 'Betsy', 'A0198890Hrobot@gmail.com', '1000', '0.60');
+VALUES (1, 'Betsy', 'A0198890Hrobot@gmail.com', 1000, 0.60);
 INSERT INTO customer (customer_type, customer_name, customer_email, customer_wallet, customer_tolerance)
-VALUES (0, 'Matthew', 'A0198890Hrobot@gmail.com', '900', '0.80');
+VALUES (0, 'Matthew', 'A0198890Hrobot@gmail.com', 900, 0.80);
 INSERT INTO customer (customer_type, customer_name, customer_email, customer_wallet, customer_tolerance)
-VALUES (1, 'Lisa', 'A0198890Hrobot@gmail.com', '800', '0.40');
+VALUES (1, 'Lisa', 'A0198890Hrobot@gmail.com', 800, 0.80);
 INSERT INTO customer (customer_type, customer_name, customer_email, customer_wallet, customer_tolerance)
-VALUES (1, 'Jimmy', 'A0198890Hrobot@gmail.com', '800', '0.50');
+VALUES (1, 'Jimmy', 'A0198890Hrobot@gmail.com', 800, 0.50);
 
 -- ----------------------------
 -- Table structure for customer_ads
@@ -240,6 +240,7 @@ INSERT INTO sales_summary(seller_id, sales_year, sales_quarter, sales_expense_am
 VALUES (4, 2019, 3, 0, 0, 0);
 INSERT INTO sales_summary(seller_id, sales_year, sales_quarter, sales_expense_amount, sales_revenue, sales_profit)
 VALUES (5, 2019, 3, 0, 480, 240);
+
 -- ----------------------------
 -- Table structure for stock
 -- ----------------------------
@@ -259,35 +260,21 @@ CREATE TABLE stock
 -- Records of stock
 -- ----------------------------
 INSERT INTO stock (product_id, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (1, 2, 20, 300, 500);
+VALUES (1, 1, 20, 300, 500);
 INSERT INTO stock (product_id, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (1, 3, 20, 300, 490);
+VALUES (2, 2, 10, 200, 300);
 INSERT INTO stock (product_id, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (2, 1, 30, 280, 480);
+VALUES (3, 4, 50, 600, 1000);
 INSERT INTO stock (product_id, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (2, 2, 20, 280, 480);
+VALUES (4, 3, 50, 600, 1000);
 INSERT INTO stock (product_id, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (2, 3, 20, 280, 480);
+VALUES (5, 5, 50, 600, 1000);
 INSERT INTO stock (product_id, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (3, 4, 50, 200, 400);
+VALUES (6, 1, 50, 700, 1000);
 INSERT INTO stock (product_id, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (4, 5, 50, 150, 300);
+VALUES (7, 2, 20, 600, 1000);
 INSERT INTO stock (product_id, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (5, 2, 25, 20, 100);
-INSERT INTO stock (product_id, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (5, 3, 25, 20, 90);
-INSERT INTO stock (product_id, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (5, 1, 25, 20, 95);
-INSERT INTO stock (product_id, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (6, 1, 20, 20, 95);
-INSERT INTO stock (product_id, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (6, 2, 40, 20, 95);
-INSERT INTO stock (product_id, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (6, 3, 30, 20, 95);
-INSERT INTO stock (product_id, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (7, 4, 80, 15, 80);
-INSERT INTO stock (product_id, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (8, 5, 70, 15, 60);
+VALUES (8, 4, 50, 600, 1000);
 -- ----------------------------
 -- Table structure for trans_record
 -- ----------------------------
