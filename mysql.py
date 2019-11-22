@@ -7,7 +7,7 @@ from stock import Stock
 
 
 def connect_db():
-    db = pymysql.connect("localhost", "root", "matthew123", "TESTDB")
+    db = pymysql.connect("localhost", "root", "Simon19980908", "TESTDB")
     return db
 
 
@@ -30,8 +30,8 @@ def initialize_customer():
             customer = Customer(id=customer_id, type=customer_type, name=customer_name, email=customer_email,
                                 wallet=customer_wallet, tolerance=customer_tolerance)
             customers.append(customer)
-    except:
-        print("Error: unable to fetch customer")
+    except Exception as e:
+        print(e)
     db.close()
     return customers
 
@@ -63,8 +63,8 @@ def initialize_stock(seller_id):
                           product_status=product_status, seller_id=seller_id, stock_quantity=stock_quantity,
                           stock_cost=stock_cost, stock_price=stock_price)
             stock_list.append(stock)
-    except:
-        print("Error: unable to fetch stock")
+    except Exception as e:
+        print(e)
     db.close()
     return stock_list
 
@@ -86,8 +86,8 @@ def initialize_seller():
             seller_products = initialize_stock(seller_id)
             seller = Seller(id=seller_id, name=seller_name, products=seller_products, wallet=seller_wallet)
             sellers.append(seller)
-    except:
-        print("Error: unable to fetch seller")
+    except Exception as e:
+        print(e)
     db.close()
     return sellers
 
@@ -103,18 +103,22 @@ def reporting(revenue, expenses, profit):
 def save_txn(txn):
     db = connect_db()
     cursor = db.cursor()
-    print("Save transaction")
-    sql = """INSERT INTO transaction (transaction_datetime, transaction_year, transaction_quarter, seller_id, customer_id,
-                             product_id, related_product_id,
-                             transaction_quantity, transaction_amount, promotion_id)
-                             VALUES (txn.timestamp, txn.year, txn.quarter, 
-                             txn.seller_id, txn.customer_id, txn.product_id, null, txn.quantity, txn.total_amount, null)"""
+
+    sql = "INSERT INTO transaction (transaction_datetime, transaction_year, transaction_quarter, seller_id, customer_id, \
+                             product_id, \
+                             transaction_quantity, transaction_amount) \
+                             VALUES ('%s', %s, %s, %s, %s, %s, %s, %s)"
+    sql = sql % (txn.timestamp, txn.year, txn.quarter, txn.seller_id, txn.customer_id, txn.product_id,
+             txn.quantity, txn.total_amount)
     try:
         cursor.execute(sql)
+        print("Insert successfully")
         db.commit()
-    except:
+    except Exception as e:
+        print(e)
         # Rollback in case there is any error
         db.rollback()
+    cursor.close()
     db.close()
 
 
@@ -122,8 +126,8 @@ def save_txn(txn):
 def if_related_product(product_id1, product_id2):
     db = connect_db()
     cursor = db.cursor()
-    sql = "SELECT * FROM related_product where related_product_id1=" + product_id1 \
-          + "and related_product_id2=" + product_id2
+    sql = "SELECT * FROM related_product where related_product_id1=" + str(product_id1) \
+          + " and related_product_id2=" + str(product_id2)
 
     try:
         cursor.execute(sql)
@@ -132,7 +136,8 @@ def if_related_product(product_id1, product_id2):
             return False
         else:
             return True
-    except:
+    except Exception as e:
+        print(e)
         print("Error: unable to fetch related_product")
     db.close()
 
@@ -150,8 +155,8 @@ def initialize_promotions():
             promotion_discount = row[1]
             promotion = promotion(promotion_id, promotion_discount)
             promotions.append(promotion)
-    except:
-        print("Error: unable to fetch promotion")
+    except Exception as e:
+        print(e)
     db.close()
     return promotions
 
@@ -176,8 +181,8 @@ def find_most_popular_products(seller_id):
                 product_sales_amount = row[0]
                 items_sold = row[1]
                 product_id = row[2]
-    except:
-        print("Error: unable to fetch most popular products")
+    except Exception as e:
+        print(e)
     db.close()
     return product_sales_amount, items_sold, product_id
 
@@ -196,7 +201,29 @@ def find_product_market_price(product_id):
         else:
             for row in results:
                 market_price = row[0]
-    except:
+    except Exception as e:
+        print(e)
+        print("Error: unable to fetch market_price from product")
+    db.close()
+    return market_price
+
+
+def find_product_market_price(product_id):
+    db = connect_db()
+    cursor = db.cursor()
+    market_price = -1
+
+    sql = "select product_market_price from product where product_id = " + str(product_id)
+    try:
+        cursor.execute(sql)
+        results = cursor.fetchall()
+        if results is None:
+            print(product_id, 'null')
+        else:
+            for row in results:
+                market_price = row[0]
+    except Exception as e:
+        print(e)
         print("Error: unable to fetch market_price from product")
     db.close()
     return market_price
@@ -211,12 +238,13 @@ def update_stock(product_id, seller_id, stock_quantity, stock_cost, seller_walle
     try:
         cursor.execute(sql1)
         db.commit()
-        print(cursor.rowcount)
+        # print(cursor.rowcount)
 
         cursor.execute(sql2)
         db.commit()
-        print(cursor.rowcount)
-    except:
+        # print(cursor.rowcount)
+    except Exception as e:
+        print(e)
         print("Error: unable to update stock from product purchase")
     db.close()
 
@@ -240,7 +268,8 @@ def find_all_products(seller_id):
                 product_id = row[0]
                 items_sold = int(row[1])
                 products.append([product_id, items_sold])
-    except:
+    except Exception as e:
+        print(e)
         print("Error: unable to fetch all products sold by a seller")
     db.close()
     # print(products)
@@ -261,7 +290,8 @@ def find_product_selling_price(product_id):
         else:
             for row in results:
                 selling_price = row[0]
-    except:
+    except Exception as e:
+        print(e)
         print("Error: unable to fetch market_price from product")
     db.close()
     return selling_price
@@ -278,7 +308,8 @@ def update_product_selling_price(product_id, seller_id, selling_price):
         cursor.execute(sql1)
         db.commit()
         print(cursor.rowcount)
-    except:
+    except Exception as e:
+        print(e)
         print("Error: unable to update product selling price")
     db.close()
 
@@ -293,7 +324,8 @@ def apply_discount_to_all_procducts(seller_id, discount):
         cursor.execute(sql1)
         db.commit()
         print(cursor.rowcount)
-    except:
+    except Exception as e:
+        print(e)
         print("Error: unable to apply discount for all products of a seller")
     db.close()
 
@@ -315,7 +347,8 @@ def find_most_valuable_customer(seller_id):
         else:
             for row in results:
                 customer_id = row[0]
-    except:
+    except Exception as e:
+        print(e)
         print("Error: unable to find the most valuable customer sold by a seller")
     db.close()
     # print(products)

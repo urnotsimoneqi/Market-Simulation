@@ -16,8 +16,8 @@ class GoogleAds(object):
 
     # Define advert's price
     advert_price = {
-        ADVERT_BASIC: 5,
-        ADVERT_TARGETED: 10
+        ADVERT_BASIC: 100,
+        ADVERT_TARGETED: 200
     }
 
     # Google's internal database
@@ -31,20 +31,25 @@ class GoogleAds(object):
     @staticmethod
     def post_advertisement(seller, product, advert_type, scale):
         # scale of adverts should not be more than number of users
-        scale = min(scale, len(GoogleAds.users))
+        # users = list(set(GoogleAds.users))  # Remove duplicate elements in list
+        users = list(GoogleAds.users)
+        scale = min(scale, len(users))
         GoogleAds.lock.acquire()
 
         # if advert_type is basic, choose any set of customers
         if advert_type == GoogleAds.ADVERT_BASIC:
             users = random.choices(GoogleAds.users, k=scale)
-            test = ', '.join(x.name for x in users)
-            logging.info('[GoogleAds]: Google pushed the %s Ad for product %s to users %s ', advert_type, product.product_name, test)
+            users = list(set(users))
+            users_str = ', '.join(x.name for x in users)
+            logging.info('[GoogleAds]: Google pushed the %s Ad for product %s of seller %d to users %s ',
+                         advert_type, product.product_name, product.seller_id, users_str)
         # if advert_type is targeted, choose user's who were not shown the same advert in previous tick
         elif advert_type == GoogleAds.ADVERT_TARGETED:
             new_users = list(set(GoogleAds.users) - set(GoogleAds.purchase_history[product]))
             users = random.choices(new_users, k=scale)
-            test=', '.join(x.name for x in users)
-            logging.info('[GoogleAds]: Google pushed the %s Ad for product %s to user %s ', advert_type, product.product_name, test)
+            users_str = ', '.join(x.name for x in users)
+            logging.info('[GoogleAds]: Google pushed the %s Ad for product %s of seller %d to user %s ',
+                         advert_type, product.product_name, product.seller_id, users_str)
         else:
             print('Not a valid Advert type')
             return
@@ -68,19 +73,19 @@ class GoogleAds(object):
     def register_user(user):
         GoogleAds.lock.acquire()
         GoogleAds.users.append(user)
-        logging.info("[GoogleAds]:Customer %s added to Google list of user with Tolerance:%s", user.name, user.tolerance)
+        # logging.info("[GoogleAds]:Customer %s added to Google list of user with Tolerance:%s",
+        # user.name, user.tolerance)
         GoogleAds.lock.release()
 
     @staticmethod
     def track_user_purchase(user, product):
         GoogleAds.lock.acquire()
         GoogleAds.purchase_history[product].append(user)
-        # for i in GoogleAds.purchase_history.items():
-        #     s=str(i)
-        #     if not (s.startswith("(<p")):
-        #         logging.info('[GoogleAds]: Google purchase history %s ',s)
         GoogleAds.lock.release()
 
     @staticmethod
     def user_coverage(product):
+        # purchase_history = ', '.join(x.name for x in GoogleAds.purchase_history[product])
+        # print("purchase history"+str(len(GoogleAds.purchase_history[product])))
+        # print("purchase history"+purchase_history)
         return len(set(GoogleAds.purchase_history[product])) / len(GoogleAds.users)

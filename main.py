@@ -35,7 +35,7 @@ sellers = initialize_seller()
 
 # Wait till the simulation ends
 try:
-    time.sleep(1)
+    time.sleep(3)
 except KeyboardInterrupt:
     pass
 

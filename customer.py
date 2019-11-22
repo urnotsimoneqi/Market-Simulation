@@ -9,7 +9,7 @@ from google_ads import GoogleAds
 from market import Market
 from twitter import Twitter
 import logging
-from mysql import *
+import mysql
 
 import math
 
@@ -56,10 +56,12 @@ class Customer(object):
             # logging.info("[Customer]: (%s,%d) buy the Products:[%s] from seller%s", self.name, self.tick_count, product.product_name, product.seller_id)
         # if not enough money in wallet, don't proceed
         if self.wallet < amount:  # enable buyer to buy more than one products
+            logging.info("[Customer]: (%s,%d) didn't have enough money to buy Products:[%s] from seller %s",
+                         self.name, self.tick_count, products[0].product_name, products[0].seller_id)
             return
         test = ', '.join(x.product_name for x in products)
         logging.info("[Customer]: (%s,%d) buy the Products:[%s] from seller%s with price%d", self.name, self.tick_count,
-                     test, product.seller_id, amount)
+                     test, products[0].seller_id, amount)
         # purchase the product from market
         # add amount as parameter
         Market.buy(self, products)
@@ -79,6 +81,9 @@ class Customer(object):
     # Loop function to keep the simulation going
     def loop(self):
         logging.info("[Customer]:Customer %s entered Trading", self.name)
+        # if self.tick_count > 10:
+        #     kill(self)
+
         while not self.STOP:
             self.tick_count += 1
             logging.info("[Customer]:(%s,%d): Next Quarter Begins ", self.name, self.tick_count)
@@ -106,17 +111,14 @@ class Customer(object):
             #  Certain buyers prefer items of higher quality
             if self.type == high_quality:
                 if product.product_quality < self.tolerance:
-                    logging.info("[Customer]: (%s,%d) prefer high quality, so she doesn't buy any products ",
+                    logging.info("[Customer]: (%s,%d) prefer high quality, so didn't buy any products ",
                                  self.name, self.tick_count)
                 else:
-                    # if sentiment is more than user's tolerance and user does not have the product,
-                    # then he/she may buy it with 20% chance.
-                    # If it already has the product, then chance of buying again is 1%
                     if user_sentiment >= self.tolerance and (
                             (product not in self.owned_products and random.random() < 0.2) or (
                             product in self.owned_products and random.random() < 0.01)):
-                        logging.info("[Customer]:(%s,%d)bought the product:[%s]", self.name, self.tick_count,
-                                     product.product_name)
+                        logging.info("[Customer]:(%s,%d) would like to buy the product:[%s]", self.name, self.tick_count,
+                                             product.product_name)
                         products = [product, product]
                         self.buy(products)
                     else:
@@ -124,21 +126,25 @@ class Customer(object):
             #  Buyers are interested in buying related products like a phone and its case in separate transaction.
             #  I.e. if a buyer bought the phone, they are more likely to purchase the case
             elif self.type == related_product:
-                pass
-                # tick_count == 0 represent the customer didn't buy anything
-                # if self.tick_count == 0 or self.tick_count == 1:
-                #     self.buy([product])
-                # else:
-                #     for product_bought in self.owned_products:
-                #         if if_related_product(product.product_id, product_bought.product_id):
-                #             logging.info("[Customer]: (%s,%d) bought product %s, "
-                #                          "so he is likely to buy related product %s ",
-                #                          self.name, self.tick_count, product_bought.product_name, product.product_name)
-                #             self.buy([product])
-                #         else:
-                #             logging.info("[Customer]: (%s,%d) is interested in buying related products, "
-                #                          "so he doesn't buy any products ",
-                #                          self.name, self.tick_count)
+                if self.owned_products:  # owned_products is not null
+                    # flag for related product
+                    related_temp = False
+                    for product_bought in self.owned_products:
+                        if mysql.if_related_product(product.product_id, product_bought.product_id):
+                            logging.info("[Customer]: (%s,%d) bought product %s, "
+                                         "so he is likely to buy related product %s ",
+                                         self.name, self.tick_count, product_bought.product_name, product.product_name)
+                            related_temp = True
+                            break
+                        else:
+                            logging.info("[Customer]: (%s,%d) is interested in buying related products, "
+                                         "so he doesn't buy any products ",
+                                         self.name, self.tick_count)
+                    if related_temp is True:
+                        self.buy([product])
+                else:
+                    # owned_products is null, possible to buy
+                    self.buy([product])
             else:
                 print('Not a valid Customer type')
 

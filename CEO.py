@@ -1,12 +1,13 @@
 from google_ads import GoogleAds
 import mysql
+import logging
 
 class CEO:
     def __init__(self, seller):
         self.seller = seller
 
     # Cognition system that decides what to do next.
-    def analyze(self):
+    def analyze(self, product):
         # WRITE YOUR INTELLIGENT CODE HERE
         # You can use following functions to make decision
         #   my_revenue
@@ -16,10 +17,16 @@ class CEO:
         #
         # You need to return the type of advert you want to publish and at what scale
         # GoogleAds.advert_price[advert_type] gives you the rate of an advert
-        for product in self.seller.products:
-            advert_type = GoogleAds.ADVERT_BASIC if GoogleAds.user_coverage(
-                product) < 0.5 else GoogleAds.ADVERT_TARGETED
-        scale = self.seller.wallet // GoogleAds.advert_price[advert_type] // 2  # not spending everything
+        if GoogleAds.user_coverage(product) < 0.5:
+            advert_type = GoogleAds.ADVERT_BASIC
+        else:
+            advert_type = GoogleAds.ADVERT_TARGETED
+        logging.info('[CEO]: (%s,%d) CEO wallet %d ads price %d',
+                     self.seller.name, self.seller.tick_count, self.seller.wallet, GoogleAds.advert_price[advert_type])
+        # scale = self.seller.wallet // GoogleAds.advert_price[advert_type] // 10  # not spending everything
+        scale = 5
+        logging.info('[CEO]: (%s,%d) CEO selected advert_type as %s with scale of %d for %s',
+                     self.seller.name, self.seller.tick_count, advert_type, scale, product.product_name)
         return advert_type, scale
 
     def get_most_popular_products(self):
@@ -32,7 +39,7 @@ class CEO:
         product_sales_amount, items_sold, product_id = self.get_most_popular_products()
 
         if product_sales_amount != -1 and product_sales_amount != -1 and items_sold != 1:
-            print('the most popular product', product_sales_amount, items_sold, product_id)
+            # print('the most popular product', product_sales_amount, items_sold, product_id)
             seller_balance = self.seller.wallet
             product_market_price = mysql.find_product_market_price(product_id)
             items_to_buy = int(seller_balance // product_market_price)
@@ -41,7 +48,8 @@ class CEO:
                 items_to_buy = 1
                 for stock in stocks:
                     if stock.product_id == product_id and stock.stock_quantity < 5:
-                        #print('stock', stock.product_id)
+                        # print('stock', stock.product_id)
+
                         new_quantity = stock.stock_quantity + items_to_buy
                         new_cost = stock.stock_cost + product_market_price * items_to_buy
                         seller_wallet = self.seller.wallet - new_cost

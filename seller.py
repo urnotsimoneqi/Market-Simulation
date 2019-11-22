@@ -84,7 +84,7 @@ class Seller(object):
 
         # choose what to do for next timestep
         ceo = CEO(self)
-        advert_type, scale = ceo.analyze()
+        # advert_type, scale = ceo.analyze()
         ceo.purchase_stock()
         if self.wallet < 200:
             ceo.apply_discount_for_all_products()
@@ -104,6 +104,7 @@ class Seller(object):
 
         # perform the actions and view the expense
         for product in self.products:
+            advert_type, scale = ceo.analyze(product)
             self.expense_history.append(GoogleAds.post_advertisement(self, product, advert_type, scale))
 
     # calculates the total revenue. Gives the revenue in last tick if latest_only = True
