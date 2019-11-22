@@ -11,7 +11,7 @@ from stock import Stock
 
 def connect_db():
     print('Connecting to Mysql Server...')
-    db = pymysql.connect("localhost", "root", "matthew123", "TESTDB")
+    db = pymysql.connect("localhost", "root", "Simon19980908", "TESTDB")
     print('Connect Successfully!')
     return db
 
@@ -68,8 +68,9 @@ def initialize_stock(seller_id):
                           product_status=product_status, seller_id=seller_id, stock_quantity=stock_quantity,
                           stock_cost=stock_cost, stock_price=stock_price)
             stock_list.append(stock)
-    except:
+    except Exception as e:
         print("Error: unable to fetch stock")
+        print(e)
     db.close()
     return stock_list
 
@@ -91,8 +92,9 @@ def initialize_seller():
             seller_products = initialize_stock(seller_id)
             seller = Seller(id=seller_id, name=seller_name, products=seller_products, wallet=seller_wallet)
             sellers.append(seller)
-    except:
+    except Exception as e:
         print("Error: unable to fetch seller")
+        print(e)
     db.close()
     return sellers
 

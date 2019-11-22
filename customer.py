@@ -110,19 +110,24 @@ class Customer(object):
                     # if sentiment is more than user's tolerance and user does not have the product,
                     # then he/she may buy it with 20% chance.
                     # If it already has the product, then chance of buying again is 1%
-                    if user_sentiment >= self.tolerance and (
-                            (product not in self.owned_products and random.random() < 0.2) or (
-                            product in self.owned_products and random.random() < 0.01)):
-                        logging.info("[Customer]:(%s,%d)bought the product:[%s]", self.name, self.tick_count,
-                                     product.product_name)
-                        products = [product, product]
+                    if user_sentiment >= self.tolerance and ((product not in self.owned_products and random.random() < 0.1) or (product in self.owned_products and random.random() < 0.01)):
+                        logging.info("[Customer]:(%s,%d)bought the product:[%s]", self.name, self.tick_count, product.product_name)
+                        products= [product, product]
                         self.buy(products)
+                    # if user_sentiment >= self.tolerance and (
+                    #         (product not in self.owned_products and random.random() < 0.2) or (
+                    #         product in self.owned_products and random.random() < 0.01)):
+                    #     products = [product, product]
+                    #     logging.info("[Customer]:(%s,%d)bought %d product:[%s]", self.name, self.tick_count,
+                    #                  len(products), product.product_name)
+                    #     self.buy(products)
                     else:
                         logging.info("[Customer]:###(%s,%d)doesn't buy any products ", self.name, self.tick_count)
             #  Buyers are interested in buying related products like a phone and its case in separate transaction.
             #  I.e. if a buyer bought the phone, they are more likely to purchase the case
             elif self.type == related_product:
-                pass
+                products = [product, product]
+                self.buy(products)
                 # tick_count == 0 represent the customer didn't buy anything
                 # if self.tick_count == 0 or self.tick_count == 1:
                 #     self.buy([product])
@@ -141,9 +146,9 @@ class Customer(object):
                 print('Not a valid Customer type')
 
             # ANSWER d.
-            # if sentiment is more than user's tolerance and user does not have the product, then he/she may buy it with 20% chance. If it already has the product, then chance of buying again is 1%
+            # # if sentiment is more than user's tolerance and user does not have the product, then he/she may buy it with 20% chance. If it already has the product, then chance of buying again is 1%
             # if user_sentiment >= self.tolerance and ((product not in self.owned_products and random.random() < 0.1) or (product in self.owned_products and random.random() < 0.01)):
-            #     logging.info("[Customer]:(%s,%d)bought the product:[%s]", self.name, self.tick_count, product.name)
+            #     logging.info("[Customer]:(%s,%d)bought the product:[%s]", self.name, self.tick_count, product.product_name)
             #     self.buy([product])
 
         # remove the adverts from ad_space
