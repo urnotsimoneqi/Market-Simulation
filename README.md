@@ -9,7 +9,7 @@ Buyer Agent, CEO Agent and reporting Agent. At a minimum provide the following c
 ### Selling Agent
 - [x] Enable more than one seller and ability to sell more than one product per seller.
 - [x] Provide ability to increase or reduce price based on past history 
-- Establish relationships between products, such as if a phone has an accessory like a case, the Seller should offer together. 
+- [x] Establish relationships between products, such as if a phone has an accessory like a case, the Seller should offer together. 
 ### Buyer Agent
 - [x] Enable ability to own more than one product
 - [x] Add a buyer “type” or demographics, for example
