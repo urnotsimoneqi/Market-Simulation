@@ -79,10 +79,3 @@ class CEO:
                 updated_selling_price = selling_price * discount
                 mysql.update_product_selling_price(least_popular_product_id, self.seller.id, updated_selling_price)
 
-    # if seller's wallet is < 200, reduce price for all the products
-    def apply_discount_for_all_products(self):
-        discount = 0.8
-        products = None
-        products = mysql.find_all_products(self.seller.id)
-        if products is not None:
-            mysql.apply_discount_to_all_procducts(self.seller.id, discount)

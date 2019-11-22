@@ -39,6 +39,8 @@ class Market(object):
         product_price = products[0].stock_price
         seller_id = products[0].seller_id
 
+        most_valuable_customer_id = mysql.find_most_valuable_customer(seller_id)
+
         # get the seller for product from catalogue
         for product in products:
             # # random choose seller
@@ -50,6 +52,10 @@ class Market(object):
             for x in Market.catalogue.get(product.product_name):
                 if x.id == seller_id:
                     seller = x
+
+            # find the buyer who has spent the most in the same seller and offer discount
+            if most_valuable_customer_id == buyer.id:
+                product_price = product.stock_price * 0.95
 
             # call seller's sold function
             seller.sold(product)

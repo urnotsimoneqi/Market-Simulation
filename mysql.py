@@ -296,3 +296,27 @@ def apply_discount_to_all_procducts(seller_id, discount):
     except:
         print("Error: unable to apply discount for all products of a seller")
     db.close()
+
+
+def find_most_valuable_customer(seller_id):
+    db = connect_db()
+    cursor = db.cursor()
+    customer_id = None
+
+    sql = "select customer_id from transaction where seller_id = " \
+          + str(seller_id) + " group by customer_id order by sum(transaction_amount) desc limit 1;"
+
+    try:
+        cursor.execute(sql)
+        results = None
+        results = cursor.fetchall()
+        if results is None:
+            print(seller_id, 'null')
+        else:
+            for row in results:
+                customer_id = row[0]
+    except:
+        print("Error: unable to find the most valuable customer sold by a seller")
+    db.close()
+    # print(products)
+    return customer_id
