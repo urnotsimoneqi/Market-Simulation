@@ -203,11 +203,10 @@ def find_product_market_price(product_id):
 
 
 def update_stock(product_id, seller_id, stock_quantity, stock_cost, seller_wallet):
-    print('purchase_stock')
     db = connect_db()
     cursor = db.cursor()
-    sql1 = "UPDATE stock set stock_quantity = " + str(stock_quantity) + ", stock_cost = " + str(
-        stock_cost) + " WHERE product_id = " + str(product_id) + " AND seller_id = " + str(seller_id)
+    sql1 = "UPDATE stock set stock_quantity = " + str(stock_quantity) \
+           + " WHERE product_id = " + str(product_id) + " AND seller_id = " + str(seller_id)
     sql2 = "UPDATE seller set seller_wallet = " + str(seller_wallet) + " WHERE seller_id = " + str(seller_id)
     try:
         cursor.execute(sql1)
@@ -219,4 +218,66 @@ def update_stock(product_id, seller_id, stock_quantity, stock_cost, seller_walle
         print(cursor.rowcount)
     except:
         print("Error: unable to update stock from product purchase")
+    db.close()
+
+
+def find_all_products(seller_id):
+    db = connect_db()
+    cursor = db.cursor()
+    products = []
+
+    sql = "select product_id, sum(transaction_quantity) from transaction where customer_id = " + str(seller_id) \
+          + " group by product_id order by sum(transaction_quantity) desc;"
+
+    try:
+        cursor.execute(sql)
+        results = None
+        results = cursor.fetchall()
+        if results is None:
+            print(seller_id, 'null')
+        else:
+            for row in results:
+                product_id = row[0]
+                items_sold = int(row[1])
+                products.append([product_id, items_sold])
+    except:
+        print("Error: unable to fetch all products sold by a seller")
+    db.close()
+    # print(products)
+    return products
+
+
+def find_product_selling_price(product_id):
+    db = connect_db()
+    cursor = db.cursor()
+    selling_price = -1
+
+    sql = "select stock_price from stock where product_id = " + str(product_id)
+    try:
+        cursor.execute(sql)
+        results = cursor.fetchall()
+        if results is None:
+            print(product_id, 'null')
+        else:
+            for row in results:
+                selling_price = row[0]
+    except:
+        print("Error: unable to fetch market_price from product")
+    db.close()
+    return selling_price
+
+
+def update_product_selling_price(product_id, seller_id, selling_price):
+    db = connect_db()
+    cursor = db.cursor()
+
+    sql1 = "UPDATE stock set stock_price = " + str(selling_price) \
+           + " WHERE product_id = " + str(product_id) + " AND seller_id = " + str(seller_id)
+
+    try:
+        cursor.execute(sql1)
+        db.commit()
+        print(cursor.rowcount)
+    except:
+        print("Error: unable to update product selling price")
     db.close()
