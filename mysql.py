@@ -30,8 +30,8 @@ def initialize_customer():
             customer = Customer(id=customer_id, type=customer_type, name=customer_name, email=customer_email,
                                 wallet=customer_wallet, tolerance=customer_tolerance)
             customers.append(customer)
-    except:
-        print("Error: unable to fetch customer")
+    except Exception as e:
+        print(e)
     db.close()
     return customers
 
@@ -63,8 +63,8 @@ def initialize_stock(seller_id):
                           product_status=product_status, seller_id=seller_id, stock_quantity=stock_quantity,
                           stock_cost=stock_cost, stock_price=stock_price)
             stock_list.append(stock)
-    except:
-        print("Error: unable to fetch stock")
+    except Exception as e:
+        print(e)
     db.close()
     return stock_list
 
@@ -86,8 +86,8 @@ def initialize_seller():
             seller_products = initialize_stock(seller_id)
             seller = Seller(id=seller_id, name=seller_name, products=seller_products, wallet=seller_wallet)
             sellers.append(seller)
-    except:
-        print("Error: unable to fetch seller")
+    except Exception as e:
+        print(e)
     db.close()
     return sellers
 
@@ -95,7 +95,6 @@ def initialize_seller():
 def reporting(revenue, expenses, profit):
     db = connect_db()
     # db = pymysql.connect("localhost", "root", "Simon19980908", "TESTDB")
-
     db.close()
 
 
@@ -103,17 +102,19 @@ def reporting(revenue, expenses, profit):
 def save_txn(txn):
     db = connect_db()
     cursor = db.cursor()
-    print("Save transaction")
-    sql = """INSERT INTO transaction (transaction_datetime, transaction_year, transaction_quarter, seller_id, customer_id,
-                             product_id, related_product_id,
-                             transaction_quantity, transaction_amount, promotion_id)
-                             VALUES (txn.timestamp, txn.year, txn.quarter, 
-                             txn.seller_id, txn.customer_id, txn.product_id, null, txn.quantity, txn.total_amount, null)"""
+    sql = "INSERT INTO transaction (transaction_datetime, transaction_year, transaction_quarter, seller_id, customer_id, \
+                             product_id, \
+                             transaction_quantity, transaction_amount) \
+                             VALUES ('%s', %s, %s, %s, %s, %s, %s, %s)"
+    sql = sql % (txn.timestamp, txn.year, txn.quarter, txn.seller_id, txn.customer_id, txn.product_id,
+                 txn.quantity, txn.total_amount)
     try:
         cursor.execute(sql)
+        print("Insert successfully")
         db.commit()
-    except:
+    except Exception as e:
         # Rollback in case there is any error
+        print(e)
         db.rollback()
     db.close()
 
@@ -132,8 +133,8 @@ def if_related_product(product_id1, product_id2):
             return False
         else:
             return True
-    except:
-        print("Error: unable to fetch related_product")
+    except Exception as e:
+        print(e)
     db.close()
 
 
@@ -150,8 +151,8 @@ def initialize_promotions():
             promotion_discount = row[1]
             promotion = promotion(promotion_id, promotion_discount)
             promotions.append(promotion)
-    except:
-        print("Error: unable to fetch promotion")
+    except Exception as e:
+        print(e)
     db.close()
     return promotions
 
@@ -177,7 +178,7 @@ def find_most_popular_products(seller_id):
                 product_sales_amount = row[0]
                 items_sold = row[1]
                 product_id = row[2]
-    except:
-        print("Error: unable to fetch most popular products")
+    except Exception as e:
+        print(e)
     db.close()
     return product_sales_amount, items_sold, product_id
