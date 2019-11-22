@@ -115,33 +115,33 @@ VALUES (2, 2);
 -- ----------------------------
 -- Table structure for product
 -- ----------------------------
-CREATE TABLE `product` (
-                           `product_id`      int auto_increment NOT NULL,
-                           `product_name`    varchar(255),
-                           `product_quality` double(11, 2),
-                           `product_status`  varchar(255) DEFAULT NULL,
-                           PRIMARY KEY (`product_id`)
+CREATE TABLE product
+(
+    product_id           int auto_increment NOT NULL primary key,
+    product_name         varchar(255),
+    product_market_price double,
+    product_status       varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of product
 -- ----------------------------
-INSERT INTO product (product_name, product_quality, product_status)
-VALUES ('iPhone XS', 0.90, null);
-INSERT INTO product (product_name, product_quality, product_status)
-VALUES ('iPhone XR', 0.80, null);
-INSERT INTO product (product_name, product_quality, product_status)
-VALUES ('Google pixel', 0.70, null);
-INSERT INTO product (product_name, product_quality, product_status)
-VALUES ('Huawei P30 pro', 0.90, null);
-INSERT INTO product (product_name, product_quality, product_status)
-VALUES ('iPhone XS case', 0.80, null);
-INSERT INTO product (product_name, product_quality, product_status)
-VALUES ('iPhone XR case', 0.70, null);
-INSERT INTO product (product_name, product_quality, product_status)
-VALUES ('Google pixel case', 0.60, null);
-INSERT INTO product (product_name, product_quality, product_status)
-VALUES ('Huawei P30 pro case', 0.50, null);
+INSERT INTO product (product_name, product_market_price, product_status)
+VALUES ('iPhone XS', 500, null);
+INSERT INTO product (product_name, product_market_price, product_status)
+VALUES ('iPhone XR', 600, null);
+INSERT INTO product (product_name, product_market_price, product_status)
+VALUES ('Google pixel', 500, null);
+INSERT INTO product (product_name, product_market_price, product_status)
+VALUES ('Huawei P30 pro', 300, null);
+INSERT INTO product (product_name, product_market_price, product_status)
+VALUES ('iPhone XS case', 10, null);
+INSERT INTO product (product_name, product_market_price, product_status)
+VALUES ('iPhone XR case', 10, null);
+INSERT INTO product (product_name, product_market_price, product_status)
+VALUES ('Google pixel case', 15, null);
+INSERT INTO product (product_name, product_market_price, product_status)
+VALUES ('Huawei P30 pro case', 20, null);
 
 -- ----------------------------
 -- Table structure for promotion
@@ -246,12 +246,13 @@ VALUES (5, 2019, 3, 0, 480, 240);
 -- ----------------------------
 CREATE TABLE stock
 (
-    id             int auto_increment primary key not null,
-    product_id     int                            NOT NULL,
-    seller_id      int                            NOT NULL,
-    stock_quantity int    DEFAULT 0,
-    stock_cost     double DEFAULT 0,
-    stock_price    double DEFAULT 0,
+    id              int auto_increment primary key not null,
+    product_id      int                            NOT NULL,
+    product_quality double(11, 2),
+    seller_id       int                            NOT NULL,
+    stock_quantity  int    DEFAULT 0,
+    stock_cost      double DEFAULT 0,
+    stock_price     double DEFAULT 0,
     FOREIGN KEY (product_id) REFERENCES product (product_id),
     FOREIGN KEY (seller_id) REFERENCES seller (seller_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -259,22 +260,22 @@ CREATE TABLE stock
 -- ----------------------------
 -- Records of stock
 -- ----------------------------
-INSERT INTO stock (product_id, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (1, 1, 20, 300, 500);
-INSERT INTO stock (product_id, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (2, 2, 10, 200, 300);
-INSERT INTO stock (product_id, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (3, 4, 50, 600, 1000);
-INSERT INTO stock (product_id, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (4, 3, 50, 600, 1000);
-INSERT INTO stock (product_id, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (5, 5, 50, 600, 1000);
-INSERT INTO stock (product_id, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (6, 1, 50, 700, 1000);
-INSERT INTO stock (product_id, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (7, 2, 20, 600, 1000);
-INSERT INTO stock (product_id, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (8, 4, 50, 600, 1000);
+INSERT INTO stock (product_id, product_quality, seller_id, stock_quantity, stock_cost, stock_price)
+VALUES (1, 0.8, 1, 20, 300, 500);
+INSERT INTO stock (product_id, product_quality, seller_id, stock_quantity, stock_cost, stock_price)
+VALUES (2, 0.7, 2, 10, 200, 300);
+INSERT INTO stock (product_id, product_quality, seller_id, stock_quantity, stock_cost, stock_price)
+VALUES (3, 0.8, 4, 50, 600, 1000);
+INSERT INTO stock (product_id, product_quality, seller_id, stock_quantity, stock_cost, stock_price)
+VALUES (4, 0.6, 3, 50, 600, 1000);
+INSERT INTO stock (product_id, product_quality, seller_id, stock_quantity, stock_cost, stock_price)
+VALUES (5, 0.5, 5, 50, 600, 1000);
+INSERT INTO stock (product_id, product_quality, seller_id, stock_quantity, stock_cost, stock_price)
+VALUES (6, 0.8, 1, 50, 700, 1000);
+INSERT INTO stock (product_id, product_quality, seller_id, stock_quantity, stock_cost, stock_price)
+VALUES (7, 0.7, 2, 20, 600, 1000);
+INSERT INTO stock (product_id, product_quality, seller_id, stock_quantity, stock_cost, stock_price)
+VALUES (8, 0.8, 4, 50, 600, 1000);
 -- ----------------------------
 -- Table structure for trans_record
 -- ----------------------------
