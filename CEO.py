@@ -21,3 +21,9 @@ class CEO:
                 product) < 0.5 else GoogleAds.ADVERT_TARGETED
         scale = self.seller.wallet // GoogleAds.advert_price[advert_type] // 2  # not spending everything
         return advert_type, scale
+
+    def find_most_popular_products(self):
+        seller_id = self.seller.id
+
+    def purchase_stock(self):
+        pass
