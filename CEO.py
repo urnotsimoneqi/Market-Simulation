@@ -30,6 +30,23 @@ class CEO:
         return product_sales_amount, items_sold, product_id
 
     def purchase_stock(self):
+        stocks = mysql.initialize_stock(self.seller.id)
         product_sales_amount, items_sold, product_id = self.get_most_popular_products()
+
         if product_sales_amount != -1 and product_sales_amount != -1 and items_sold != 1:
             print('the most popular product', product_sales_amount, items_sold, product_id)
+            seller_balance = self.seller.wallet
+            product_market_price = mysql.find_product_market_price(product_id)
+            items_to_buy = int(seller_balance // product_market_price)
+
+            if self.seller.wallet > 0 and items_to_buy > 0:
+                print('items_to_buy', items_to_buy)
+                items_to_buy = 1
+                for stock in stocks:
+                    if stock.product_id == product_id and stock.stock_quantity < 5:
+                        print('stock', stock.product_id)
+                        new_quantity = stock.stock_quantity + items_to_buy
+                        new_cost = stock.stock_cost + product_market_price * items_to_buy
+                        seller_wallet = self.seller.wallet - new_cost
+                        mysql.update_stock(product_id, self.seller.id, new_quantity, new_cost, seller_wallet)
+                        self.seller.wallet = seller_wallet
