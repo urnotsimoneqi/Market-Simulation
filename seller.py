@@ -86,6 +86,7 @@ class Seller(object):
         ceo = CEO(self)
         advert_type, scale = ceo.analyze()
         ceo.purchase_stock()
+        ceo.adjust_price()
 
         # ANSWER a. print data to show progress
         # print('Revenue in previous quarter:', self.my_revenue(True))
