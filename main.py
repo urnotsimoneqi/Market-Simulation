@@ -8,6 +8,12 @@ from constants import seed
 from fuzzy_logic import fuzzy_logic
 from mysql import initialize_customer, initialize_seller
 # from utils import plot
+from operator import itemgetter
+import send_email
+
+SENDER_ROBOT = 'a0198900xrobot@gmail.com'
+RECEIVER_ROBOT = 'a0198900xreceiver@gmail.com'
+PASSWORD = 'A0198900X'
 
 now = datetime.now()
 dt_string = now.strftime("%H%M%S_%d_%m_%Y")
@@ -53,13 +59,17 @@ for seller in sellers:
 
 # print('Total Profit Apple:', seller_apple.my_profit())
 # print('Total Profit Samsung:', seller_samsung.my_profit())
+seller_performance = []
 for seller in sellers:
     # print('Total Profit:', seller.my_profit())
     grade = fuzzy_logic(seller.my_revenue(), seller.my_profit())
-    # print(grade)
-    # print("Seller %s's Total Profit:%d"%(seller.name, seller.my_profit()))
-    # print("Seller %s's Total Revenue:%d"%(seller.name, seller.my_revenue()))
-    # print("Seller %s's Total Expense:%d"%(seller.name, seller.my_expenses()))
+    print("Seller %s's Total Profit:%d"%(seller.name, seller.my_profit()))
+    print("Seller %s's Total Revenue:%d"%(seller.name, seller.my_revenue()))
+    print("Seller %s's Total Expense:%d"%(seller.name, seller.my_expenses()))
+    seller_performance.append([seller.name, seller.my_revenue(), seller.my_profit(), grade])
+
+seller_performance = sorted(seller_performance, key=itemgetter(3), reverse=True)
+send_email.send_mail(SENDER_ROBOT, RECEIVER_ROBOT, seller_performance, 'NULL')
 
 # Kill consumer threads
 for consumer in customers:
