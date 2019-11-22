@@ -57,7 +57,7 @@ CREATE TABLE ads
 -- Records of ads
 -- ----------------------------
 INSERT INTO Ads (ad_type, description, seller_id, product_id, ad_expense, ad_year, ad_quarter, status)
-VALUES ('Basic', '', 1, 2, 100, 2019, 2, 1);
+VALUES ('Basic', '', 2, 2, 100, 2019, 2, 1);
 INSERT INTO Ads (ad_type, description, seller_id, product_id, ad_expense, ad_year, ad_quarter, status)
 VALUES ('Target', '', 5, 4, 200, 2019, 2, 1);
 
