@@ -38,7 +38,6 @@ class CEO:
             seller_balance = self.seller.wallet
             product_market_price = mysql.find_product_market_price(product_id)
             items_to_buy = int(seller_balance // product_market_price)
-
             if self.seller.wallet > 0 and items_to_buy > 0:
                 print('items_to_buy', items_to_buy)
                 items_to_buy = 1
