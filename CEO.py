@@ -37,13 +37,44 @@ class CEO:
             product_market_price = mysql.find_product_market_price(product_id)
             items_to_buy = int(seller_balance // product_market_price)
             if self.seller.wallet > 0 and items_to_buy > 0:
-                print('items_to_buy', items_to_buy)
+                # print('items_to_buy', items_to_buy)
                 items_to_buy = 1
                 for stock in stocks:
                     if stock.product_id == product_id and stock.stock_quantity < 5:
-                        print('stock', stock.product_id)
+                        #print('stock', stock.product_id)
                         new_quantity = stock.stock_quantity + items_to_buy
                         new_cost = stock.stock_cost + product_market_price * items_to_buy
                         seller_wallet = self.seller.wallet - new_cost
                         mysql.update_stock(product_id, self.seller.id, new_quantity, new_cost, seller_wallet)
                         self.seller.wallet = seller_wallet
+
+    def adjust_price(self):
+        products_sold = None
+        most_popular_product_id = -1
+        least_popular_product_id = -1
+
+        products_sold = mysql.find_all_products(self.seller.id)
+
+        if products_sold is not None and len(products_sold) != 0:
+
+            if len(products_sold) > 1:
+                most_popular_product_id = products_sold[0][0]
+                least_popular_product_id = products_sold[-1][0]
+            elif products_sold[0][1] > 0:
+                most_popular_product_id = products_sold[0][0]
+                least_popular_product_id = -1
+            else:
+                most_popular_product_id = -1
+                least_popular_product_id = products_sold[-1][0]
+
+            if most_popular_product_id != -1:
+                selling_price = mysql.find_product_selling_price(most_popular_product_id)
+                discount = 1.1
+                updated_selling_price = selling_price * discount
+                mysql.update_product_selling_price(most_popular_product_id, self.seller.id, updated_selling_price)
+
+            if least_popular_product_id != -1:
+                selling_price = mysql.find_product_selling_price(least_popular_product_id)
+                discount = 0.9
+                updated_selling_price = selling_price * discount
+                mysql.update_product_selling_price(least_popular_product_id, self.seller.id, updated_selling_price)
