@@ -9,8 +9,6 @@ from google_ads import GoogleAds
 from market import Market
 from twitter import Twitter
 import logging
-from mysql import *
-
 import math
 
 random.seed(seed)

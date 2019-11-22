@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 
 import pymysql
+from sqlalchemy.cprocessors import str_to_date, str_to_datetime
+
 from customer import Customer
 from product import Product
 from seller import Seller
@@ -106,18 +108,25 @@ def reporting(revenue, expenses, profit):
 def save_txn(txn):
     db = connect_db()
     cursor = db.cursor()
-    print("Save transaction")
-    sql = """INSERT INTO transaction (transaction_datetime, transaction_year, transaction_quarter, seller_id, customer_id,
-                             product_id, related_product_id,
-                             transaction_quantity, transaction_amount, promotion_id)
-                             VALUES (txn.timestamp, txn.year, txn.quarter, 
-                             txn.seller_id, txn.customer_id, txn.product_id, null, txn.quantity, txn.total_amount, null)"""
+    # print(txn.__dict__)
+
+    sql = "INSERT INTO transaction (transaction_datetime, transaction_year, transaction_quarter, seller_id, customer_id, \
+                             product_id, \
+                             transaction_quantity, transaction_amount) \
+                             VALUES ('%s', %s, %s, %s, %s, %s, %s, %s)"
+    sql = sql % (txn.timestamp, txn.year, txn.quarter, txn.seller_id, txn.customer_id, txn.product_id,
+                 txn.quantity, txn.total_amount)
+
     try:
         cursor.execute(sql)
+        print("Insert successfully")
         db.commit()
-    except:
+    except Exception as e:
         # Rollback in case there is any error
+        print(e)
+        print("Insert Error")
         db.rollback()
+    cursor.close()
     db.close()
 
 

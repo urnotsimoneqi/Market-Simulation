@@ -6,7 +6,7 @@ import numpy
 from CEO import CEO
 from constants import tick_time
 from google_ads import GoogleAds
-from market import Market
+from market import *
 from twitter import Twitter
 import logging
 
