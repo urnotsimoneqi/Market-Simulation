@@ -122,11 +122,11 @@ class Customer(object):
                 # products = [product, product]
                 # self.buy(products)
                 # when tick_count == 0, there's no transaction
-                if self.tick_count == 0:
-                    pass
-                # when tick_count == 1, there's no product in the ad_space
-                elif self.tick_count == 1:
+                if self.tick_count == 2:
+                    print("[Related Type Customer]:  would like to buy product %s, ",
+                          self.name, self.tick_count, product.product_name,)
                     self.buy([product])
+                # when tick_count == 1, there's no product in the ad_space
                 else:
                     for product_bought in self.owned_products:
                         if mysql.if_related_product(product.product_id, product_bought.product_id):

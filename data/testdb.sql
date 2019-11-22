@@ -27,15 +27,15 @@ CREATE TABLE seller
 -- Records of seller
 -- ----------------------------
 INSERT INTO seller (seller_name, seller_wallet)
-VALUES ('Alice', 1000.00);
+VALUES ('Alice', 10000.00);
 INSERT INTO seller (seller_name, seller_wallet)
-VALUES ('Bob', 1000.00);
+VALUES ('Bob', 10000.00);
 INSERT INTO seller (seller_name, seller_wallet)
-VALUES ('Carol', 1000.00);
+VALUES ('Carol', 10000.00);
 INSERT INTO seller (seller_name, seller_wallet)
-VALUES ('Dave', 500.00);
+VALUES ('Dave', 5000.00);
 INSERT INTO seller (seller_name, seller_wallet)
-VALUES ('Eve', 500.00);
+VALUES ('Eve', 5000.00);
 
 -- ----------------------------
 -- Table structure for ads

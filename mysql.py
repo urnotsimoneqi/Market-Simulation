@@ -182,3 +182,23 @@ def find_most_popular_products(seller_id):
         print(e)
     db.close()
     return product_sales_amount, items_sold, product_id
+
+
+def update_stock(product_id, seller_id, stock_quantity, stock_cost, seller_wallet):
+    print('purchase_stock')
+    db = connect_db()
+    cursor = db.cursor()
+    sql1 = "UPDATE stock set stock_quantity = " + str(stock_quantity) + ", stock_cost = " + str(
+        stock_cost) + " WHERE product_id = " + str(product_id) + " AND seller_id = " + str(seller_id)
+    sql2 = "UPDATE seller set seller_wallet = " + str(seller_wallet) + " WHERE seller_id = " + str(seller_id)
+    try:
+        cursor.execute(sql1)
+        db.commit()
+        print(cursor.rowcount)
+
+        cursor.execute(sql2)
+        db.commit()
+        print(cursor.rowcount)
+    except:
+        print("Error: unable to update stock from product purchase")
+    db.close()
