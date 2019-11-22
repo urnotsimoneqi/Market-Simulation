@@ -1,5 +1,7 @@
-from google_ads import GoogleAds
+from threading import Lock
 
+from google_ads import GoogleAds
+import mysql
 
 class CEO:
     def __init__(self, seller):
@@ -22,8 +24,12 @@ class CEO:
         scale = self.seller.wallet // GoogleAds.advert_price[advert_type] // 2  # not spending everything
         return advert_type, scale
 
-    def find_most_popular_products(self):
+    def get_most_popular_products(self):
         seller_id = self.seller.id
+        product_sales_amount, items_sold, product_id = mysql.find_most_popular_products(seller_id)
+        return product_sales_amount, items_sold, product_id
 
     def purchase_stock(self):
-        pass
+        product_sales_amount, items_sold, product_id = self.get_most_popular_products()
+        if product_sales_amount != -1 and product_sales_amount != -1 and items_sold != 1:
+            print('the most popular product', product_sales_amount, items_sold, product_id)

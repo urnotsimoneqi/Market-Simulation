@@ -2,15 +2,14 @@
 
 import pymysql
 from customer import Customer
-from product import Product
 from seller import Seller
 from stock import Stock
 
 
 def connect_db():
-    print('Connecting to Mysql Server...')
+    # print('Connecting to Mysql Server...')
     db = pymysql.connect("localhost", "root", "matthew123", "TESTDB")
-    print('Connect Successfully!')
+    #print('Connect Successfully!')
     return db
 
 
@@ -55,7 +54,6 @@ def initialize_stock(seller_id):
             product_name = row[1]
             product_market_price = row[2]
             product_status = row[3]
-
             seller_id = row[4]
             product_quality = row[5]
             stock_quantity = row[6]
@@ -160,21 +158,26 @@ def initialize_promotions():
 
 
 def find_most_popular_products(seller_id):
-    most_popular_product = dict()
     db = connect_db()
     cursor = db.cursor()
-    sql = "SELECT * FROM select sum(transaction_amount), count(*), product_id from transaction where seller_id = " \
-          + str(seller_id) \
-          + " group by product_id order by count(*) desc limit 1;"
+    product_sales_amount = -1
+    product_id = -1
+    items_sold = -1
+
+    sql = "select sum(transaction_amount), count(*), product_id from transaction where seller_id = " + str(
+        seller_id) + " group by product_id order by count(*) desc limit 1;"
     try:
         cursor.execute(sql)
+        results = None
         results = cursor.fetchall()
-        for row in results:
-            product_id = row[0]
-            items_sold = row[1]
-            most_popular_product[product_id] = items_sold
-
+        if results is None:
+            print(seller_id, 'null')
+        else:
+            for row in results:
+                product_sales_amount = row[0]
+                items_sold = row[1]
+                product_id = row[2]
     except:
         print("Error: unable to fetch most popular products")
     db.close()
-    return most_popular_product
+    return product_sales_amount, items_sold, product_id

@@ -35,7 +35,7 @@ sellers = initialize_seller()
 
 # Wait till the simulation ends
 try:
-    time.sleep(2)
+    time.sleep(1)
 except KeyboardInterrupt:
     pass
 
@@ -56,10 +56,10 @@ for seller in sellers:
 for seller in sellers:
     # print('Total Profit:', seller.my_profit())
     grade = fuzzy_logic(seller.my_revenue(), seller.my_profit())
-    print(grade)
-    print("Seller %s's Total Profit:%d"%(seller.name, seller.my_profit()))
-    print("Seller %s's Total Revenue:%d"%(seller.name, seller.my_revenue()))
-    print("Seller %s's Total Expense:%d"%(seller.name, seller.my_expenses()))
+    # print(grade)
+    # print("Seller %s's Total Profit:%d"%(seller.name, seller.my_profit()))
+    # print("Seller %s's Total Revenue:%d"%(seller.name, seller.my_revenue()))
+    # print("Seller %s's Total Expense:%d"%(seller.name, seller.my_expenses()))
 
 # Kill consumer threads
 for consumer in customers:

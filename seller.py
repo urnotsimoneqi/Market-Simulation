@@ -83,13 +83,15 @@ class Seller(object):
         self.wallet += self.my_profit(True)
 
         # choose what to do for next timestep
-        advert_type, scale = CEO(self).analyze()
+        ceo = CEO(self)
+        advert_type, scale = ceo.analyze()
+        ceo.purchase_stock()
 
         # ANSWER a. print data to show progress
-        print('Revenue in previous quarter:', self.my_revenue(True))
-        print('Expenses in previous quarter:', self.my_expenses(True))
-        print('Profit in previous quarter:', self.my_profit(True))
-        print('\nStrategy for next quarter \nAdvert Type: {}, scale: {}\n\n'.format(advert_type, scale))
+        # print('Revenue in previous quarter:', self.my_revenue(True))
+        # print('Expenses in previous quarter:', self.my_expenses(True))
+        # print('Profit in previous quarter:', self.my_profit(True))
+        # print('\nStrategy for next quarter \nAdvert Type: {}, scale: {}\n\n'.format(advert_type, scale))
 
         logging.info('[Seller]: (%s,%d) Revenue in previous quarter:%d', self.name, self.tick_count, self.my_revenue(True))
         logging.info('[Seller]: (%s,%d) Expenses in previous quarter:%d', self.name, self.tick_count, self.my_expenses(True))
@@ -128,4 +130,3 @@ class Seller(object):
 
     def __str__(self):
         return self.name
-
