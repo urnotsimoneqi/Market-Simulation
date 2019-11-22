@@ -157,3 +157,24 @@ def initialize_promotions():
         print("Error: unable to fetch promotion")
     db.close()
     return promotions
+
+
+def find_most_popular_products(seller_id):
+    most_popular_product = dict()
+    db = connect_db()
+    cursor = db.cursor()
+    sql = "SELECT * FROM select sum(transaction_amount), count(*), product_id from transaction where seller_id = " \
+          + str(seller_id) \
+          + " group by product_id order by count(*) desc limit 1;"
+    try:
+        cursor.execute(sql)
+        results = cursor.fetchall()
+        for row in results:
+            product_id = row[0]
+            items_sold = row[1]
+            most_popular_product[product_id] = items_sold
+
+    except:
+        print("Error: unable to fetch most popular products")
+    db.close()
+    return most_popular_product
