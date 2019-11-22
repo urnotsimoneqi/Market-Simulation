@@ -9,7 +9,7 @@ from stock import Stock
 
 def connect_db():
     print('Connecting to Mysql Server...')
-    db = pymysql.connect("localhost", "root", "Simon19980908", "TESTDB")
+    db = pymysql.connect("localhost", "root", "matthew123", "TESTDB")
     print('Connect Successfully!')
     return db
 
@@ -44,8 +44,8 @@ def initialize_stock(seller_id):
     stock_list = []
     db = connect_db()
     cursor = db.cursor()
-    sql = "SELECT a.product_id, a.product_name, a.product_quality, a.product_status, " \
-          "b.seller_id, b.stock_quantity, b.stock_cost, b.stock_price FROM " \
+    sql = "SELECT a.product_id, a.product_name, a.product_market_price, a.product_status, " \
+          "b.seller_id, b.product_quality, b.stock_quantity, b.stock_cost, b.stock_price FROM " \
           "product AS a,stock AS b where a.product_id=b.product_id and b.seller_id= " + str(seller_id)
     try:
         cursor.execute(sql)
@@ -53,13 +53,16 @@ def initialize_stock(seller_id):
         for row in results:
             product_id = row[0]
             product_name = row[1]
-            product_quality = row[2]
+            product_market_price = row[2]
             product_status = row[3]
+
             seller_id = row[4]
-            stock_quantity = row[5]
-            stock_cost = row[6]
-            stock_price = row[7]
-            stock = Stock(product_id=product_id, product_name=product_name, product_quality=product_quality,
+            product_quality = row[5]
+            stock_quantity = row[6]
+            stock_cost = row[7]
+            stock_price = row[8]
+            stock = Stock(product_id=product_id, product_market_price=product_market_price, product_name=product_name,
+                          product_quality=product_quality,
                           product_status=product_status, seller_id=seller_id, stock_quantity=stock_quantity,
                           stock_cost=stock_cost, stock_price=stock_price)
             stock_list.append(stock)
@@ -67,31 +70,6 @@ def initialize_stock(seller_id):
         print("Error: unable to fetch stock")
     db.close()
     return stock_list
-
-# initialize certain seller's products
-# def initialize_product(seller_id):
-#     products = []
-#     db = connect_db()
-#     cursor = db.cursor()
-#     sql = "SELECT a.product_id, a.product_name, a.product_quality, a.product_status, b.stock_price, b.stock_quantity FROM " \
-#           "product AS a,stock AS b where a.product_id=b.product_id and b.seller_id= " + str(seller_id)
-#     try:
-#         cursor.execute(sql)
-#         results = cursor.fetchall()
-#         for row in results:
-#             product_id = row[0]
-#             product_name = row[1]
-#             product_quality = row[2]
-#             product_status = row[3]
-#             product_price = row[4]
-#             product_quantity = row[5]
-#             product = Product(product_id=product_id, name=product_name, price=product_price,
-#                               quality=product_quality, quantity=product_quantity)
-#             products.append(product)
-#     except:
-#         print("Error: unable to fetch product")
-#     db.close()
-#     return products
 
 
 # initialize sellers
@@ -108,7 +86,6 @@ def initialize_seller():
             seller_name = row[1]
             seller_wallet = row[2]
             seller_status = row[3]
-            # seller_products = initialize_product(seller_id)
             seller_products = initialize_stock(seller_id)
             seller = Seller(id=seller_id, name=seller_name, products=seller_products, wallet=seller_wallet)
             sellers.append(seller)
@@ -161,3 +138,22 @@ def if_related_product(product_id1, product_id2):
     except:
         print("Error: unable to fetch related_product")
     db.close()
+
+
+def initialize_promotions():
+    promotions = []
+    db = connect_db()
+    cursor = db.cursor()
+    sql = "SELECT * FROM promotion"
+    try:
+        cursor.execute(sql)
+        results = cursor.fetchall()
+        for row in results:
+            promotion_id = row[0]
+            promotion_discount = row[1]
+            promotion = promotion(promotion_id, promotion_discount)
+            promotions.append(promotion)
+    except:
+        print("Error: unable to fetch promotion")
+    db.close()
+    return promotions
