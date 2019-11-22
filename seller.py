@@ -86,7 +86,10 @@ class Seller(object):
         ceo = CEO(self)
         advert_type, scale = ceo.analyze()
         ceo.purchase_stock()
-        ceo.adjust_price()
+        if self.wallet < 200:
+            ceo.apply_discount_for_all_products()
+        else:
+            ceo.adjust_price()
 
         # ANSWER a. print data to show progress
         # print('Revenue in previous quarter:', self.my_revenue(True))

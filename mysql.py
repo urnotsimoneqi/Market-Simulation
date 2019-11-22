@@ -281,3 +281,18 @@ def update_product_selling_price(product_id, seller_id, selling_price):
     except:
         print("Error: unable to update product selling price")
     db.close()
+
+
+def apply_discount_to_all_procducts(seller_id, discount):
+    db = connect_db()
+    cursor = db.cursor()
+
+    sql1 = "update stock set stock_price = (stock_price * " + str(discount) + " where seller_id = " + str(seller_id)
+
+    try:
+        cursor.execute(sql1)
+        db.commit()
+        print(cursor.rowcount)
+    except:
+        print("Error: unable to apply discount for all products of a seller")
+    db.close()
