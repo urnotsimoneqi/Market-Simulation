@@ -1,14 +1,12 @@
-from threading import Lock
+#!/usr/bin/python3
 
+from threading import Lock
 from google_ads import GoogleAds
 import logging
-
-# from mysql import save_txn
 from transaction import Transaction
-import time
 import datetime
 from random import choice
-from mysql import *
+import mysql
 
 class Market(object):
     catalogue = {}
@@ -70,5 +68,4 @@ class Market(object):
                      "in year %s and quarter %s",
                      seller.name, buyer.name, product_name, transaction.timestamp, transaction.year, transaction.quarter)
         # write to database
-        # save_txn(transaction)
-
+        mysql.save_txn(transaction)
