@@ -157,7 +157,6 @@ def initialize_promotions():
 
 
 def find_most_popular_products(seller_id):
-    most_popular_product = dict()
     db = connect_db()
     cursor = db.cursor()
     product_sales_amount = -1
@@ -181,3 +180,43 @@ def find_most_popular_products(seller_id):
         print("Error: unable to fetch most popular products")
     db.close()
     return product_sales_amount, items_sold, product_id
+
+
+def find_product_market_price(product_id):
+    db = connect_db()
+    cursor = db.cursor()
+    market_price = -1
+
+    sql = "select product_market_price from product where product_id = " + str(product_id)
+    try:
+        cursor.execute(sql)
+        results = cursor.fetchall()
+        if results is None:
+            print(product_id, 'null')
+        else:
+            for row in results:
+                market_price = row[0]
+    except:
+        print("Error: unable to fetch market_price from product")
+    db.close()
+    return market_price
+
+
+def update_stock(product_id, seller_id, stock_quantity, stock_cost, seller_wallet):
+    print('purchase_stock')
+    db = connect_db()
+    cursor = db.cursor()
+    sql1 = "UPDATE stock set stock_quantity = " + str(stock_quantity) + ", stock_cost = " + str(
+        stock_cost) + " WHERE product_id = " + str(product_id) + " AND seller_id = " + str(seller_id)
+    sql2 = "UPDATE seller set seller_wallet = " + str(seller_wallet) + " WHERE seller_id = " + str(seller_id)
+    try:
+        cursor.execute(sql1)
+        db.commit()
+        print(cursor.rowcount)
+
+        cursor.execute(sql2)
+        db.commit()
+        print(cursor.rowcount)
+    except:
+        print("Error: unable to update stock from product purchase")
+    db.close()
