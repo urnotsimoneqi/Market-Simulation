@@ -8,6 +8,7 @@ from transaction import Transaction
 import time
 import datetime
 from random import choice
+from mysql import *
 
 class Market(object):
     catalogue = {}
@@ -61,15 +62,13 @@ class Market(object):
             # track user
             GoogleAds.track_user_purchase(buyer, product)
 
-        # write to database
-        # format YYYY-MM-DD HH:MM:SS
-        # timestamp = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-        timestamp = datetime.datetime.now()
-        year = datetime.datetime.now().year
-        transaction = Transaction(timestamp=timestamp, seller_id=seller.id, customer_id=buyer.id,
+        dt = datetime.datetime.now()
+        transaction = Transaction(datetime=dt, seller_id=seller.id, customer_id=buyer.id,
                                   product_id=product_id, quantity=len(products),
                                   total_amount=product_price*len(products))
-        logging.info("[Market]:Transaction between Seller %s and Customer %s with the product %s at %s",
-                     seller.name, buyer.name, product_name, transaction.timestamp)
-        # save_txn()
+        logging.info("[Market]:Transaction between Seller %s and Customer %s with the product %s at %s "
+                     "in year %s and quarter %s",
+                     seller.name, buyer.name, product_name, transaction.timestamp, transaction.year, transaction.quarter)
+        # write to database
+        # save_txn(transaction)
 

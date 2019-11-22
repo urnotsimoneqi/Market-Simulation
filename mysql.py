@@ -126,14 +126,15 @@ def reporting(revenue, expenses, profit):
 
 
 # insert every transaction into database
-def save_txn():
+def save_txn(txn):
     db = connect_db()
     cursor = db.cursor()
     print("Save transaction")
     sql = """INSERT INTO transaction (transaction_datetime, transaction_year, transaction_quarter, seller_id, customer_id,
                              product_id, related_product_id,
                              transaction_quantity, transaction_amount, promotion_id)
-                             VALUES ('2019-03-08 20:16:00', 2019, 1, 1, 1, 1, null, 1, '480', null)"""
+                             VALUES (txn.timestamp, txn.year, txn.quarter, 
+                             txn.seller_id, txn.customer_id, txn.product_id, null, txn.quantity, txn.total_amount, null)"""
     try:
         cursor.execute(sql)
         db.commit()

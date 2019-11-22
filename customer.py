@@ -124,7 +124,7 @@ class Customer(object):
             #  Buyers are interested in buying related products like a phone and its case in separate transaction.
             #  I.e. if a buyer bought the phone, they are more likely to purchase the case
             elif self.type == related_product:
-                self.buy([product])
+                pass
                 # tick_count == 0 represent the customer didn't buy anything
                 # if self.tick_count == 0 or self.tick_count == 1:
                 #     self.buy([product])
