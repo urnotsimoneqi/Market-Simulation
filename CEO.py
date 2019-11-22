@@ -1,5 +1,3 @@
-from threading import Lock
-
 from google_ads import GoogleAds
 import mysql
 
