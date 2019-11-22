@@ -6,6 +6,7 @@ import logging
 # from mysql import save_txn
 from transaction import Transaction
 import time
+import datetime
 from random import choice
 
 class Market(object):
@@ -62,7 +63,9 @@ class Market(object):
 
         # write to database
         # format YYYY-MM-DD HH:MM:SS
-        timestamp = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        # timestamp = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        timestamp = datetime.datetime.now()
+        year = datetime.datetime.now().year
         transaction = Transaction(timestamp=timestamp, seller_id=seller.id, customer_id=buyer.id,
                                   product_id=product_id, quantity=len(products),
                                   total_amount=product_price*len(products))

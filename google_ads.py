@@ -44,7 +44,7 @@ class GoogleAds(object):
             new_users = list(set(GoogleAds.users) - set(GoogleAds.purchase_history[product]))
             users = random.choices(new_users, k=scale)
             test=', '.join(x.name for x in users)
-            logging.info('[GoogleAds]: Google pushed the %s Ad for product %s to user %s ', advert_type, product.name, test)
+            logging.info('[GoogleAds]: Google pushed the %s Ad for product %s to user %s ', advert_type, product.product_name, test)
         else:
             print('Not a valid Advert type')
             return

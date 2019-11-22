@@ -19,3 +19,5 @@ class Transaction:
 
         self.timestamp = timestamp
         # self.status = status
+        # self.year = timestamp.
+        # self.quarter =
