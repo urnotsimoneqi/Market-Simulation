@@ -7,9 +7,7 @@ from stock import Stock
 
 
 def connect_db():
-    # print('Connecting to Mysql Server...')
     db = pymysql.connect("localhost", "root", "matthew123", "TESTDB")
-    #print('Connect Successfully!')
     return db
 
 
@@ -54,6 +52,7 @@ def initialize_stock(seller_id):
             product_name = row[1]
             product_market_price = row[2]
             product_status = row[3]
+
             seller_id = row[4]
             product_quality = row[5]
             stock_quantity = row[6]
@@ -158,6 +157,7 @@ def initialize_promotions():
 
 
 def find_most_popular_products(seller_id):
+    most_popular_product = dict()
     db = connect_db()
     cursor = db.cursor()
     product_sales_amount = -1
