@@ -33,7 +33,7 @@ class Market(object):
     # when a user buys a product, increment the seller's sales
     @staticmethod
     def buy(buyer, products):
-        # products: list of product of the same type
+        # products: list of product of the same type, such as the iPhone XS
         product_id = products[0].product_id
         product_name = products[0].product_name
         product_price = products[0].stock_price
@@ -65,6 +65,13 @@ class Market(object):
 
             # track user
             GoogleAds.track_user_purchase(buyer, product)
+
+        # update the stock of product
+        products[0].stock_quantity = products[0].stock_quantity - len(products)
+        logging.info("[Market]: Update the stock quantity to %d of product %s of seller %s %d",
+                     products[0].stock_quantity, product_name, seller.name, seller_id)
+        # update the stock of product in database
+        mysql.update_stock(product_id, seller_id, products[0].stock_quantity, products[0].stock_cost, seller.wallet)
 
         dt = datetime.datetime.now()
         transaction = Transaction(datetime=dt, seller_id=seller.id, customer_id=buyer.id,

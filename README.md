@@ -32,7 +32,7 @@ Use basic data visualization to insure humans understand whats happening. Visual
     - Present in PowerBI or Google Data Studio
     
 ### Environment: (refer to auction MAS provided in class)
-- Add inventory to the system, meaning there is a limit to how many products are available each period
+- [x] Add inventory to the system, meaning there is a limit to how many products are available each period
 - [x] Interaction with the external environment: Send emails or Update Google drive collaboration documents describe what is happening
 - Bonus: add the ability to auction either by buyers or sellers or both
     - Buyer: if product in the market isn’t enough, then buyers start to bid

@@ -63,17 +63,13 @@ for seller in sellers:
 seller_performance = []
 for seller in sellers:
     grade = fuzzy_logic(seller.my_revenue(), seller.my_profit())
-    # print(grade)
-    # print("Seller %s's Total Profit:%d"%(seller.name, seller.my_profit()))
-    # print("Seller %s's Total Revenue:%d"%(seller.name, seller.my_revenue()))
-    # print("Seller %s's Total Expense:%d"%(seller.name, seller.my_expenses()))
     print("Seller %s's Total Profit:%d"%(seller.name, seller.my_profit()))
     print("Seller %s's Total Revenue:%d"%(seller.name, seller.my_revenue()))
     print("Seller %s's Total Expense:%d"%(seller.name, seller.my_expenses()))
     seller_performance.append([seller.name, seller.my_revenue(), seller.my_profit(), grade])
 
 seller_performance = sorted(seller_performance, key=itemgetter(3), reverse=True)
-send_email.send_mail(SENDER_ROBOT, RECEIVER_ROBOT, seller_performance, 'NULL')
+# send_email.send_mail(SENDER_ROBOT, RECEIVER_ROBOT, seller_performance, 'NULL')
 
 # Kill consumer threads
 for consumer in customers:
