@@ -38,6 +38,7 @@ class Market(object):
         product_name = products[0].product_name
         product_price = products[0].stock_price
         seller_id = products[0].seller_id
+        promotion_id = -1
 
         most_valuable_customer_id = mysql.find_most_valuable_customer(seller_id)
 
@@ -56,6 +57,7 @@ class Market(object):
             # find the buyer who has spent the most in the same seller and offer discount
             if most_valuable_customer_id == buyer.id:
                 product_price = product.stock_price * 0.95
+                promotion_id = 1
 
             # call seller's sold function
             seller.sold(product)
@@ -80,5 +82,14 @@ class Market(object):
         logging.info("[Market]:Transaction between Seller %s and Customer %s with the product %s at %s "
                      "in year %s and quarter %s",
                      seller.name, buyer.name, product_name, transaction.timestamp, transaction.year, transaction.quarter)
+
+        if promotion_id != -1:
+            transaction.set_promotion_id(promotion_id)
+
+        if transaction.total_amount >= 2000:
+            transaction.total_amount -= 50
+            if promotion_id == -1:
+                transaction.set_promotion_id(5)
+
         # write to database
         mysql.save_txn(transaction)
