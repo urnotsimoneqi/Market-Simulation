@@ -62,17 +62,25 @@ class Customer(object):
         amount = 0
         for product in products:
             amount += product.stock_price
-            # logging.info("[Customer]: (%s,%d) buy the Products:[%s] from seller%s", self.name, self.tick_count, product.product_name, product.seller_id)
+
         # if not enough money in wallet, don't proceed
         if self.wallet < amount:  # enable buyer to buy more than one products
             logging.info("[Customer]: (%s,%d) didn't have enough money to buy Products:[%s] from seller %s",
                          self.name, self.tick_count, products[0].product_name, products[0].seller_id)
             return
-        test = ', '.join(x.product_name for x in products)
-        logging.info("[Customer]: (%s,%d) buy the Products:[%s] from seller%s with price%d", self.name, self.tick_count,
-                     test, products[0].seller_id, amount)
+
+        # if there is not enough stock, no transaction
+        if products[0].stock_quantity < len(products):
+            logging.info("[Customer]: (%s,%d) Seller didn't have enough stock to sell the products:[%s], "
+                         "so the customer didn't buy",
+                         products[0].seller_id, self.tick_count, products[0].product_name)
+            return
+
+        products_str = ', '.join(x.product_name for x in products)
+        logging.info("[Customer]: (%s,%d) buy the Products:[%s] from seller%s with price %d", self.name, self.tick_count,
+                     products_str, products[0].seller_id, amount)
+
         # purchase the product from market
-        # add amount as parameter
         Market.buy(self, products)
 
         # add product to the owned products list
@@ -188,6 +196,3 @@ class Customer(object):
     def kill(self):
         self.STOP = True
         self.thread.join(timeout=0)
-
-    def __str__(self):
-        return self.name

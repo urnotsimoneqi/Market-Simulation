@@ -35,7 +35,6 @@ class Seller(object):
         self.sentiment_history = []
         self.item_sold = 0
 
-
         # Flag for thread
         self.STOP = False
 
