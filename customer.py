@@ -81,22 +81,20 @@ class Customer(object):
     # Loop function to keep the simulation going
     def loop(self):
         logging.info("[Customer]:Customer %s entered Trading", self.name)
-        # if self.tick_count > 10:
-        #     kill(self)
 
         while not self.STOP:
             self.tick_count += 1
             logging.info("[Customer]:(%s,%d): Next Quarter Begins ", self.name, self.tick_count)
             self.tick()
             time.sleep(tick_time)
-            test = ', '.join(x.product_name for x in self.owned_products)
+            owned_products = ', '.join(x.product_name + " of Seller " + str(x.seller_id) for x in self.owned_products)
             logging.info("[Customer]: (%s,%d) own the Products:[%s] with balance of $ %d", self.name, self.tick_count,
-                         test, self.wallet)
+                         owned_products, self.wallet)
         logging.info("[Customer]: (%s,%d) Exit", self.name, self.tick_count)
 
     # one timestep in the simulation world
     def tick(self):
-        test = ', '.join(x.product_name + " from Seller " + str(x.seller_id) for x in self.ad_space)
+        test = ', '.join(x.product_name + " of Seller " + str(x.seller_id) for x in self.ad_space)
         logging.info("[Customer]:(%s,%d) currently seeing ads for the Products:[%s]", self.name, self.tick_count, test)
         self.lock.acquire()
 
@@ -114,15 +112,18 @@ class Customer(object):
                     logging.info("[Customer]: (%s,%d) prefer high quality, so didn't buy any products ",
                                  self.name, self.tick_count)
                 else:
-                    if user_sentiment >= self.tolerance and (
-                            (product not in self.owned_products and random.random() < 0.2) or (
-                            product in self.owned_products and random.random() < 0.01)):
-                        logging.info("[Customer]:(%s,%d) would like to buy the product:[%s]", self.name, self.tick_count,
-                                             product.product_name)
-                        products = [product, product]
-                        self.buy(products)
-                    else:
-                        logging.info("[Customer]:###(%s,%d)doesn't buy any products ", self.name, self.tick_count)
+                    logging.info("[Customer]:(%s,%d) would like to buy the product:[%s]", self.name, self.tick_count,
+                                 product.product_name)
+                    self.buy([product])
+                    # if user_sentiment >= self.tolerance and (
+                    #         (product not in self.owned_products and random.random() < 0.2) or (
+                    #         product in self.owned_products and random.random() < 0.01)):
+                    #     logging.info("[Customer]:(%s,%d) would like to buy the product:[%s]", self.name, self.tick_count,
+                    #                          product.product_name)
+                    #     products = [product, product]
+                    #     self.buy(products)
+                    # else:
+                    #     logging.info("[Customer]:###(%s,%d)doesn't buy any products ", self.name, self.tick_count)
             #  Buyers are interested in buying related products like a phone and its case in separate transaction.
             #  I.e. if a buyer bought the phone, they are more likely to purchase the case
             elif self.type == related_product:

@@ -33,7 +33,7 @@ class GoogleAds(object):
         # scale of adverts should not be more than number of users
         # users = list(set(GoogleAds.users))  # Remove duplicate elements in list
         users = list(GoogleAds.users)
-        scale = min(scale, len(users))
+        scale = min(int(scale), len(users))  # convert scale to integer type
         GoogleAds.lock.acquire()
 
         # if advert_type is basic, choose any set of customers
@@ -46,10 +46,14 @@ class GoogleAds(object):
         # if advert_type is targeted, choose user's who were not shown the same advert in previous tick
         elif advert_type == GoogleAds.ADVERT_TARGETED:
             new_users = list(set(GoogleAds.users) - set(GoogleAds.purchase_history[product]))
-            users = random.choices(new_users, k=scale)
-            users_str = ', '.join(x.name for x in users)
-            logging.info('[GoogleAds]: Google pushed the %s Ad for product %s of seller %d to user %s ',
+            if new_users:  # if list of new_users is not null
+                users = random.choices(new_users, k=scale)
+                users = list(set(users))
+                users_str = ', '.join(x.name for x in users)
+                logging.info('[GoogleAds]: Google pushed the %s Ad for product %s of seller %d to user %s ',
                          advert_type, product.product_name, product.seller_id, users_str)
+            else:
+                print("new_users list is null")
         else:
             print('Not a valid Advert type')
             return

@@ -23,8 +23,8 @@ class CEO:
             advert_type = GoogleAds.ADVERT_TARGETED
         logging.info('[CEO]: (%s,%d) CEO wallet %d ads price %d',
                      self.seller.name, self.seller.tick_count, self.seller.wallet, GoogleAds.advert_price[advert_type])
-        # scale = self.seller.wallet // GoogleAds.advert_price[advert_type] // 10  # not spending everything
-        scale = 5
+        scale = self.seller.wallet // GoogleAds.advert_price[advert_type] // 10  # not spending everything
+        # scale = 5
         logging.info('[CEO]: (%s,%d) CEO selected advert_type as %s with scale of %d for %s',
                      self.seller.name, self.seller.tick_count, advert_type, scale, product.product_name)
         return advert_type, scale

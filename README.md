@@ -26,7 +26,7 @@ Buyer Agent, CEO Agent and reporting Agent. At a minimum provide the following c
 Use basic data visualization to insure humans understand whats happening. Visualization should occur either in a basic visual system in code or in a visualization tool like Google Data Studio or Microsoft PowerBI
 - Provide information on total sales and buyers 
 - Present promotion effectiveness 
-- Write these details to a file 
+- [x] Write these details to a file 
 - Bonus
     - [x] Write to a database (mysql, bigquery, etc) to store information
     - Present in PowerBI or Google Data Studio
