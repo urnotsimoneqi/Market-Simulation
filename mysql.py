@@ -7,7 +7,7 @@ from stock import Stock
 
 
 def connect_db():
-    db = pymysql.connect("localhost", "root", "Simon19980908", "TESTDB")
+    db = pymysql.connect("localhost", "root", "matthew123", "TESTDB")
     return db
 
 
@@ -112,7 +112,6 @@ def save_txn(txn):
              txn.quantity, txn.total_amount)
     try:
         cursor.execute(sql)
-        print("Insert successfully")
         db.commit()
     except Exception as e:
         print(e)
@@ -133,12 +132,8 @@ def if_related_product(product_id1, product_id2):
         cursor.execute(sql)
         result = cursor.fetchone()
         if result is None:
-            # print("No related product")
             return False
         else:
-            # id1 = result[1]
-            # id2 = result[2]
-            # print("There's a relationship between "+str(id1)+" "+str(id2))
             return True
     except Exception as e:
         print(e)
@@ -311,7 +306,6 @@ def update_product_selling_price(product_id, seller_id, selling_price):
     try:
         cursor.execute(sql1)
         db.commit()
-        print(cursor.rowcount)
     except Exception as e:
         print(e)
         print("Error: unable to update product selling price")
@@ -327,7 +321,6 @@ def apply_discount_to_all_procducts(seller_id, discount):
     try:
         cursor.execute(sql1)
         db.commit()
-        print(cursor.rowcount)
     except Exception as e:
         print(e)
         print("Error: unable to apply discount for all products of a seller")
@@ -355,7 +348,6 @@ def find_most_valuable_customer(seller_id):
         print(e)
         print("Error: unable to find the most valuable customer sold by a seller")
     db.close()
-    # print(products)
     return customer_id
 
 
@@ -374,7 +366,7 @@ def get_gross_revenue(seller_id):
             print(seller_id, 'null')
         else:
             for row in results:
-                gross_revenue = double(row[0])
+                gross_revenue = row[0]
     except Exception as e:
         print(e)
         print("Error: unable to find the gross revenue of a seller")
