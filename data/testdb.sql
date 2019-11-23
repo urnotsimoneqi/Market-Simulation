@@ -183,6 +183,11 @@ CREATE TABLE `promotion` (
 -- ----------------------------
 -- Records of promotion
 -- ----------------------------
+insert into promotion(promotion_discount) values (0.95);
+insert into promotion(promotion_discount) values (0.9);
+insert into promotion(promotion_discount) values (0.8);
+insert into promotion(promotion_discount) values (0.5);
+insert into promotion(promotion_discount) values (-50);
 
 -- ----------------------------
 -- Table structure for related_product
@@ -302,7 +307,7 @@ VALUES (7, 0.7, 2, 20, 600, 1000);
 INSERT INTO stock (product_id, product_quality, seller_id, stock_quantity, stock_cost, stock_price)
 VALUES (8, 0.8, 4, 50, 600, 1000);
 -- ----------------------------
--- Table structure for trans_record
+-- Table structure for transaction
 -- ----------------------------
 CREATE TABLE transaction
 (
@@ -316,45 +321,43 @@ CREATE TABLE transaction
     related_product_id   int                                     default 0,
     transaction_quantity int                                     default 0,
     transaction_amount   double                                  default 0,
-    promotion_id         int                                     DEFAULT NULL,
-    transaction_status   varchar(255)                            DEFAULT NULL,
+    promotion_id         int                                     default 0,
     FOREIGN KEY (seller_id) REFERENCES seller (seller_id),
     FOREIGN KEY (customer_id) REFERENCES customer (customer_id),
-    FOREIGN KEY (product_id) REFERENCES product (product_id),
-    FOREIGN KEY (promotion_id) REFERENCES promotion (promotion_id)
+    FOREIGN KEY (product_id) REFERENCES product (product_id)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
 -- ----------------------------
--- Records of trans_record
+-- Records of transaction
 INSERT INTO transaction (transaction_datetime, transaction_year, transaction_quarter, seller_id, customer_id,
                          product_id, related_product_id,
                          transaction_quantity, transaction_amount, promotion_id)
-VALUES ('2019-03-08 20:16:00', 2019, 1, 3, 2, 2, 6, 1, 480, null);
+VALUES ('2019-03-08 20:16:00', 2019, 1, 3, 2, 2, 6, 1, 480, 1);
 INSERT INTO transaction (transaction_datetime, transaction_year, transaction_quarter, seller_id, customer_id,
                          product_id, related_product_id,
                          transaction_quantity, transaction_amount, promotion_id)
-VALUES ('2019-04-11 12:48:57', 2019, 2, 4, 1, 3, 7, 1, 400, null);
+VALUES ('2019-04-11 12:48:57', 2019, 2, 4, 1, 3, 7, 1, 400, 1);
 INSERT INTO transaction (transaction_datetime, transaction_year, transaction_quarter, seller_id, customer_id,
                          product_id, related_product_id,
                          transaction_quantity, transaction_amount, promotion_id)
-VALUES ('2019-04-11 12:48:57', 2019, 2, 4, 1, 7, 3, 1, 80, null);
+VALUES ('2019-04-11 12:48:57', 2019, 2, 4, 1, 7, 3, 1, 80, 2);
 INSERT INTO transaction (transaction_datetime, transaction_year, transaction_quarter, seller_id, customer_id,
                          product_id, related_product_id,
                          transaction_quantity, transaction_amount, promotion_id)
-VALUES ('2019-05-16 22:57:07', 2019, 2, 2, 1, 5, 1, 2, 200, null);
+VALUES ('2019-05-16 22:57:07', 2019, 2, 2, 1, 5, 1, 2, 200, 2);
 INSERT INTO transaction (transaction_datetime, transaction_year, transaction_quarter, seller_id, customer_id,
                          product_id, related_product_id,
                          transaction_quantity, transaction_amount, promotion_id)
-VALUES ('2019-07-17 16:23:27', 2019, 3, 5, 3, 4, 8, 1, 300, null);
+VALUES ('2019-07-17 16:23:27', 2019, 3, 5, 3, 4, 8, 1, 300, 3);
 INSERT INTO transaction (transaction_datetime, transaction_year, transaction_quarter, seller_id, customer_id,
                          product_id, related_product_id,
                          transaction_quantity, transaction_amount, promotion_id)
-VALUES ('2019-07-18 08:59:37', 2019, 3, 5, 3, 8, 4, 2, 160, null);
+VALUES ('2019-07-18 08:59:37', 2019, 3, 5, 3, 8, 4, 2, 160, 0);
 INSERT INTO transaction (transaction_datetime, transaction_year, transaction_quarter, seller_id, customer_id,
                          product_id, related_product_id,
                          transaction_quantity, transaction_amount, promotion_id)
-VALUES ('2019-09-01 21:00:52', 2019, 3, 1, 2, 6, 2, 1, 95, null);
+VALUES ('2019-09-01 21:00:52', 2019, 3, 1, 2, 6, 2, 1, 95, 0);
 
 -- ----------------------------
 -- Table structure for product_summary
@@ -363,7 +366,6 @@ CREATE TABLE product_summary
 (
   id              int auto_increment NOT NULL primary key,
   product_id      int(11)            NOT NULL,
-  seller_id       int(11)            NOT NULL,
   product_year    int(4)             NOT NULL,
   product_quarter tinyint            NOT NULL,
   product_counter int(11)            NOT NULL
@@ -372,93 +374,51 @@ CREATE TABLE product_summary
 -- ----------------------------
 -- Records of product_summary
 -- ----------------------------
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (1,2, 2019, 1,0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (1,3, 2019, 1,0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (2,1, 2019, 1,0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (2,2, 2019, 1,0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (2,3, 2019, 1,1);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (3,4, 2019, 1,0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (4,5, 2019, 1,0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (5,2, 2019, 1,0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (5,3, 2019, 1,0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (5,1, 2019, 1,0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (6,1, 2019, 1,0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (6,2, 2019, 1,0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (6,3, 2019, 1,0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (7,4, 2019, 1,0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (8,5, 2019, 1,0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (1,2, 2019, 2,0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (1,3, 2019, 2,0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (2,1, 2019, 2,0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (2,2, 2019, 2,0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (2,3, 2019, 2,0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (3,4, 2019, 2,1);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (4,5, 2019, 2,0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (5,2, 2019, 2,2);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (5,3, 2019, 2,0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (5,1, 2019, 2,0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (6,1, 2019, 2,0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (6,2, 2019, 2,0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (6,3, 2019, 2,0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (7,4, 2019, 2,1);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (8,5, 2019, 2,0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (1,2, 2019, 3, 0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (1,3, 2019, 3, 0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (2,1, 2019, 3, 0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (2,2, 2019, 3, 0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (2,3, 2019, 3, 0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (3,4, 2019, 3, 0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (4,5, 2019, 3, 1);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (5,2, 2019, 3, 0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (5,3, 2019, 3, 0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (5,1, 2019, 3, 0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (6,1, 2019, 3, 1);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (6,2, 2019, 3, 0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (6,3, 2019, 3, 0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (7,4, 2019, 3, 0);
-INSERT INTO product_summary (product_id, seller_id, product_year,product_quarter,product_counter)
-VALUES (8,5, 2019, 3, 2);
+INSERT INTO product_summary (product_id, product_year,product_quarter,product_counter)
+VALUES (1, 2019, 1, 0);
+INSERT INTO product_summary (product_id, product_year,product_quarter,product_counter)
+VALUES (2, 2019, 1, 1);
+INSERT INTO product_summary (product_id, product_year,product_quarter,product_counter)
+VALUES (3, 2019, 1, 0);
+INSERT INTO product_summary (product_id, product_year,product_quarter,product_counter)
+VALUES (4, 2019, 1, 0);
+INSERT INTO product_summary (product_id, product_year,product_quarter,product_counter)
+VALUES (5, 2019, 1, 0);
+INSERT INTO product_summary (product_id, product_year,product_quarter,product_counter)
+VALUES (6, 2019, 1, 0);
+INSERT INTO product_summary (product_id, product_year,product_quarter,product_counter)
+VALUES (7, 2019, 1, 0);
+INSERT INTO product_summary (product_id, product_year,product_quarter,product_counter)
+VALUES (8, 2019, 1, 0);
+INSERT INTO product_summary (product_id, product_year,product_quarter,product_counter)
+VALUES (1, 2019, 2, 0);
+INSERT INTO product_summary (product_id, product_year,product_quarter,product_counter)
+VALUES (2, 2019, 2, 0);
+INSERT INTO product_summary (product_id, product_year,product_quarter,product_counter)
+VALUES (3, 2019, 2, 1);
+INSERT INTO product_summary (product_id, product_year,product_quarter,product_counter)
+VALUES (4, 2019, 2, 0);
+INSERT INTO product_summary (product_id, product_year,product_quarter,product_counter)
+VALUES (5, 2019, 2, 2);
+INSERT INTO product_summary (product_id, product_year,product_quarter,product_counter)
+VALUES (6, 2019, 2, 0);
+INSERT INTO product_summary (product_id, product_year,product_quarter,product_counter)
+VALUES (7, 2019, 2, 0);
+INSERT INTO product_summary (product_id, product_year,product_quarter,product_counter)
+VALUES (8, 2019, 2, 0);
+INSERT INTO product_summary (product_id, product_year,product_quarter,product_counter)
+VALUES (1, 2019, 3, 0);
+INSERT INTO product_summary (product_id, product_year,product_quarter,product_counter)
+VALUES (2, 2019, 3, 0);
+INSERT INTO product_summary (product_id, product_year,product_quarter,product_counter)
+VALUES (3, 2019, 3, 0);
+INSERT INTO product_summary (product_id, product_year,product_quarter,product_counter)
+VALUES (4, 2019, 3, 1);
+INSERT INTO product_summary (product_id, product_year,product_quarter,product_counter)
+VALUES (5, 2019, 3, 0);
+INSERT INTO product_summary (product_id, product_year,product_quarter,product_counter)
+VALUES (6, 2019, 3, 1);
+INSERT INTO product_summary (product_id, product_year,product_quarter,product_counter)
+VALUES (7, 2019, 3, 0);
+INSERT INTO product_summary (product_id, product_year,product_quarter,product_counter)
+VALUES (8, 2019, 3, 2);
