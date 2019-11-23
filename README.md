@@ -17,7 +17,7 @@ Buyer Agent, CEO Agent and reporting Agent. At a minimum provide the following c
     - [x] Buyers are interested in buying related products like a phone and its case in separate transaction. I.e. if a buyer bought the phone, they are more likely to purchase the case.
 ### CEO Agent
 - [x] Choose between ad types
-- Choose how much to spend on ads
+- [x] Choose how much to spend on ads
 - [x] Avoid going bankrupt (But do not simply inject money into the system, you’ll need some controls on spending)
 - Analyze the buying data and make better either: ad spending, product decisions
     - Identify patterns in the buyers
