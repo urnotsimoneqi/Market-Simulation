@@ -89,7 +89,6 @@ class CEO:
 
     def decide_how_much_to_spend_on_ads(self):
         percentage = 0
-        ads_cost = 0
         gross_annual_revenue = mysql.get_gross_revenue(self.seller.id)
         if gross_annual_revenue is not None and self.seller.wallet > 200:
             if gross_annual_revenue < 10000:

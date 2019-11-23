@@ -237,11 +237,9 @@ def update_stock(product_id, seller_id, stock_quantity, stock_cost, seller_walle
     try:
         cursor.execute(sql1)
         db.commit()
-        # print(cursor.rowcount)
 
         cursor.execute(sql2)
         db.commit()
-        # print(cursor.rowcount)
     except Exception as e:
         print(e)
         print("Error: unable to update stock from product purchase")
