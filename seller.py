@@ -103,8 +103,17 @@ class Seller(object):
 
         # perform the actions and view the expense
         for product in self.products:
+            # choose between ad type and scale
             advert_type, scale = ceo.analyze(product)
-            self.expense_history.append(GoogleAds.post_advertisement(self, product, advert_type, scale))
+            # decide how much to spend on ads
+            budget = ceo.decide_how_much_to_spend_on_ads()
+            if GoogleAds.post_advertisement(self, product, advert_type, scale) > budget:
+                logging.info('[Seller,(%s,%d)]: The cost of product %s on ads exceeds the budget, do not spend.',
+                             self.name, self.tick_count, product.product_name)
+            else:
+                logging.info('[Seller,(%s,%d)]: The cost of product %s on ads is less than the budget, then buy ads.',
+                             self.name, self.tick_count, product.product_name)
+                self.expense_history.append(GoogleAds.post_advertisement(self, product, advert_type, scale))
 
     # calculates the total revenue. Gives the revenue in last tick if latest_only = True
     def my_revenue(self, latest_only=False):
