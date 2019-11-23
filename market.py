@@ -38,7 +38,7 @@ class Market(object):
         product_name = products[0].product_name
         product_price = products[0].stock_price
         seller_id = products[0].seller_id
-        promotion_id = -1
+        promotion_id = -1  # flag to check if a promotion applied
 
         most_valuable_customer_id = mysql.find_most_valuable_customer(seller_id)
 
@@ -54,7 +54,7 @@ class Market(object):
                 if x.id == seller_id:
                     seller = x
 
-            # find the buyer who has spent the most in the same seller and offer discount
+            # find the buyer who has spent the most in the same seller and offer promotion with id 1
             if most_valuable_customer_id == buyer.id:
                 product_price = product.stock_price * 0.95
                 promotion_id = 1
@@ -83,11 +83,14 @@ class Market(object):
                      "in year %s and quarter %s",
                      seller.name, buyer.name, product_name, transaction.timestamp, transaction.year, transaction.quarter)
 
+        # if a promotion has been applied in calculating, then update the transaction promotion id property
         if promotion_id != -1:
             transaction.set_promotion_id(promotion_id)
 
+        # if a customer makes a single transaction > $2000, offer a $50 off
         if transaction.total_amount >= 2000:
             transaction.total_amount -= 50
+            # if no promotion has been applied to this customer, then update the transaction promotion to id 5
             if promotion_id == -1:
                 transaction.set_promotion_id(5)
 
