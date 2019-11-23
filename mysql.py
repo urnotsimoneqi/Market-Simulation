@@ -477,6 +477,7 @@ def calculate_total_stock_cost(seller_id):
     return cost
 
 
+# count the number of promotions applied as per year and quarter
 def find_effective_promotions_per_quarter():
     db = connect_db()
     cursor = db.cursor()
