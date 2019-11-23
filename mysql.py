@@ -410,3 +410,68 @@ def increase_product_price(product_id, seller_id, multiplier):
         print(e)
         print("Error: unable to increase product selling price")
     db.close()
+
+# insert sales summary into database
+def save_sales_summary(sales_summary):
+    db = connect_db()
+    cursor = db.cursor()
+
+    sql = "INSERT INTO sales_summary (seller_id, sales_year, sales_quarter, " \
+          "sales_expense_amount, sales_revenue, sales_profit) VALUES (%s, %s, %s, %s, %s, %s)"
+
+    sql = sql % (sales_summary.seller_id, sales_summary.sales_year, sales_summary.sales_quarter,
+                 sales_summary.sales_expenses_amount, sales_summary.sales_revenue, sales_summary.sales_profit)
+    try:
+        cursor.execute(sql)
+        db.commit()
+    except Exception as e:
+        print(e)
+        # Rollback in case there is any error
+        db.rollback()
+    cursor.close()
+    db.close()
+
+
+# calculate revenue from transaction table for one quarter in a year
+def calculate_transaction_revenue(seller_id, year, quarter):
+    db = connect_db()
+    cursor = db.cursor()
+
+    sql = "SELECT SUM(transaction_amount) FROM transaction " \
+          "where seller_id=%s and transaction_year=%s and transaction_quarter=%s"
+
+    try:
+        cursor.execute(sql, (seller_id, year, quarter))
+        result = cursor.fetchone()
+        if result is not None and len(result) > 0:
+            amount = result[0]
+            if amount is not None:
+                # print("The seller"+str(seller_id)+"'s revenue is "+str(amount))
+                return amount
+            else:
+                return 0
+        else:
+            return 0
+    except Exception as e:
+        print(e)
+    db.close()
+
+
+# calculate cost from stock table
+def calculate_total_stock_cost(seller_id):
+    db = connect_db()
+    cursor = db.cursor()
+    cost = 0
+
+    sql = "SELECT SUM(stock_quantity*stock_cost) FROM stock " \
+          "where seller_id=%s"
+
+    try:
+        cursor.execute(sql, seller_id)
+        result = cursor.fetchone()
+        cost = result[0]  # revenue
+
+    except Exception as e:
+        print(e)
+    db.close()
+    return cost

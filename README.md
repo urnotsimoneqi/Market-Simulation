@@ -24,7 +24,7 @@ Buyer Agent, CEO Agent and reporting Agent. At a minimum provide the following c
     - [x] React to patterns in the buyers 
 ### Reporting Output
 Use basic data visualization to insure humans understand whats happening. Visualization should occur either in a basic visual system in code or in a visualization tool like Google Data Studio or Microsoft PowerBI
-- Provide information on total sales and buyers 
+- [x] Provide information on total sales and buyers 
 - Present promotion effectiveness 
 - [x] Write these details to a file 
 - Bonus

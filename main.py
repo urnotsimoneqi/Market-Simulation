@@ -5,16 +5,17 @@ import time
 from datetime import datetime
 
 from constants import seed
-from fuzzy_logic import fuzzy_logic
-from mysql import initialize_customer, initialize_seller
+# from mysql import initialize_customer, initialize_seller
+import mysql
+import fuzzy_logic
 # from utils import plot
 from operator import itemgetter
+from sales_summary import SalesSummary
 import send_email
 
 SENDER_ROBOT = 'a0198900xrobot@gmail.com'
 RECEIVER_ROBOT = 'a0198900xreceiver@gmail.com'
 PASSWORD = 'A0198900X'
-
 
 now = datetime.now()
 dt_string = now.strftime("%H%M%S_%d_%m_%Y")
@@ -26,19 +27,11 @@ logging.basicConfig(filename=os.path.join("log", dt_string+'.log'), level=loggin
 
 random.seed(seed)
 
-# Create some Consumers
-# customers = [Customer(name='consumer_' + str(i), wallet=500, tolerance=0.5 + 0.4 * random.random()) for i in range(5)]
-customers = initialize_customer() # create users from database
+# Initialize customers from database
+customers = mysql.initialize_customer()
 
-# Create a product
-# iphone = Product(name='iphone', price=300, quality=0.9)
-# galaxy = Product(name='galaxy', price=200, quality=0.8)
-# products = initialize_product(1)
-
-# Create a Seller with some budget
-# seller_apple = Seller(name='apple', products=[iphone], wallet=1000)
-# seller_samsung = Seller(name='samsung', products=[galaxy], wallet=500)
-sellers = initialize_seller()
+# Initialize sellers with products from database
+sellers = mysql.initialize_seller()
 
 # Wait till the simulation ends
 try:
@@ -47,8 +40,6 @@ except KeyboardInterrupt:
     pass
 
 # kill seller thread
-# seller_apple.kill()
-# seller_samsung.kill()
 for seller in sellers:
     seller.kill()
 
@@ -58,15 +49,31 @@ for seller in sellers:
 # for seller in sellers:
 #     plot(seller)
 
-# print('Total Profit Apple:', seller_apple.my_profit())
-# print('Total Profit Samsung:', seller_samsung.my_profit())
 seller_performance = []
+dt = datetime.now()
+year = dt.year
+quarter = (dt.month - 1) // 3 + 1
 for seller in sellers:
-    grade = fuzzy_logic(seller.my_revenue(), seller.my_profit())
-    print("Seller %s's Total Profit:%d"%(seller.name, seller.my_profit()))
-    print("Seller %s's Total Revenue:%d"%(seller.name, seller.my_revenue()))
-    print("Seller %s's Total Expense:%d"%(seller.name, seller.my_expenses()))
+    # summarize the seller's sales
+    revenue = float(mysql.calculate_transaction_revenue(seller.id, year, quarter))
+    cost = float(mysql.calculate_total_stock_cost(seller.id))
+    expenses = float(seller.my_expenses())
+    profit = seller.wallet+revenue-cost-expenses
+
+    # print("Seller %s's Total Profit:%d"%(seller.name, profit)
+    # print("Seller %s's Total Revenue:%d"%(seller.name, revenue)
+    # print("Seller %s's Total Expense:%d"%(seller.name, expenses+cost)
+
+    grade = fuzzy_logic.fuzzy_logic(revenue, profit)
     seller_performance.append([seller.name, seller.my_revenue(), seller.my_profit(), grade])
+
+    sales_summary = SalesSummary(seller_id=seller.id, sales_year=year, sales_quarter=quarter,
+                                 sales_expenses_amount=expenses+cost, sales_revenue=revenue, sales_profit=profit)
+    logging.info("[Main]: Seller %s total expense is %d, total revenue is %d, and total profit is %d",
+                 seller.name, expenses+cost, revenue, profit)
+
+    # write sales summary to database
+    mysql.save_sales_summary(sales_summary)
 
 seller_performance = sorted(seller_performance, key=itemgetter(3), reverse=True)
 # send_email.send_mail(SENDER_ROBOT, RECEIVER_ROBOT, seller_performance, 'NULL')
