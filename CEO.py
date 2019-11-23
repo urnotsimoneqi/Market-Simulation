@@ -98,8 +98,8 @@ class CEO:
         ads_cost = percentage * gross_annual_revenue
         return ads_cost
 
+    # increase price for product with least stock in the market
     def check_any_products_out_of_stock(self):
-        # increase price for product with least stock in the market
         product_id = mysql.find_the_product_out_of_stock()
         products = mysql.find_all_products(self.seller.id)
         if product_id > 0 and product_id in products:
