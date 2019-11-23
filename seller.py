@@ -85,6 +85,7 @@ class Seller(object):
         # choose what to do for next timestep
         ceo = CEO(self)
         # advert_type, scale = ceo.analyze()
+        ceo.check_any_products_out_of_stock()
         ceo.purchase_stock()
         if self.wallet < 200:
             ceo.apply_discount_for_all_products()

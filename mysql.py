@@ -109,7 +109,7 @@ def save_txn(txn):
                              transaction_quantity, transaction_amount) \
                              VALUES ('%s', %s, %s, %s, %s, %s, %s, %s)"
     sql = sql % (txn.timestamp, txn.year, txn.quarter, txn.seller_id, txn.customer_id, txn.product_id,
-             txn.quantity, txn.total_amount)
+                 txn.quantity, txn.total_amount)
     try:
         cursor.execute(sql)
         db.commit()
@@ -370,3 +370,43 @@ def get_gross_revenue(seller_id):
         print("Error: unable to find the gross revenue of a seller")
     db.close()
     return gross_revenue
+
+
+def find_the_product_out_of_stock():
+    db = connect_db()
+    cursor = db.cursor()
+    product_id = -1
+
+    sql = "select product_id, sum(stock_quantity) from stock group by product_id order by sum(stock_quantity) asc limit 1"
+
+    try:
+        cursor.execute(sql)
+        results = None
+        results = cursor.fetchall()
+        if results is None:
+            print(product_id, 'null')
+        else:
+            for row in results:
+                product_id = row[0]
+    except Exception as e:
+        print(e)
+        print("Error: unable to find the product out of stock")
+    db.close()
+    return product_id
+
+
+def increase_product_price(product_id, seller_id, multiplier):
+    db = connect_db()
+    cursor = db.cursor()
+
+    sql = "UPDATE stock set stock_price = stock_price * " + str(multiplier) \
+          + " WHERE product_id = " + str(product_id) \
+          + " and seller_id = " + str(seller_id)
+
+    try:
+        cursor.execute(sql)
+        db.commit()
+    except Exception as e:
+        print(e)
+        print("Error: unable to increase product selling price")
+    db.close()
