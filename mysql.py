@@ -131,10 +131,14 @@ def if_related_product(product_id1, product_id2):
 
     try:
         cursor.execute(sql)
-        results = cursor.fetchall()
-        if results is None:
+        result = cursor.fetchone()
+        if result is None:
+            # print("No related product")
             return False
         else:
+            # id1 = result[1]
+            # id2 = result[2]
+            # print("There's a relationship between "+str(id1)+" "+str(id2))
             return True
     except Exception as e:
         print(e)
