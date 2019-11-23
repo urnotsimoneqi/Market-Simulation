@@ -357,3 +357,26 @@ def find_most_valuable_customer(seller_id):
     db.close()
     # print(products)
     return customer_id
+
+
+def get_gross_revenue(seller_id):
+    db = connect_db()
+    cursor = db.cursor()
+    gross_revenue = None
+
+    sql = "select sum(transaction_amount) from transaction where seller_id = " + str(seller_id)
+
+    try:
+        cursor.execute(sql)
+        results = None
+        results = cursor.fetchall()
+        if results is None:
+            print(seller_id, 'null')
+        else:
+            for row in results:
+                gross_revenue = double(row[0])
+    except Exception as e:
+        print(e)
+        print("Error: unable to find the gross revenue of a seller")
+    db.close()
+    return gross_revenue

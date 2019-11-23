@@ -87,3 +87,15 @@ class CEO:
                 updated_selling_price = selling_price * discount
                 mysql.update_product_selling_price(least_popular_product_id, self.seller.id, updated_selling_price)
 
+    def decide_how_much_to_spend_on_ads(self):
+        percentage = 0
+        ads_cost = 0
+        gross_annual_revenue = mysql.get_gross_revenue(self.seller.id)
+        if gross_annual_revenue is not None and self.seller.wallet > 200:
+            if gross_annual_revenue < 10000:
+                percentage = 0.2
+            else:
+                percentage = 0.075
+        ads_cost = percentage * gross_annual_revenue
+        print('ads_cost', ads_cost)
+        return ads_cost
