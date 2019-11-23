@@ -8,7 +8,7 @@ class Transaction:
     CANCELED_STATUS = 2
 
     def __init__(self, datetime, seller_id, customer_id, product_id, quantity, total_amount, related_product_id=0,
-                 promotion_id="", status=""):
+                 promotion_id=0):
         # self.id = id
         self.datetime = datetime
         self.timestamp = datetime.strftime("%Y-%m-%d %H:%M:%S")
@@ -23,4 +23,6 @@ class Transaction:
 
         self.related_product_id = related_product_id
         self.promotion_id = promotion_id
-        self.status = status
+
+    def set_promotion_id(self, promotion_id):
+        self.promotion_id = promotion_id
