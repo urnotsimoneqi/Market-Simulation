@@ -25,3 +25,25 @@ def plot(seller):
     plt.xticks(range(len(seller.revenue_history)))
     plt.legend()
     plt.show()
+
+
+def obj_to_string(cls, obj):
+    """
+    Simply implement a method to print object as string
+    :param cls: Corresponding class
+    :param obj: Instance of the corresponding class
+    :return: to_string of the instance object
+    """
+    if not isinstance(obj, cls):
+        raise TypeError("obj_to_string func: 'the object is not an instance of the specify class.'")
+    to_string = str(cls.__name__) + "("
+    items = obj.__dict__
+    n = 0
+    for k in items:
+        if k.startswith("_"):
+            continue
+        to_string = to_string + str(k) + "=" + str(items[k]) + ","
+        n += 1
+    if n == 0:
+        to_string += str(cls.__name__).lower() + ": 'Instantiated objects have no property values'"
+    return to_string.rstrip(",") + ")"

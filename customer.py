@@ -3,6 +3,7 @@ import time
 from threading import Thread, Lock
 
 import numpy
+from prometheus_client import Info
 
 from constants import tick_time, seed, high_quality, related_product
 from google_ads import GoogleAds
@@ -12,6 +13,8 @@ import logging
 import mysql
 
 import math
+
+from utils import obj_to_string
 
 random.seed(seed)
 
@@ -40,6 +43,12 @@ class Customer(object):
         # start this user in separate thread
         self.thread = Thread(name=name, target=self.loop)
         self.thread.start()
+
+    def __repr__(self):
+        return 'Info(name={})'.format(self.name)
+
+    def __str__(self):
+        return obj_to_string(Info, self)
 
     # View the advert to this consumer. The advert is appended to the ad_space
     def view_advert(self, product):
