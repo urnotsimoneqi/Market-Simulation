@@ -7,7 +7,7 @@ from stock import Stock
 
 
 def connect_db():
-    db = pymysql.connect("localhost", "root", "Simon19980908", "TESTDB")
+    db = pymysql.connect("localhost", "root", "matthew123", "TESTDB")
     return db
 
 
@@ -106,12 +106,12 @@ def save_txn(txn):
 
     sql = "INSERT INTO transaction (transaction_datetime, transaction_year, transaction_quarter, seller_id, customer_id, \
                              product_id, \
-                             transaction_quantity, transaction_amount) \
-                             VALUES ('%s', %s, %s, %s, %s, %s, %s, %s)"
-    sql = sql % (txn.timestamp, txn.year, txn.quarter, txn.seller_id, txn.customer_id, txn.product_id,
-                 txn.quantity, txn.total_amount)
+                             transaction_quantity, transaction_amount, promotion_id) \
+                             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
+    val = (txn.timestamp, txn.year, txn.quarter, txn.seller_id, txn.customer_id, txn.product_id,
+           txn.quantity, txn.total_amount, txn.promotion_id)
     try:
-        cursor.execute(sql)
+        cursor.execute(sql, val)
         db.commit()
     except Exception as e:
         print(e)
@@ -475,3 +475,32 @@ def calculate_total_stock_cost(seller_id):
         print(e)
     db.close()
     return cost
+
+
+def find_effective_promotions_per_quarter():
+    db = connect_db()
+    cursor = db.cursor()
+    promotions_used_per_quarter = []
+
+    sql = "select transaction_year, transaction_quarter, promotion_id, count(*) from transaction where promotion_id > 0 group by transaction_year, transaction_quarter, promotion_id order by transaction_year, transaction_quarter, promotion_id;"
+
+    try:
+        cursor.execute(sql)
+        results = None
+        results = cursor.fetchall()
+        if results is None:
+            print('promotion', 'null')
+        else:
+            for row in results:
+                year = row[0]
+                quarter = row[1]
+                promotion_id = row[2]
+                count = row[3]
+                promotions_used_per_quarter.append([year, quarter, promotion_id, count])
+
+    except Exception as e:
+        print(e)
+        print("Error: unable to find the effective promotions")
+    db.close()
+
+    return promotions_used_per_quarter
