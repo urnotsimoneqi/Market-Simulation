@@ -639,6 +639,28 @@ def select_product_summary(product_id, quarter):
     db.close()
 
 
+# return customer report list
+def customer_report(customer_id, quarter):
+    customer_report_list = []
+    db = connect_db()
+    cursor = db.cursor()
+    sql = "SELECT a.transaction_datetime, SUM(transaction_amount), b.product_name " \
+          "FROM transaction AS a, product AS b where a.product_id=b.product_id and a.customer_id="+str(customer_id) \
+          + " and a.transaction_quarter in (" + str(quarter-1) + "," + str(quarter) + ") group by a.product_id"
+
+    try:
+        cursor.execute(sql)
+        results = cursor.fetchall()
+        for row in results:
+            transaction_datetime = row[0].strftime("%Y-%m-%d")
+            transaction_amount = round(row[1], 2)
+            product_name = row[2]
+            one_record = [transaction_datetime, transaction_amount, product_name]
+            customer_report_list.append(one_record)
+    except Exception as e:
+        print(e)
+    db.close()
+    return customer_report_list
 
 
 
