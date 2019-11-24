@@ -1,6 +1,8 @@
 import logging
 import os
 import random
+import sys
+import threading
 import time
 from datetime import datetime
 
@@ -47,6 +49,10 @@ except KeyboardInterrupt:
 for seller in sellers:
     seller.kill()
 
+# Kill consumer threads
+for consumer in customers:
+    consumer.kill()
+
 # Plot the sales and expenditure trends
 # plot(seller_apple)
 # plot(seller_samsung)
@@ -79,19 +85,16 @@ for seller in sellers:
 
     # write sales summary to database
     mysql.save_sales_summary(sales_summary)
+    print("Save sales summary")
 
 seller_performance = sorted(seller_performance, key=itemgetter(3), reverse=True)
-
-# Kill consumer threads
-for consumer in customers:
-    consumer.kill()
 
 # write product summary into database
 for product in products:
     product_summary = mysql.extract_product_summary(product.product_id, 4)
     if product_summary is not None:
         mysql.save_product_summary(product_summary)
-        print("Save summary")
+        print("Save product summary")
 
 # Send email until the report being generated
 file_path = "report.txt"
@@ -104,5 +107,14 @@ while not os.path.exists(file_path):
 if os.path.isfile(file_path):
     print("Read file")
     # send_email.send_mail(SENDER_ROBOT, RECEIVER_ROBOT, seller_performance, file_path)
+    if threading.current_thread().name == 'MainThread':
+        try:
+            # sys.exit(0)
+            os._exit(0)
+        except Exception as e:
+            print(e)
+            print('Program is dead.')
+        finally:
+            print('clean-up')
 else:
     raise ValueError("%s isn't a file!" % file_path)

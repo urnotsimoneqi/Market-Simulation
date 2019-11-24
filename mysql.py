@@ -416,15 +416,44 @@ def increase_product_price(product_id, seller_id, multiplier):
     db.close()
 
 
+def select_sales_summary(seller_id, quarter):
+    db = connect_db()
+    cursor = db.cursor()
+
+    sql = "select * from sales_summary where seller_id=" + str(seller_id) + " and sales_quarter="+str(quarter)
+
+    try:
+        cursor.execute(sql)
+        result = cursor.fetchone()
+        if result is not None:
+            return True
+        else:
+            return False
+    except Exception as e:
+        print(e)
+    cursor.close()
+    db.close()
+
+
 # insert sales summary into database
 def save_sales_summary(sales_summary):
     db = connect_db()
     cursor = db.cursor()
 
-    sql = "INSERT INTO sales_summary (seller_id, sales_year, sales_quarter, " \
+    flag = select_sales_summary(sales_summary.seller_id, sales_summary.sales_quarter)
+
+    if flag:
+        sql = "UPDATE sales_summary set sales_expense_amount = " + str(sales_summary.sales_expenses_amount) \
+              + ", sales_revenue = " + str(sales_summary.sales_revenue) \
+              + ", sales_profit=" + str(sales_summary.sales_profit) \
+              + " where seller_id = " + str(sales_summary.seller_id) \
+              + " and sales_quarter =" + str(sales_summary.sales_quarter)
+    else:
+
+        sql = "INSERT INTO sales_summary (seller_id, sales_year, sales_quarter, " \
           "sales_expense_amount, sales_revenue, sales_profit) VALUES (%s, %s, %s, %s, %s, %s)"
 
-    sql = sql % (sales_summary.seller_id, sales_summary.sales_year, sales_summary.sales_quarter,
+        sql = sql % (sales_summary.seller_id, sales_summary.sales_year, sales_summary.sales_quarter,
                  sales_summary.sales_expenses_amount, sales_summary.sales_revenue, sales_summary.sales_profit)
     try:
         cursor.execute(sql)
@@ -512,6 +541,7 @@ def find_effective_promotions_per_quarter():
     return promotions_used_per_quarter
 
 
+# update seller wallet
 def update_seller_wallet():
     pass
 
@@ -577,10 +607,7 @@ def save_product_summary(product_summary):
               " VALUES (%s, %s, %s, %s)"
 
         sql = sql % (product_summary.product_id, product_summary.product_year,
-                 product_summary.product_quarter, product_summary.product_counter)
-
-
-
+                     product_summary.product_quarter, product_summary.product_counter)
 
     try:
         cursor.execute(sql)
@@ -597,7 +624,7 @@ def select_product_summary(product_id, quarter):
     db = connect_db()
     cursor = db.cursor()
 
-    sql = "select * from product_summary where product_id=" + str(product_id) +" and product_quarter=" + str(quarter)
+    sql = "select * from product_summary where product_id=" + str(product_id) + " and product_quarter = " + str(quarter)
 
     try:
         cursor.execute(sql)
