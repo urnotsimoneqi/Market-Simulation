@@ -70,6 +70,11 @@ class Customer(object):
             return
 
         # if there is not enough stock, no transaction
+        if products[0].stock_quantity <= 0:
+            logging.info("[Customer]: (%s,%d) Seller didn't have enough stock to sell the products:[%s], "
+                         "so the customer didn't buy",
+                         products[0].seller_id, self.tick_count, products[0].product_name)
+            return
         if products[0].stock_quantity < len(products):
             logging.info("[Customer]: (%s,%d) Seller didn't have enough stock to sell the products:[%s], "
                          "so the customer didn't buy",

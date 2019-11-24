@@ -425,10 +425,10 @@ def select_sales_summary(seller_id, quarter):
     try:
         cursor.execute(sql)
         result = cursor.fetchone()
-        if result is not None:
-            return True
-        else:
+        if result is None:
             return False
+        else:
+            return True
     except Exception as e:
         print(e)
     cursor.close()
@@ -573,21 +573,24 @@ def extract_product_summary(product_id, quarter):
     cursor = db.cursor()
 
     sql = "select transaction_year, transaction_quarter, sum(transaction_quantity) from transaction " \
-          "where product_id = " + str(product_id) + " and transaction_quarter=" + str(quarter)
+          " where product_id = " + str(product_id) + " and transaction_quarter=" + str(quarter)
+
+    # print("%s", sql)
 
     try:
         cursor.execute(sql)
         result = cursor.fetchone()
-        if result is not None:
+        if result[0] is None:
+            return
+        else:
             product_year = result[0]
             product_quarter = result[1]
             product_counter = result[2]
             product_summary = ProductSummary(product_id=product_id, product_year=product_year,
                                              product_quarter=product_quarter, product_counter=product_counter)
             return product_summary
-        else:
-            return
     except Exception as e:
+        print("extract_product_summary")
         print(e)
     cursor.close()
     db.close()
@@ -613,6 +616,7 @@ def save_product_summary(product_summary):
         cursor.execute(sql)
         db.commit()
     except Exception as e:
+        print("save_product_summary")
         print(e)
         # Rollback in case there is any error
         db.rollback()
@@ -625,15 +629,24 @@ def select_product_summary(product_id, quarter):
     cursor = db.cursor()
 
     sql = "select * from product_summary where product_id=" + str(product_id) + " and product_quarter = " + str(quarter)
+    # print("%s",sql)
 
     try:
         cursor.execute(sql)
         result = cursor.fetchone()
-        if result is not None:
-            return True
+        if result is not None and len(result) > 0:
+            id = result[0]
+            if id is not None:
+                print("result is not none")
+                return True
+            else:
+                print("result is none")
+                return False
         else:
+            print("result none")
             return False
     except Exception as e:
+        print("select_product_summary")
         print(e)
     cursor.close()
     db.close()
@@ -658,6 +671,7 @@ def customer_report(customer_id, quarter):
             one_record = [transaction_datetime, transaction_amount, product_name]
             customer_report_list.append(one_record)
     except Exception as e:
+        print("customer report"+e)
         print(e)
     db.close()
     return customer_report_list

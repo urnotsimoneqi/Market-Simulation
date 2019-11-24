@@ -41,7 +41,7 @@ products = mysql.initialize_product()
 
 # Wait till the simulation ends
 try:
-    time.sleep(3)
+    time.sleep(10)
 except KeyboardInterrupt:
     pass
 
@@ -68,13 +68,15 @@ for seller in sellers:
     revenue = float(mysql.calculate_transaction_revenue(seller.id, year, quarter))
     cost = float(mysql.calculate_total_stock_cost(seller.id))
     expenses = float(seller.my_expenses())
-    profit = seller.wallet+revenue-cost-expenses
+    # profit = seller.wallet+revenue-cost-expenses
+    profit = revenue-cost-expenses
 
     print("Seller %s's Total Profit:%d"%(seller.name, seller.my_profit()))
     print("Seller %s's Total Revenue:%d"%(seller.name, seller.my_revenue()))
     print("Seller %s's Total Expense:%d"%(seller.name, seller.my_expenses()))
 
     grade = fuzzy_logic.fuzzy_logic(revenue, profit)
+    print(grade)
     seller_performance.append([seller.name, revenue, profit, grade])
 
     sales_summary = SalesSummary(seller_id=seller.id, sales_year=year, sales_quarter=quarter,
@@ -85,7 +87,6 @@ for seller in sellers:
 
     # write sales summary to database
     mysql.save_sales_summary(sales_summary)
-    print("Save sales summary")
 
 seller_performance = sorted(seller_performance, key=itemgetter(3), reverse=True)
 
@@ -94,7 +95,6 @@ for product in products:
     product_summary = mysql.extract_product_summary(product.product_id, 4)
     if product_summary is not None:
         mysql.save_product_summary(product_summary)
-        print("Save product summary")
 
 # Send email until the report being generated
 file_path = "report.txt"
