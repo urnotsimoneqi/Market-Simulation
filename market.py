@@ -72,6 +72,7 @@ class Market(object):
         products[0].stock_quantity = products[0].stock_quantity - len(products)
         logging.info("[Market]: Update the stock quantity to %d of product %s of seller %s %d",
                      products[0].stock_quantity, product_name, seller.name, seller_id)
+
         # update the stock of product in database
         mysql.update_stock(product_id, seller_id, products[0].stock_quantity, products[0].stock_cost, seller.wallet)
 
@@ -82,6 +83,9 @@ class Market(object):
         logging.info("[Market]:Transaction between Seller %s and Customer %s with the product %s at %s "
                      "in year %s and quarter %s",
                      seller.name, buyer.name, product_name, transaction.timestamp, transaction.year, transaction.quarter)
+
+        # add the profit to seller's wallet
+        seller.wallet += product_price*len(products)
 
         # if a promotion has been applied in calculating, then update the transaction promotion id property
         if promotion_id != -1:

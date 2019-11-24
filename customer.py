@@ -198,3 +198,7 @@ class Customer(object):
     def kill(self):
         self.STOP = True
         self.thread.join(timeout=0)
+
+
+    # def stop(self):
+    #     self.

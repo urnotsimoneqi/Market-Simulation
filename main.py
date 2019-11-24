@@ -11,6 +11,7 @@ import fuzzy_logic
 # from utils import plot
 from operator import itemgetter
 from sales_summary import SalesSummary
+from product_summary import ProductSummary
 import send_email
 
 SENDER_ROBOT = 'a0198900xrobot@gmail.com'
@@ -32,6 +33,9 @@ customers = mysql.initialize_customer()
 
 # Initialize sellers with products from database
 sellers = mysql.initialize_seller()
+
+# Initialize products in the market
+products = mysql.initialize_product()
 
 # Wait till the simulation ends
 try:
@@ -81,6 +85,13 @@ seller_performance = sorted(seller_performance, key=itemgetter(3), reverse=True)
 # Kill consumer threads
 for consumer in customers:
     consumer.kill()
+
+# write product summary into database
+for product in products:
+    product_summary = mysql.extract_product_summary(product.product_id, 4)
+    if product_summary is not None:
+        mysql.save_product_summary(product_summary)
+        print("Save summary")
 
 # Send email until the report being generated
 file_path = "report.txt"

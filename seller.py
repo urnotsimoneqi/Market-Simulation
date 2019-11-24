@@ -79,7 +79,7 @@ class Seller(object):
             self.sentiment_history.append(self.user_sentiment())
 
         # add the profit to seller's wallet
-        self.wallet += self.my_profit(True)
+        # self.wallet += self.my_profit(True)
 
         # choose what to do for next timestep
         ceo = CEO(self)
@@ -141,7 +141,7 @@ class Seller(object):
     # to stop the seller thread
     def kill(self):
         self.STOP = True
-        self.thread.join()
+        self.thread.join(timeout=0)
 
     def __str__(self):
         return self.name

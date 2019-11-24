@@ -4,13 +4,17 @@ import pymysql
 from customer import Customer
 from seller import Seller
 from stock import Stock
+from product import Product
+from product_summary import ProductSummary
 
 
+# set up your information here to connect to mysql
 def connect_db():
     db = pymysql.connect("localhost", "root", "Simon19980908", "TESTDB")
     return db
 
 
+# initialize customers
 def initialize_customer():
     customers = []
     db = connect_db()
@@ -69,7 +73,7 @@ def initialize_stock(seller_id):
     return stock_list
 
 
-# initialize sellers
+# initialize sellers with products
 def initialize_seller():
     sellers = []
     db = connect_db()
@@ -411,6 +415,7 @@ def increase_product_price(product_id, seller_id, multiplier):
         print("Error: unable to increase product selling price")
     db.close()
 
+
 # insert sales summary into database
 def save_sales_summary(sales_summary):
     db = connect_db()
@@ -505,3 +510,108 @@ def find_effective_promotions_per_quarter():
     db.close()
 
     return promotions_used_per_quarter
+
+
+def update_seller_wallet():
+    pass
+
+
+# initialize product
+def initialize_product():
+    products = []
+    db = connect_db()
+    cursor = db.cursor()
+    sql = "SELECT * FROM product"
+    try:
+        cursor.execute(sql)
+        results = cursor.fetchall()
+        for row in results:
+            product_id = row[0]
+            name = row[1]
+            market_price = row[2]
+            product = Product(product_id=product_id, name=name, market_price=market_price)
+            products.append(product)
+    except Exception as e:
+        print(e)
+    db.close()
+    return products
+
+
+# extract product summary from transaction table
+def extract_product_summary(product_id, quarter):
+    db = connect_db()
+    cursor = db.cursor()
+
+    sql = "select transaction_year, transaction_quarter, sum(transaction_quantity) from transaction " \
+          "where product_id = " + str(product_id) + " and transaction_quarter=" + str(quarter)
+
+    try:
+        cursor.execute(sql)
+        result = cursor.fetchone()
+        if result is not None:
+            product_year = result[0]
+            product_quarter = result[1]
+            product_counter = result[2]
+            product_summary = ProductSummary(product_id=product_id, product_year=product_year,
+                                             product_quarter=product_quarter, product_counter=product_counter)
+            return product_summary
+        else:
+            return
+    except Exception as e:
+        print(e)
+    cursor.close()
+    db.close()
+
+
+def save_product_summary(product_summary):
+    db = connect_db()
+    cursor = db.cursor()
+
+    flag = select_product_summary(product_summary.product_id, product_summary.product_quarter)
+    if flag:
+        sql = "UPDATE product_summary set product_counter = " + str(product_summary.product_counter) \
+              + " where product_id =" + str(product_summary.product_id) \
+              + " and product_quarter=" + str(product_summary.product_quarter)
+    else:
+        sql = "INSERT INTO product_summary (product_id, product_year, product_quarter, product_counter)" \
+              " VALUES (%s, %s, %s, %s)"
+
+        sql = sql % (product_summary.product_id, product_summary.product_year,
+                 product_summary.product_quarter, product_summary.product_counter)
+
+
+
+
+    try:
+        cursor.execute(sql)
+        db.commit()
+    except Exception as e:
+        print(e)
+        # Rollback in case there is any error
+        db.rollback()
+    cursor.close()
+    db.close()
+
+
+def select_product_summary(product_id, quarter):
+    db = connect_db()
+    cursor = db.cursor()
+
+    sql = "select * from product_summary where product_id=" + str(product_id) +" and product_quarter=" + str(quarter)
+
+    try:
+        cursor.execute(sql)
+        result = cursor.fetchone()
+        if result is not None:
+            return True
+        else:
+            return False
+    except Exception as e:
+        print(e)
+    cursor.close()
+    db.close()
+
+
+
+
+
