@@ -163,7 +163,7 @@ class Customer(object):
                     products = [product, product]
                     self.buy(products)
                 else:
-                    logging.info("[Customer]: (%s,%d) is sensetive with user sentiment, "
+                    logging.info("[Customer]: (%s,%d) is sensitive with user sentiment, "
                                  "so didn't buy any products ", self.name, self.tick_count)
             else:
                 print('Not a valid Customer type')

@@ -77,8 +77,21 @@ for seller in sellers:
     mysql.save_sales_summary(sales_summary)
 
 seller_performance = sorted(seller_performance, key=itemgetter(3), reverse=True)
-# send_email.send_mail(SENDER_ROBOT, RECEIVER_ROBOT, seller_performance, 'NULL')
 
 # Kill consumer threads
 for consumer in customers:
     consumer.kill()
+
+# Send email until the report being generated
+file_path = "report.txt"
+while not os.path.exists(file_path):
+    try:
+        time.sleep(10)
+        print("File does not exist, wait...")
+    except KeyboardInterrupt:
+        pass
+if os.path.isfile(file_path):
+    print("Read file")
+    # send_email.send_mail(SENDER_ROBOT, RECEIVER_ROBOT, seller_performance, file_path)
+else:
+    raise ValueError("%s isn't a file!" % file_path)
