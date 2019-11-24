@@ -105,15 +105,15 @@ INSERT INTO customer(customer_type, customer_name, customer_email, customer_wall
 INSERT INTO customer(customer_type, customer_name, customer_email, customer_wallet, customer_tolerance) VALUES (0 , 'Ximeng', 'A0198890Hrobot@gmail.com', 600, 0.8);
 INSERT INTO customer(customer_type, customer_name, customer_email, customer_wallet, customer_tolerance) VALUES (1 , 'Laoxi', 'A0198890Hrobot@gmail.com', 600, 0.8);
 INSERT INTO customer(customer_type, customer_name, customer_email, customer_wallet, customer_tolerance) VALUES (0 , 'Xiaoxing', 'A0198890Hrobot@gmail.com', 600, 0.8);
-INSERT INTO customer(customer_type, customer_name, customer_email, customer_wallet, customer_tolerance) VALUES (1 , 'Fujing', 'A0198890Hrobot@gmail.com', 600, 0.5);
-INSERT INTO customer(customer_type, customer_name, customer_email, customer_wallet, customer_tolerance) VALUES (0 , 'Yammy', 'A0198890Hrobot@gmail.com', 800, 0.5);
-INSERT INTO customer(customer_type, customer_name, customer_email, customer_wallet, customer_tolerance) VALUES (0 , 'Dajuan', 'A0198890Hrobot@gmail.com', 800, 0.7);
-INSERT INTO customer(customer_type, customer_name, customer_email, customer_wallet, customer_tolerance) VALUES (0 , 'Sunnee', 'A0198890Hrobot@gmail.com', 600, 0.8);
-INSERT INTO customer(customer_type, customer_name, customer_email, customer_wallet, customer_tolerance) VALUES (1 , 'Chaoyue', 'A0198890Hrobot@gmail.com', 600, 0.8);
-INSERT INTO customer(customer_type, customer_name, customer_email, customer_wallet, customer_tolerance) VALUES (0 , 'Shanzhi', 'A0198890Hrobot@gmail.com', 600, 0.8);
-INSERT INTO customer(customer_type, customer_name, customer_email, customer_wallet, customer_tolerance) VALUES (1 , 'Zining', 'A0198890Hrobot@gmail.com', 600, 0.5);
-INSERT INTO customer(customer_type, customer_name, customer_email, customer_wallet, customer_tolerance) VALUES (0 , 'Ziting', 'A0198890Hrobot@gmail.com', 800, 0.5);
-INSERT INTO customer(customer_type, customer_name, customer_email, customer_wallet, customer_tolerance) VALUES (0 , 'Zixuan', 'A0198890Hrobot@gmail.com', 800, 0.7);
+INSERT INTO customer(customer_type, customer_name, customer_email, customer_wallet, customer_tolerance) VALUES (2 , 'Fujing', 'A0198890Hrobot@gmail.com', 600, 0.5);
+INSERT INTO customer(customer_type, customer_name, customer_email, customer_wallet, customer_tolerance) VALUES (2 , 'Yammy', 'A0198890Hrobot@gmail.com', 800, 0.5);
+INSERT INTO customer(customer_type, customer_name, customer_email, customer_wallet, customer_tolerance) VALUES (2 , 'Dajuan', 'A0198890Hrobot@gmail.com', 800, 0.7);
+INSERT INTO customer(customer_type, customer_name, customer_email, customer_wallet, customer_tolerance) VALUES (2 , 'Sunnee', 'A0198890Hrobot@gmail.com', 600, 0.8);
+INSERT INTO customer(customer_type, customer_name, customer_email, customer_wallet, customer_tolerance) VALUES (2 , 'Chaoyue', 'A0198890Hrobot@gmail.com', 600, 0.8);
+INSERT INTO customer(customer_type, customer_name, customer_email, customer_wallet, customer_tolerance) VALUES (2 , 'Shanzhi', 'A0198890Hrobot@gmail.com', 600, 0.8);
+INSERT INTO customer(customer_type, customer_name, customer_email, customer_wallet, customer_tolerance) VALUES (2 , 'Zining', 'A0198890Hrobot@gmail.com', 600, 0.5);
+INSERT INTO customer(customer_type, customer_name, customer_email, customer_wallet, customer_tolerance) VALUES (2 , 'Ziting', 'A0198890Hrobot@gmail.com', 800, 0.5);
+INSERT INTO customer(customer_type, customer_name, customer_email, customer_wallet, customer_tolerance) VALUES (2 , 'Zixuan', 'A0198890Hrobot@gmail.com', 800, 0.7);
 
 -- ----------------------------
 -- Table structure for customer_ads

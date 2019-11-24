@@ -5,7 +5,7 @@ from threading import Thread, Lock
 import numpy
 from prometheus_client import Info
 
-from constants import tick_time, seed, high_quality, related_product
+from constants import tick_time, seed, high_quality, related_product, sentiment_sensitive
 from google_ads import GoogleAds
 from market import Market
 from twitter import Twitter
@@ -132,15 +132,6 @@ class Customer(object):
                     logging.info("[Customer]:(%s,%d) would like to buy the product:[%s]", self.name, self.tick_count,
                                  product.product_name)
                     self.buy([product])
-                    # if user_sentiment >= self.tolerance and (
-                    #         (product not in self.owned_products and random.random() < 0.2) or (
-                    #         product in self.owned_products and random.random() < 0.01)):
-                    #     logging.info("[Customer]:(%s,%d) would like to buy the product:[%s]", self.name, self.tick_count,
-                    #                          product.product_name)
-                    #     products = [product, product]
-                    #     self.buy(products)
-                    # else:
-                    #     logging.info("[Customer]:###(%s,%d)doesn't buy any products ", self.name, self.tick_count)
             #  Buyers are interested in buying related products like a phone and its case in separate transaction.
             #  I.e. if a buyer bought the phone, they are more likely to purchase the case
             elif self.type == related_product:
@@ -163,6 +154,17 @@ class Customer(object):
                 else:
                     # owned_products is null, possible to buy
                     self.buy([product])
+            elif self.type == sentiment_sensitive:
+                if user_sentiment >= self.tolerance and (
+                        (product not in self.owned_products and random.random() < 0.5) or (
+                        product in self.owned_products and random.random() < 0.1)):
+                    logging.info("[Customer]:(%s,%d) would like to buy the product:[%s]", self.name, self.tick_count,
+                                         product.product_name)
+                    products = [product, product]
+                    self.buy(products)
+                else:
+                    logging.info("[Customer]: (%s,%d) is sensetive with user sentiment, "
+                                 "so didn't buy any products ", self.name, self.tick_count)
             else:
                 print('Not a valid Customer type')
 

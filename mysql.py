@@ -7,7 +7,7 @@ from stock import Stock
 
 
 def connect_db():
-    db = pymysql.connect("localhost", "root", "matthew123", "TESTDB")
+    db = pymysql.connect("localhost", "root", "Simon19980908", "TESTDB")
     return db
 
 

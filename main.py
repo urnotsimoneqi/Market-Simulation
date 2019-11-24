@@ -60,17 +60,18 @@ for seller in sellers:
     expenses = float(seller.my_expenses())
     profit = seller.wallet+revenue-cost-expenses
 
-    # print("Seller %s's Total Profit:%d"%(seller.name, profit)
-    # print("Seller %s's Total Revenue:%d"%(seller.name, revenue)
-    # print("Seller %s's Total Expense:%d"%(seller.name, expenses+cost)
+    print("Seller %s's Total Profit:%d"%(seller.name, seller.my_profit()))
+    print("Seller %s's Total Revenue:%d"%(seller.name, seller.my_revenue()))
+    print("Seller %s's Total Expense:%d"%(seller.name, seller.my_expenses()))
 
     grade = fuzzy_logic.fuzzy_logic(revenue, profit)
-    seller_performance.append([seller.name, seller.my_revenue(), seller.my_profit(), grade])
+    seller_performance.append([seller.name, revenue, profit, grade])
 
     sales_summary = SalesSummary(seller_id=seller.id, sales_year=year, sales_quarter=quarter,
                                  sales_expenses_amount=expenses+cost, sales_revenue=revenue, sales_profit=profit)
-    logging.info("[Main]: Seller %s total expense is %d, total revenue is %d, and total profit is %d",
-                 seller.name, expenses+cost, revenue, profit)
+    logging.info("[Main]: Seller %s total ads expense is %d, total stock cost is %d, "
+                 "total revenue is %d, and total profit is %d",
+                 seller.name, expenses, cost, revenue, profit)
 
     # write sales summary to database
     mysql.save_sales_summary(sales_summary)
