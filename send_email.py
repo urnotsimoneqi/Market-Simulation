@@ -9,7 +9,6 @@ SENDER_ROBOT = 'a0198900xrobot@gmail.com'
 RECEIVER_ROBOT = 'a0198900xreceiver@gmail.com'
 PASSWORD = 'A0198900X'
 
-
 def send_mail(from_addr, to_addr, data, filename):
     if '@gmail' in from_addr:
         if filename == 'NULL':
@@ -20,7 +19,7 @@ def send_mail(from_addr, to_addr, data, filename):
         return 'Not support this email'
 
 
-def send_email_no_attachment(from_addr, to_addr, data):
+def send_email_no_attachment(from_addr, to_addr, data, seller_performance):
     sender_email = from_addr
     receiver_email = to_addr
     password = PASSWORD
@@ -30,7 +29,7 @@ def send_email_no_attachment(from_addr, to_addr, data):
     message["To"] = receiver_email
 
     # Create the HTML version of your message
-    subject, msg_body = customize_email(data)
+    subject, msg_body = customize_email(data, seller_performance)
     message["Subject"] = subject
 
     # Turn these into plain/html MIMEText objects
@@ -98,30 +97,37 @@ def send_email_html_attachment(from_addr, to_addr, data, filename):
         )
 
 
-def customize_email(data):
+def customize_email(data, seller_performance):
     subject = ""
     msg_body = ""
-    msg_to_seller = """
-        <h2><strong>Sales Analysis Summary Report</strong></h2>
-        <hr />
-        <p>Dear """ + seller.name + """</p >
-        <p>We're consolidate a <strong>summary report</strong> as attached for your information to make better business decisions.&nbsp;</p >
-        <p>We hope this will help you. Looking forward to your future performance in the market.</p >
-        <p>Sincerely,</p >
-        <div>Group 9</div>
-        <div><span style="text-decoration: line-through;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
-        <div>Intelligent System Deployment Research Lab</div>
-        <div>13 Computing Drive,&nbsp;117417</div>
-        <div>Tel:6516 6666</div>
-        <div>A0198890Hrobot@gmail.com</div>
-    """
+    # msg_to_seller = """
+    #     <h2><strong>Sales Analysis Summary Report</strong></h2>
+    #     <hr />
+    #     <p>Dear """ + seller.name + """</p >
+    #     <p>We're consolidate a <strong>summary report</strong> as attached for your information to make better business decisions.&nbsp;</p >
+    #     <p>We hope this will help you. Looking forward to your future performance in the market.</p >
+    #     <p>Sincerely,</p >
+    #     <div>Group 9</div>
+    #     <div><span style="text-decoration: line-through;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+    #     <div>Intelligent System Deployment Research Lab</div>
+    #     <div>13 Computing Drive,&nbsp;117417</div>
+    #     <div>Tel:6516 6666</div>
+    #     <div>A0198890Hrobot@gmail.com</div>
+    # """
+
+    top_3_sellers = "<ol>"
+    for sales in seller_performance:
+        top_3_sellers += "<li>" + str(sales[0]) + "</li>"
+    top_3_sellers += "</ol>"
 
     if data is None or len(data) == 0:
         subject = "We Miss You"
         msg_body = """
+        
         <p>Dear Valued Customer,</p >
         <p>It&rsquo;s been a while since we last saw you at the club, and we miss you.</p >
         <p>We are glad to share with you the <strong>Top 3 Sellers</strong> according to our latest stats, you may want to check out.</p >
+        """ + top_3_sellers + """
         <p>For assistance at any time, please call us at 0000-123 4567 (or +65 6516 6666 from overseas). Alternatively, you can email us at <a href=" "> a0191561e.robot@gmail.com </a ></p >
         <p>Thank you for working with us. We look forward to helping you purchase online.</p >
         <p>Sincerely,</p >
@@ -132,23 +138,24 @@ def customize_email(data):
         <div>Tel:6516 6666</div>
         <div>a0191561e.robot@gmail.com</div>
         """
-    elif data is not None:
-        if len(data) >= 3:
-            top_3 = data[0][0] + ', ' + data[1][0] + ', ' + data[2][0]
-        elif len(data) >= 2:
-            top_3 = data[0][0] + ', ' + data[1][0]
-        else:
-            top_3 = data[0][0]
-        subject = "Investment Advisory | Together we can find an answer"
+    elif data is not None and len(data) > 0:
+        customer_records = "<ul>"
+        for record in data:
+            customer_records += "<li>" + str(record[2]) + "  " + str(record[1]) + "   " + str(record[0]) + "</li>"
+        customer_records += "</ul>"
+
+        subject = "Your Purchasing Summary"
         msg_body = """
             <p>Dear Valued Customer</p >
             <p>Thank you for using our system when making your online purchase.&nbsp;</p >
             <p>We're glad to generate <strong>a summary report for your purchasing records</strong> in previous quarter:&nbsp;</p >
+            """ + customer_records + """
             <p>&nbsp;</p >
             <p>We are glad to share with you the<strong> Top 3 Sellers</strong> according to our latest stats:</p >
+            """ + top_3_sellers + """
             <p>&nbsp;</p >
             <p>For assistance at any time, please call us at 0000-123 4567 (or +65 6516 6666 from overseas). Alternatively, you can email us at <a href=" ">a0191561e.robot@gmail.com</a ></p >
-            <p>Thank you for working with us. We look forward to helping you purchase online</p >
+            <p>Thank you for working with us. We look forward to helping you purchase online.</p >
             <p>Sincerely,</p >
             <div>Group 9</div>
             <div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>

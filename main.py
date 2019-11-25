@@ -15,6 +15,7 @@ from operator import itemgetter
 from sales_summary import SalesSummary
 from product_summary import ProductSummary
 import send_email
+import report
 
 SENDER_ROBOT = 'a0198900xrobot@gmail.com'
 RECEIVER_ROBOT = 'a0198900xreceiver@gmail.com'
@@ -87,12 +88,18 @@ for seller in sellers:
     mysql.save_sales_summary(sales_summary)
 
 seller_performance = sorted(seller_performance, key=itemgetter(3), reverse=True)
+if len(seller_performance) > 2:
+    seller_performance = seller_performance[0:3]
 
 # write product summary into database
 for product in products:
     product_summary = mysql.extract_product_summary(product.product_id, 4)
     if product_summary is not None:
         mysql.save_product_summary(product_summary)
+
+# Send email to customer
+for customer in customers:
+    report.send_customer_email(customer.id, SENDER_ROBOT, customer.email, seller_performance)
 
 # Send email until the report being generated
 file_path = "report.txt"

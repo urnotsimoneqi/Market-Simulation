@@ -10,7 +10,7 @@ from product_summary import ProductSummary
 
 # set up your information here to connect to mysql
 def connect_db():
-    db = pymysql.connect("localhost", "root", "Simon19980908", "TESTDB")
+    db = pymysql.connect("localhost", "root", "matthew123", "TESTDB")
     return db
 
 
@@ -314,11 +314,11 @@ def update_product_selling_price(product_id, seller_id, selling_price):
     db.close()
 
 
-def apply_discount_to_all_procducts(seller_id, discount):
+def apply_discount_to_all_products(seller_id, discount):
     db = connect_db()
     cursor = db.cursor()
 
-    sql1 = "update stock set stock_price = (stock_price * " + str(discount) + " where seller_id = " + str(seller_id)
+    sql1 = "update stock set stock_price = stock_price * " + str(discount) + " where seller_id = " + str(seller_id)
 
     try:
         cursor.execute(sql1)
@@ -587,7 +587,8 @@ def extract_product_summary(product_id, quarter):
     cursor = db.cursor()
 
     sql = "select transaction_year, transaction_quarter, sum(transaction_quantity) from transaction " \
-          " where product_id = " + str(product_id) + " and transaction_quarter=" + str(quarter)
+          " where product_id = " + str(product_id) + " and transaction_quarter=" + str(quarter) + \
+          " group by transaction_year, transaction_quarter, product_id"
 
     # print("%s", sql)
 
@@ -672,8 +673,9 @@ def customer_report(customer_id, quarter):
     db = connect_db()
     cursor = db.cursor()
     sql = "SELECT a.transaction_datetime, SUM(transaction_amount), b.product_name " \
-          "FROM transaction AS a, product AS b where a.product_id=b.product_id and a.customer_id="+str(customer_id) \
-          + " and a.transaction_quarter in (" + str(quarter-1) + "," + str(quarter) + ") group by a.product_id"
+          "FROM transaction AS a, product AS b where a.product_id=b.product_id and a.customer_id=" + str(customer_id) \
+          + " and a.transaction_quarter in (" + str(quarter - 1) + "," + str(quarter) + ") " \
+          + "group by a.transaction_datetime, b.product_name"
 
     try:
         cursor.execute(sql)
@@ -685,7 +687,7 @@ def customer_report(customer_id, quarter):
             one_record = [transaction_datetime, transaction_amount, product_name]
             customer_report_list.append(one_record)
     except Exception as e:
-        print("customer report"+e)
+        print("customer repe")
         print(e)
     db.close()
     return customer_report_list

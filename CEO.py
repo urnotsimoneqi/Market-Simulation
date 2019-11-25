@@ -112,4 +112,4 @@ class CEO:
         products = None
         products = mysql.find_all_products(self.seller.id)
         if products is not None:
-            mysql.apply_discount_to_all_procducts(self.seller.id, discount)
+            mysql.apply_discount_to_all_products(self.seller.id, discount)
