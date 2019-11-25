@@ -542,8 +542,22 @@ def find_effective_promotions_per_quarter():
 
 
 # update seller wallet
-def update_seller_wallet():
-    pass
+def update_seller_wallet(seller_id, money):
+    db = connect_db()
+    cursor = db.cursor()
+
+    sql = "UPDATE seller SET seller_wallet = seller_wallet+" + str(money) + " WHERE seller_id="+str(seller_id)
+
+    try:
+        cursor.execute(sql)
+        db.commit()
+    except Exception as e:
+        print("update_seller_wallet")
+        print(e)
+        # Rollback in case there is any error
+        db.rollback()
+    cursor.close()
+    db.close()
 
 
 # initialize product

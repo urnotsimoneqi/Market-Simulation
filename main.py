@@ -41,7 +41,7 @@ products = mysql.initialize_product()
 
 # Wait till the simulation ends
 try:
-    time.sleep(10)
+    time.sleep(3)
 except KeyboardInterrupt:
     pass
 
@@ -74,6 +74,8 @@ for seller in sellers:
     print("Seller %s's Total Profit:%d"%(seller.name, seller.my_profit()))
     print("Seller %s's Total Revenue:%d"%(seller.name, seller.my_revenue()))
     print("Seller %s's Total Expense:%d"%(seller.name, seller.my_expenses()))
+
+    mysql.update_seller_wallet(seller.id, profit)
 
     grade = fuzzy_logic.fuzzy_logic(revenue, profit)
     print(grade)
