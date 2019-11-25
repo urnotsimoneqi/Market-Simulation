@@ -23,7 +23,7 @@ class Customer(object):
 
     def __init__(self, id, type, name, email, wallet, tolerance):
         self.id, self.type, self.name, self.email, self.wallet, self.tolerance = id, type, name, email, wallet, tolerance
-        logging.info("[Buyer]:Buyer %s Initialized", self.name)
+        logging.info("[Customer]:Customer %s Initialized", self.name)
 
         # Register the user with google ads
         GoogleAds.register_user(self)
@@ -102,22 +102,21 @@ class Customer(object):
 
     # Loop function to keep the simulation going
     def loop(self):
-        logging.info("[Customer]:Customer %s entered Trading", self.name)
 
         while not self.STOP:
             self.tick_count += 1
-            logging.info("[Customer]:(%s,%d): Next Quarter Begins ", self.name, self.tick_count)
+            logging.info("[Customer]:(%s,%d): Next Tick Begins ", self.name, self.tick_count)
             self.tick()
             time.sleep(tick_time)
             owned_products = ', '.join(x.product_name + " of Seller " + str(x.seller_id) for x in self.owned_products)
-            logging.info("[Customer]: (%s,%d) own the Products:[%s] with balance of $ %d", self.name, self.tick_count,
+            logging.info("[Customer]: (%s,%d) own the products:[%s] with balance of $ %d", self.name, self.tick_count,
                          owned_products, self.wallet)
-        logging.info("[Customer]: (%s,%d) Exit", self.name, self.tick_count)
+        logging.info("[Customer]: (%s,%d) Exit Market", self.name, self.tick_count)
 
     # one timestep in the simulation world
     def tick(self):
         test = ', '.join(x.product_name + " of Seller " + str(x.seller_id) for x in self.ad_space)
-        logging.info("[Customer]:(%s,%d) currently seeing ads for the Products:[%s]", self.name, self.tick_count, test)
+        logging.info("[Customer]:(%s,%d) currently seeing ads for the products:[%s]", self.name, self.tick_count, test)
         self.lock.acquire()
 
         # user looks at all the adverts in his ad_space
@@ -136,7 +135,8 @@ class Customer(object):
                 else:
                     logging.info("[Customer]:(%s,%d) would like to buy the product:[%s]", self.name, self.tick_count,
                                  product.product_name)
-                    self.buy([product])
+                    products = [product] * random.randint(1, 5)
+                    self.buy(products)
             #  Buyers are interested in buying related products like a phone and its case in separate transaction.
             #  I.e. if a buyer bought the phone, they are more likely to purchase the case
             elif self.type == related_product:
@@ -155,17 +155,19 @@ class Customer(object):
                                          "so he doesn't buy any products ",
                                          self.name, self.tick_count)
                     if related_temp is True:
-                        self.buy([product])
+                        products = [product] * random.randint(1, 5)
+                        self.buy(products)
                 else:
                     # owned_products is null, possible to buy
-                    self.buy([product])
+                    products = [product] * random.randint(1, 5)
+                    self.buy(products)
             elif self.type == sentiment_sensitive:
                 if user_sentiment >= self.tolerance and (
                         (product not in self.owned_products and random.random() < 0.5) or (
                         product in self.owned_products and random.random() < 0.1)):
                     logging.info("[Customer]:(%s,%d) would like to buy the product:[%s]", self.name, self.tick_count,
                                          product.product_name)
-                    products = [product, product]
+                    products = [product] * random.randint(1, 5)
                     self.buy(products)
                 else:
                     logging.info("[Customer]: (%s,%d) is sensitive with user sentiment, "

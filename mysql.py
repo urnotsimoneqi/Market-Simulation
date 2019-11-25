@@ -10,7 +10,7 @@ from product_summary import ProductSummary
 
 # set up your information here to connect to mysql
 def connect_db():
-    db = pymysql.connect("localhost", "root", "matthew123", "TESTDB")
+    db = pymysql.connect("localhost", "root", "Simon19980908", "TESTDB")
     return db
 
 
@@ -588,19 +588,25 @@ def extract_product_summary(product_id, quarter):
 
     sql = "select transaction_year, transaction_quarter, sum(transaction_quantity) from transaction " \
           " where product_id = " + str(product_id) + " and transaction_quarter=" + str(quarter) + \
-          " group by transaction_year, transaction_quarter, product_id"
+          " group by transaction_year, transaction_quarter"
 
     # print("%s", sql)
 
     try:
         cursor.execute(sql)
         result = cursor.fetchone()
-        if result[0] is None:
+        if result is None:
             return
         else:
-            product_year = result[0]
-            product_quarter = result[1]
-            product_counter = result[2]
+            if result[0] is None:
+                return
+            else:
+                product_year = result[0]
+                product_quarter = result[1]
+                product_counter = result[2]
+            # print(product_year)
+            # print(product_quarter)
+            # print(product_counter)
             product_summary = ProductSummary(product_id=product_id, product_year=product_year,
                                              product_quarter=product_quarter, product_counter=product_counter)
             return product_summary
@@ -687,7 +693,7 @@ def customer_report(customer_id, quarter):
             one_record = [transaction_datetime, transaction_amount, product_name]
             customer_report_list.append(one_record)
     except Exception as e:
-        print("customer repe")
+        print("customer report")
         print(e)
     db.close()
     return customer_report_list

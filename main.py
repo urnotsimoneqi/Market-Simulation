@@ -111,7 +111,8 @@ while not os.path.exists(file_path):
         pass
 if os.path.isfile(file_path):
     print("Read file")
-    # send_email.send_mail(SENDER_ROBOT, RECEIVER_ROBOT, seller_performance, file_path)
+    for seller in sellers:
+        report.send_seller_email(seller.name, SENDER_ROBOT, RECEIVER_ROBOT, file_path)
 
     # kill the main thread
     if threading.current_thread().name == 'MainThread':

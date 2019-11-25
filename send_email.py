@@ -58,7 +58,7 @@ def send_email_html_attachment(from_addr, to_addr, data, filename):
     message["To"] = receiver_email
 
     # Create the HTML version of your message
-    subject, msg_body = customize_email(data)
+    subject, msg_body = customize_seller_email(data)
     message["Subject"] = subject
 
     # Turn these into plain/html MIMEText objects
@@ -165,5 +165,29 @@ def customize_email(data, seller_performance):
             <div>a0191561e.robot@gmail.com</div>
             """
         pass
+
+    return subject, msg_body
+
+
+def customize_seller_email(name):
+    subject = "Sales and Profit Analysis Result"
+    msg_body = """
+            <html>
+                <body>
+                <h2><strong>Sales and Profit Analysis Result</strong></h2>
+                <hr />
+                <p>Dear +""" + str(name)+""",</p >
+                <p>We're consolidate a <strong>summary report</strong> as attached for your information to make better business decisions.&nbsp;</p >
+                <p>We hope this will help you. Looking forward to your future performance in the market.</p >
+                <p>Sincerely,</p >
+                <div>Group 9</div>
+                <div><span style="text-decoration: line-through;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+                <div>Intelligent System Deployment Research Lab</div>
+                <div>13 Computing Drive,&nbsp;117417</div>
+                <div>Tel:6516 6666</div>
+                <div>A0198890Hrobot@gmail.com</div>
+                </body>
+            </html>
+            """
 
     return subject, msg_body

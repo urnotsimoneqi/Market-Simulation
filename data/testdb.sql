@@ -291,21 +291,21 @@ CREATE TABLE stock
 -- Records of stock
 -- ----------------------------
 INSERT INTO stock (product_id, product_quality, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (1, 0.8, 1, 20, 300, 500);
+VALUES (1, 0.8, 1, 20, 30, 500);
 INSERT INTO stock (product_id, product_quality, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (2, 0.7, 2, 10, 200, 300);
+VALUES (2, 0.7, 2, 10, 20, 300);
 INSERT INTO stock (product_id, product_quality, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (3, 0.8, 4, 50, 600, 1000);
+VALUES (3, 0.8, 4, 50, 60, 1000);
 INSERT INTO stock (product_id, product_quality, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (4, 0.6, 3, 50, 600, 1000);
+VALUES (4, 0.6, 3, 50, 60, 1000);
 INSERT INTO stock (product_id, product_quality, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (5, 0.5, 5, 50, 600, 1000);
+VALUES (5, 0.5, 5, 50, 60, 1000);
 INSERT INTO stock (product_id, product_quality, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (6, 0.8, 1, 50, 700, 1000);
+VALUES (6, 0.8, 1, 50, 70, 1000);
 INSERT INTO stock (product_id, product_quality, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (7, 0.7, 2, 20, 600, 1000);
+VALUES (7, 0.7, 2, 20, 60, 1000);
 INSERT INTO stock (product_id, product_quality, seller_id, stock_quantity, stock_cost, stock_price)
-VALUES (8, 0.8, 4, 50, 600, 1000);
+VALUES (8, 0.8, 4, 50, 60, 1000);
 -- ----------------------------
 -- Table structure for transaction
 -- ----------------------------
