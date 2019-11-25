@@ -99,36 +99,39 @@ def send_email_html_attachment(from_addr, to_addr, data, filename):
 
 
 def customize_email(data):
-    """draft different email subject and content based on different query type
-    Args:
-        data: a list of analyzed data
-        type: query type, including 'BUY', 'SELL', 'REPORT', 'INV_FORMAT'
-    Return: return the subject of mail and body of mail
-    """
     subject = ""
     msg_body = ""
+    msg_to_seller = """
+        <h2><strong>Sales Analysis Summary Report</strong></h2>
+        <hr />
+        <p>Dear """ + seller.name + """</p >
+        <p>We're consolidate a <strong>summary report</strong> as attached for your information to make better business decisions.&nbsp;</p >
+        <p>We hope this will help you. Looking forward to your future performance in the market.</p >
+        <p>Sincerely,</p >
+        <div>Group 9</div>
+        <div><span style="text-decoration: line-through;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+        <div>Intelligent System Deployment Research Lab</div>
+        <div>13 Computing Drive,&nbsp;117417</div>
+        <div>Tel:6516 6666</div>
+        <div>A0198890Hrobot@gmail.com</div>
+    """
 
     if data is None or len(data) == 0:
-        subject = "Invalid seller data"
+        subject = "We Miss You"
         msg_body = """
-                 <html>
-                        <style>
-                            table {border-collapse: collapse;}
-                            table, td, th {border: 1px solid black; padding: 5px;}
-                        </style>
-                        <body>
-                                Dear Valued Customer<p>
-                                We're sorry to inform that there's something wrong with the market.</p>
-                                <p>For assistance at any time, please call us at 0000-123 4567 (or +65 1234 5678 from overseas). Alternatively, you can email us at <a href="mailto:a0191561e.robot@gmail.com">a0191561e.robot@gmail.com</a>.</p>
-                                <p>Thank you for your cooperation.</p>
-                                <p>Yours sincerely</p>
-                                Group 9
-                                <br>Your Shopping Advisor 
-                                <br>IS5006
-                                <br>SOC
-                        </body>
-                    </html>
-                """
+        <p>Dear Valued Customer,</p >
+        <p>It&rsquo;s been a while since we last saw you at the club, and we miss you.</p >
+        <p>We are glad to share with you the <strong>Top 3 Sellers</strong> according to our latest stats, you may want to check out.</p >
+        <p>For assistance at any time, please call us at 0000-123 4567 (or +65 6516 6666 from overseas). Alternatively, you can email us at <a href=" "> a0191561e.robot@gmail.com </a ></p >
+        <p>Thank you for working with us. We look forward to helping you purchase online.</p >
+        <p>Sincerely,</p >
+        <div>Group 9</div>
+        <div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
+        <div>Your Purchase Advisor</div>
+        <div>13 Computing Drive,&nbsp;117417</div>
+        <div>Tel:6516 6666</div>
+        <div>a0191561e.robot@gmail.com</div>
+        """
     elif data is not None:
         if len(data) >= 3:
             top_3 = data[0][0] + ', ' + data[1][0] + ', ' + data[2][0]
@@ -138,20 +141,21 @@ def customize_email(data):
             top_3 = data[0][0]
         subject = "Investment Advisory | Together we can find an answer"
         msg_body = """
-            <html>
-                <body>
-                       Dear Valued Customer<p>
-                       Thank you for sharing your inquiry with us when making big investment decisions.</p>
-                       <p>After understanding your personal investment objective and applying our intellectual capital, <b>Seller """ + top_3 + """</b> would be highly recommended as your best possible investment. </p>
-                       <p>For assistance at any time, please call us at 0000-123 4567 (or +65 1234 5678 from overseas). Alternatively, you can email us at <a href = "mailto: a0191561e.robot@gmail.com">a0191561e.robot@gmail.com</a>.</p>
-                       <p>Thank you for working with us. We look forward to helping you deliver superior investment outcomes again in changing markets.</p>
-                       <p>Yours sincerely</p>
-                       Group 9
-                       <br>Your Investment Advisor 
-                       <br>IS5006
-                       <br>SOC
-                </body>
-            </html>
+            <p>Dear Valued Customer</p >
+            <p>Thank you for using our system when making your online purchase.&nbsp;</p >
+            <p>We're glad to generate <strong>a summary report for your purchasing records</strong> in previous quarter:&nbsp;</p >
+            <p>&nbsp;</p >
+            <p>We are glad to share with you the<strong> Top 3 Sellers</strong> according to our latest stats:</p >
+            <p>&nbsp;</p >
+            <p>For assistance at any time, please call us at 0000-123 4567 (or +65 6516 6666 from overseas). Alternatively, you can email us at <a href=" ">a0191561e.robot@gmail.com</a ></p >
+            <p>Thank you for working with us. We look forward to helping you purchase online</p >
+            <p>Sincerely,</p >
+            <div>Group 9</div>
+            <div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
+            <div>Your Purchase Advisor</div>
+            <div>13 Computing Drive,&nbsp;117417</div>
+            <div>Tel:6516 6666</div>
+            <div>a0191561e.robot@gmail.com</div>
             """
         pass
 
