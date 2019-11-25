@@ -176,7 +176,7 @@ def customize_seller_email(name):
                 <body>
                 <h2><strong>Sales and Profit Analysis Result</strong></h2>
                 <hr />
-                <p>Dear +""" + str(name)+""",</p >
+                <p>Dear """ + str(name) + """,</p >
                 <p>We're consolidate a <strong>summary report</strong> as attached for your information to make better business decisions.&nbsp;</p >
                 <p>We hope this will help you. Looking forward to your future performance in the market.</p >
                 <p>Sincerely,</p >

@@ -70,11 +70,14 @@ class Market(object):
 
         # update the stock of product
         products[0].stock_quantity = products[0].stock_quantity - len(products)
-        logging.info("[Market]: Update the stock quantity to %d of product %s of seller %s %d",
+        if products[0].stock_quantity < 0:
+            # print("stock < 0")
+            pass
+        else:
+            logging.info("[Market]: Update the stock quantity to %d of product %s of seller %s %d",
                      products[0].stock_quantity, product_name, seller.name, seller_id)
-
-        # update the stock of product in database
-        mysql.update_stock(product_id, seller_id, products[0].stock_quantity, products[0].stock_cost, seller.wallet)
+            # update the stock of product in database
+            mysql.update_stock(product_id, seller_id, products[0].stock_quantity, products[0].stock_cost, seller.wallet)
 
         dt = datetime.datetime.now()
         transaction = Transaction(datetime=dt, seller_id=seller.id, customer_id=buyer.id,

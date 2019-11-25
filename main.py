@@ -40,6 +40,11 @@ sellers = mysql.initialize_seller()
 # Initialize products in the market
 products = mysql.initialize_product()
 
+seller_cost_dict = {}
+for seller in sellers:
+    cost = mysql.calculate_total_stock_cost(seller.id)
+    seller_cost_dict[seller.id] = cost
+
 # Wait till the simulation ends
 try:
     time.sleep(3)
@@ -62,19 +67,19 @@ quarter = (dt.month - 1) // 3 + 1
 for seller in sellers:
     # summarize the seller's sales
     revenue = float(mysql.calculate_transaction_revenue(seller.id, year, quarter))
-    cost = float(mysql.calculate_total_stock_cost(seller.id))
+    # cost = float(mysql.calculate_total_stock_cost(seller.id))
     expenses = float(seller.my_expenses())
     # profit = seller.wallet+revenue-cost-expenses
+    cost = seller_cost_dict[seller.id]
     profit = revenue-cost-expenses
 
-    print("Seller %s's Total Profit:%d"%(seller.name, seller.my_profit()))
-    print("Seller %s's Total Revenue:%d"%(seller.name, seller.my_revenue()))
-    print("Seller %s's Total Expense:%d"%(seller.name, seller.my_expenses()))
+    # print("Seller %s's Total Profit:%d"%(seller.name, seller.my_profit()))
+    # print("Seller %s's Total Revenue:%d"%(seller.name, seller.my_revenue()))
+    # print("Seller %s's Total Expense:%d"%(seller.name, seller.my_expenses()))
 
     mysql.update_seller_wallet(seller.id, profit)
 
     grade = fuzzy_logic.fuzzy_logic(revenue, profit)
-    print(grade)
     seller_performance.append([seller.name, revenue, profit, grade])
 
     # update seller's sales summary
@@ -99,10 +104,11 @@ for product in products:
 
 # Send email to customer
 for customer in customers:
-    report.send_customer_email(customer.id, SENDER_ROBOT, customer.email, seller_performance)
+    pass
+    # report.send_customer_email(customer.id, SENDER_ROBOT, customer.email, seller_performance)
 
 # Send email until the report being generated
-file_path = "report.txt"
+file_path = "report.jpg"
 while not os.path.exists(file_path):
     try:
         time.sleep(10)
@@ -112,7 +118,8 @@ while not os.path.exists(file_path):
 if os.path.isfile(file_path):
     print("Read file")
     for seller in sellers:
-        report.send_seller_email(seller.name, SENDER_ROBOT, RECEIVER_ROBOT, file_path)
+        pass
+        # report.send_seller_email(seller.name, SENDER_ROBOT, RECEIVER_ROBOT, file_path)
 
     # kill the main thread
     if threading.current_thread().name == 'MainThread':

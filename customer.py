@@ -116,7 +116,7 @@ class Customer(object):
     # one timestep in the simulation world
     def tick(self):
         test = ', '.join(x.product_name + " of Seller " + str(x.seller_id) for x in self.ad_space)
-        logging.info("[Customer]:(%s,%d) currently seeing ads for the products:[%s]", self.name, self.tick_count, test)
+        logging.info("[Customer]:(%s,%d) see ads for the products:[%s]", self.name, self.tick_count, test)
         self.lock.acquire()
 
         # user looks at all the adverts in his ad_space

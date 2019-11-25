@@ -620,7 +620,7 @@ def extract_product_summary(product_id, quarter):
 def save_product_summary(product_summary):
     db = connect_db()
     cursor = db.cursor()
-
+    flag = False
     flag = select_product_summary(product_summary.product_id, product_summary.product_quarter)
     if flag:
         sql = "UPDATE product_summary set product_counter = " + str(product_summary.product_counter) \
@@ -658,13 +658,13 @@ def select_product_summary(product_id, quarter):
         if result is not None and len(result) > 0:
             id = result[0]
             if id is not None:
-                print("result is not none")
+                # print("result is not none")
                 return True
             else:
-                print("result is none")
+                # print("result is none")
                 return False
         else:
-            print("result none")
+            # print("result none")
             return False
     except Exception as e:
         print("select_product_summary")

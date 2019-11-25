@@ -6,8 +6,8 @@ import numpy as np
 def fuzzy_logic(revenue, profit):
     # New Antecedent/Consequent objects hold universe variables and membership
     # functions
-    revenuevalue = ctrl.Antecedent(np.arange(0, 2100, 100), 'revenuevalue')
-    profitsvalue = ctrl.Antecedent(np.arange(-21, 21, 1), 'profitsvalue')
+    revenuevalue = ctrl.Antecedent(np.arange(0, 50000, 500), 'revenuevalue')
+    profitsvalue = ctrl.Antecedent(np.arange(-5000, 50000, 5000), 'profitsvalue')
     grade = ctrl.Consequent(np.arange(0, 100, 1), 'grade')
 
     # Auto-membership function population is possible with .automf(3, 5, or 7)
@@ -22,9 +22,9 @@ def fuzzy_logic(revenue, profit):
     # You can see how these look with .view()
     # revenuevalue['average'].view()
 
-    # rofitsvalue.view()
+    # profitsvalue.view()
 
-    # grade.view()
+    grade.view()
 
     rule1 = ctrl.Rule(revenuevalue['poor'] | profitsvalue['poor'], grade['low'])
     rule2 = ctrl.Rule(profitsvalue['average'], grade['medium'])
@@ -41,5 +41,5 @@ def fuzzy_logic(revenue, profit):
 
     # Crunch the numbers
     investment.compute()
-    # grade.view(sim=investment)
+    grade.view(sim=investment)
     return investment.output['grade']
