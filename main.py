@@ -53,12 +53,7 @@ for seller in sellers:
 for consumer in customers:
     consumer.kill()
 
-# Plot the sales and expenditure trends
-# plot(seller_apple)
-# plot(seller_samsung)
-# for seller in sellers:
-#     plot(seller)
-
+# calculate seller performance
 seller_performance = []
 dt = datetime.now()
 year = dt.year
@@ -81,6 +76,7 @@ for seller in sellers:
     print(grade)
     seller_performance.append([seller.name, revenue, profit, grade])
 
+    # update seller's sales summary
     sales_summary = SalesSummary(seller_id=seller.id, sales_year=year, sales_quarter=quarter,
                                  sales_expenses_amount=expenses+cost, sales_revenue=revenue, sales_profit=profit)
     logging.info("[Main]: Seller %s total ads expense is %d, total stock cost is %d, "
@@ -109,6 +105,8 @@ while not os.path.exists(file_path):
 if os.path.isfile(file_path):
     print("Read file")
     # send_email.send_mail(SENDER_ROBOT, RECEIVER_ROBOT, seller_performance, file_path)
+
+    # kill the main thread
     if threading.current_thread().name == 'MainThread':
         try:
             # sys.exit(0)

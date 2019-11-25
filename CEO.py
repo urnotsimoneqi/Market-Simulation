@@ -105,3 +105,11 @@ class CEO:
         if product_id > 0 and product_id in products:
             multiplier = 1.1
             mysql.increase_product_price(product_id, self.seller.id, 1.1)
+
+    # if seller's wallet is < 200, reduce price for all the products
+    def apply_discount_for_all_products(self):
+        discount = 0.8
+        products = None
+        products = mysql.find_all_products(self.seller.id)
+        if products is not None:
+            mysql.apply_discount_to_all_procducts(self.seller.id, discount)
